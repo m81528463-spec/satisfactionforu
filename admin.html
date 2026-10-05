@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Satisfaction for U | Private Admin</title><script src="https://cdn.tailwindcss.com"></script><style>body{font-family:Inter,system-ui;background:#09070b;color:#fff}.hidden{display:none!important}.glass{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(16px)}</style></head>
+<body>
+<div id="loginPage" class="min-h-screen grid place-items-center p-5 bg-[radial-gradient(circle_at_top,#341326,transparent_45%)]">
+ <form id="loginForm" class="w-full max-w-sm glass rounded-3xl p-8 shadow-2xl">
+  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-pink-500 to-fuchsia-700 grid place-items-center text-xl">♡</div>
+  <h1 class="text-3xl font-black mt-6">Private Admin</h1><p class="text-white/40 mt-2">Manage profiles, reviews and website settings.</p>
+  <input id="username" class="mt-7 w-full bg-black/25 border border-white/10 rounded-xl p-3.5" placeholder="Username" autocomplete="username" required>
+  <input id="password" type="password" class="mt-3 w-full bg-black/25 border border-white/10 rounded-xl p-3.5" placeholder="Password" autocomplete="current-password" required>
+  <button class="mt-4 w-full rounded-xl bg-pink-600 hover:bg-pink-500 py-3.5 font-bold">Sign in</button>
+  <p id="err" class="text-red-300 text-sm mt-4"></p>
+ </form>
+</div>
+<div id="app" class="hidden">
+<header class="sticky top-0 z-40 border-b border-white/10 bg-[#09070b]/85 backdrop-blur-xl"><div class="max-w-7xl mx-auto px-5 h-20 flex items-center justify-between"><div><b class="text-lg">Satisfaction for U</b><small class="block text-[10px] uppercase tracking-[.2em] text-white/35">Admin console</small></div><div class="flex gap-2"><a href="index.html" class="px-4 py-2 rounded-xl bg-white/5">View site</a><button onclick="logout()" class="px-4 py-2 rounded-xl bg-red-500/80">Logout</button></div></div></header>
+<main class="max-w-7xl mx-auto px-5 py-9">
+ <div class="grid lg:grid-cols-3 gap-5">
+  <div class="glass rounded-2xl p-6"><p class="text-white/35 text-sm">Profiles</p><b id="statProfiles" class="text-4xl mt-2 block">0</b></div>
+  <div class="glass rounded-2xl p-6"><p class="text-white/35 text-sm">Reviews</p><b id="statReviews" class="text-4xl mt-2 block">0</b></div>
+  <div class="glass rounded-2xl p-6"><p class="text-white/35 text-sm">Pending moderation</p><b id="statPending" class="text-4xl mt-2 block">0</b></div>
+ </div>
+ 
+<section class="glass rounded-3xl p-6 md:p-8 mb-8">
+  <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+    <div>
+      <div class="text-xs uppercase tracking-[.25em] text-pink-300">Complete Website Editor</div>
+      <h2 class="text-2xl font-bold mt-2">All public website settings</h2>
+      <p class="text-white/45 mt-1">Everything is editable: branding, hero, text, profiles, locations, contacts, photos, reviews and SEO.</p>
+    </div>
+    <button onclick="saveCompleteContent()" class="px-5 py-3 rounded-xl bg-pink-500 hover:bg-pink-400 text-white font-bold">Save all website content</button>
+  </div>
+  <div class="grid md:grid-cols-2 gap-4">
+    <label class="text-sm text-white/65">Brand name<input id="cBrand" class="mt-2 w-full bg-black/25 border border-white/10 rounded-xl p-3"></label>
+    <label class="text-sm text-white/65">Header eyebrow<input id="cEyebrow" class="mt-2 w-full bg-black/25 border border-white/10 rounded-xl p-3"></label>
+    <label class="text-sm text-white/65 md:col-span-2">Hero title (HTML line breaks allowed)<textarea id="cHeroTitle" rows="3" class="mt-2 w-full bg-black/25 border border-white/10 rounded-xl p-3"></textarea></label>
+    <label class="text-sm text-white/65 md:col-span-2">Hero description<textarea id="cHeroDescription" rows="2" class="mt-2 w-full bg-black/25 border border-white/10 rounded-xl p-3"></textarea></label>
+    <label class="text-sm text-white/65">Primary button<input id="cHeroPrimary" class="mt-2 w-full bg-black/25 border border-white/10 rounded-xl p-3"></label>
+    <label class="text-sm text-white/65">Secondary button<input id="cHeroSecondary" class="mt-2 w-full bg-black/25 border border-white/10 rounded-xl p-3"></label>
+    <label class="text-sm text-white/65">Profiles section title<input id="cFeaturedTitle" class="mt-2 w-full bg-black/25 border border-white/10 rounded-xl p-3"></label>
+    <label class="text-sm text-white/65">Profiles section subtitle<input id="cFeaturedSubtitle" class="mt-2 w-full bg-black/25 border border-white/10 rounded-xl p-3"></label>
+    <label class="text-sm text-white/65">Safety section title<input id="cSafetyTitle" class="mt-2 w-full bg-black/25 border border-white/10 rounded-xl p-3"></label>
+    <label class="text-sm text-white/65">Safety text<textarea id="cSafetyText" rows="2" class="mt-2 w-full bg-black/25 border border-white/10 rounded-xl p-3"></textarea></label>
+    <label class="text-sm text-white/65">How it works title<input id="cHowTitle" class="mt-2 w-full bg-black/25 border border-white/10 rounded-xl p-3"></label>
+    <label class="text-sm text-white/65">How it works text<textarea id="cHowText" rows="2" class="mt-2 w-full bg-black/25 border border-white/10 rounded-xl p-3"></textarea></label>
+    <label class="text-sm text-white/65">Women seeking men title<input id="cPromptsTitle" class="mt-2 w-full bg-black/25 border border-white/10 rounded-xl p-3"></label>
+    <label class="text-sm text-white/65">Women seeking men text<textarea id="cPromptsText" rows="2" class="mt-2 w-full bg-black/25 border border-white/10 rounded-xl p-3"></textarea></label>
+    <label class="text-sm text-white/65 md:col-span-2">Footer note<input id="cFooterNote" class="mt-2 w-full bg-black/25 border border-white/10 rounded-xl p-3"></label>
+    <div class="md:col-span-2 border-t border-white/10 pt-5 mt-2">
+      <div class="text-xs uppercase tracking-[.2em] text-white/35 mb-3">SEO</div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <label class="text-sm text-white/65">SEO title<input id="cSeoTitle" class="mt-2 w-full bg-black/25 border border-white/10 rounded-xl p-3"></label>
+        <label class="text-sm text-white/65">SEO description<textarea id="cSeoDescription" rows="2" class="mt-2 w-full bg-black/25 border border-white/10 rounded-xl p-3"></textarea></label>
+        <label class="text-sm text-white/65">Canonical / Site URL<input id="cSiteUrl" class="mt-2 w-full bg-black/25 border border-white/10 rounded-xl p-3" placeholder="https://yourdomain.com/"></label>
+        <label class="text-sm text-white/65">Social / OG image URL<input id="cOgImage" class="mt-2 w-full bg-black/25 border border-white/10 rounded-xl p-3" placeholder="https://yourdomain.com/og.jpg"></label>
+        <label class="text-sm text-white/65">Robots directive<select id="cRobots" class="mt-2 w-full bg-black/25 border border-white/10 rounded-xl p-3"><option value="index,follow">index,follow</option><option value="noindex,follow">noindex,follow</option><option value="noindex,nofollow">noindex,nofollow</option></select></label>
+        <div class="text-xs text-white/35 md:col-span-2">Avoid keyword stuffing. Google does not use the old meta-keywords tag for ranking. Use clear, useful page content and accurate titles/descriptions.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="glass rounded-3xl p-6 md:p-8 mt-6"><div class="flex justify-between gap-4 items-center"><div><p class="text-pink-400 text-xs uppercase tracking-[.2em]">Brand</p><h2 class="text-2xl font-black mt-1">Website settings</h2></div></div><div class="grid md:grid-cols-2 gap-4 mt-6"><input id="title" class="bg-black/25 border border-white/10 rounded-xl p-3" placeholder="Website title"><input id="tagline" class="bg-black/25 border border-white/10 rounded-xl p-3" placeholder="Tagline"><div class="md:col-span-2 grid md:grid-cols-[1fr_auto] gap-3">
+  <input id="background" class="bg-black/25 border border-white/10 rounded-xl p-3" placeholder="Hero background image URL">
+  <label class="cursor-pointer px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 font-semibold text-center">
+    Upload HD photo
+    <input id="backgroundFile" type="file" accept="image/*" class="hidden">
+  </label>
+</div>
+<div class="md:col-span-2">
+  <div class="rounded-2xl overflow-hidden border border-white/10 bg-black/30">
+    <img id="backgroundPreview" src="" alt="Hero preview" class="w-full h-48 object-cover hidden">
+    <div id="backgroundEmpty" class="h-28 grid place-items-center text-white/35 text-sm">Hero photo preview</div>
+  </div>
+</div>
+<div class="md:col-span-2 flex flex-wrap gap-2 items-center">
+  <button type="button" onclick="setHeroPos('center center')" class="px-4 py-2 rounded-lg bg-white/10 text-sm">Center</button>
+  <button type="button" onclick="setHeroPos('center top')" class="px-4 py-2 rounded-lg bg-white/10 text-sm">Top</button>
+  <button type="button" onclick="setHeroPos('center bottom')" class="px-4 py-2 rounded-lg bg-white/10 text-sm">Bottom</button>
+  <button type="button" onclick="removeHeroPhoto()" class="px-4 py-2 rounded-lg bg-red-500/20 text-red-200 text-sm">Remove photo</button>
+  <span id="heroPosLabel" class="px-2 text-sm text-white/40">Position: center center</span>
+</div></div><button onclick="saveSettings()" class="mt-4 px-5 py-3 rounded-xl bg-pink-600 font-bold">Save settings</button></section>
+ <section class="glass rounded-3xl p-6 md:p-8 mt-6"><div class="flex justify-between items-center"><div><p class="text-pink-400 text-xs uppercase tracking-[.2em]">Directory</p><h2 class="text-2xl font-black mt-1">Profiles</h2></div><button onclick="newProfile()" class="px-5 py-3 rounded-xl bg-pink-600 font-bold">+ Add profile</button></div><div id="profiles" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-7"></div></section>
+ <section class="glass rounded-3xl p-6 md:p-8 mt-6"><p class="text-pink-400 text-xs uppercase tracking-[.2em]">Moderation</p><h2 class="text-2xl font-black mt-1">Reviews</h2><div id="reviews" class="mt-6 space-y-3"></div></section>
+</main>
+</div>
+<div id="editor" class="hidden fixed inset-0 z-50 bg-black/80 overflow-y-auto p-4"><div class="min-h-full grid place-items-center"><form id="form" class="w-full max-w-2xl glass rounded-3xl p-7"><div class="flex justify-between"><h2 id="et" class="text-2xl font-black">Edit profile</h2><button type="button" onclick="closeEditor()" class="text-2xl">×</button></div><input id="pid" type="hidden"><div class="grid md:grid-cols-2 gap-3 mt-6"><input id="name" required class="bg-black/25 border border-white/10 rounded-xl p-3" placeholder="Name"><input id="location" list="vizagLocations" required class="bg-black/25 border border-white/10 rounded-xl p-3" placeholder="General location"><datalist id="vizagLocations"><option value="MVP Colony"><option value="Dwaraka Nagar"><option value="Siripuram"><option value="Maddilapalem"><option value="Rushikonda"><option value="Madhurawada"><option value="Pothinamallayapalem"><option value="Gajuwaka"><option value="Old Gajuwaka"><option value="Akkayyapalem"><option value="Seethammadhara"><option value="Kancharapalem"><option value="Daba Gardens"><option value="Asilmetta"><option value="Jagadamba Junction"><option value="Maharani Peta"><option value="Beach Road"><option value="RK Beach"><option value="Waltair"><option value="Chinna Waltair"><option value="Peda Waltair"><option value="Lawsons Bay Colony"><option value="Pendurthi"><option value="Gopalapatnam"><option value="Marripalem"><option value="Muralinagar"><option value="Sujatha Nagar"><option value="Vepagunta"><option value="Simhachalam"><option value="Duvvada"><option value="Kurmannapalem"><option value="Pedagantyada"><option value="Vadlapudi"><option value="Sheela Nagar"><option value="Aganampudi"><option value="Anakapalle"><option value="Bheemili"><option value="Yendada"><option value="Endada"><option value="Sagar Nagar"><option value="Visalakshi Nagar"><option value="Arilova"><option value="Auto Nagar"><option value="Malkapuram"><option value="Sriharipuram"><option value="One Town"><option value="Old Town"><option value="Port Area"></datalist><input id="photo" class="md:col-span-2 bg-black/25 border border-white/10 rounded-xl p-3" placeholder="Photo URL"><input id="contact" class="bg-black/25 border border-white/10 rounded-xl p-3" placeholder="Phone"><input id="whatsapp" class="bg-black/25 border border-white/10 rounded-xl p-3" placeholder="WhatsApp number"><label class="bg-black/25 rounded-xl p-3 flex gap-2"><input id="showContact" type="checkbox"> Show phone publicly</label><label class="bg-black/25 rounded-xl p-3 flex gap-2"><input id="showWhatsapp" type="checkbox"> Show WhatsApp publicly</label><textarea id="desc" rows="5" class="md:col-span-2 bg-black/25 border border-white/10 rounded-xl p-3" placeholder="Professional profile description"></textarea></div><div class="mt-5 p-4 rounded-xl bg-white/5 text-sm text-white/45"><b class="text-white">Women Seeking Men prompts:</b><br>What are you looking for? • What kind of person would you like to meet? • Interests? • Ideal first meeting? • Preferred communication? • Boundaries?</div><div class="flex gap-3 mt-5"><button class="flex-1 bg-pink-600 rounded-xl py-3 font-bold">Save profile</button><button type="button" onclick="closeEditor()" class="px-5 bg-white/10 rounded-xl">Cancel</button></div></form></div></div>
+<script>
+const $=id=>document.getElementById(id),K="sfu_profiles",S="sfu_settings",R="sfu_reviews";let profiles=[],settings={},reviews=[],SFU_CONTENT_CACHE={};
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[c]));
+async function save(){const r=await fetch("/api/data",{method:"PUT",headers:{"content-type":"application/json"},body:JSON.stringify({profiles,settings,reviews,content:SFU_CONTENT_CACHE})});if(!r.ok)throw new Error("Save failed")}
+function login(e){e.preventDefault();if($("username").value.trim()==="admin"&&$("password").value==="Admin@12345"){sessionStorage.sfu="1";show()}else $("err").textContent="Invalid username or password."}
+async function show(){$("loginPage").classList.add("hidden");$("app").classList.remove("hidden");await loadFromServer();load();render();loadCompleteContent()}
+async function loadFromServer(){try{const r=await fetch("/api/data",{cache:"no-store"});if(!r.ok)throw new Error();const d=await r.json();profiles=d.profiles||[];settings=d.settings||{};reviews=d.reviews||[];SFU_CONTENT_CACHE=d.content||{};}catch(e){profiles=[];settings={};reviews=[];SFU_CONTENT_CACHE={};alert("Could not load saved website data.")}}
+function logout(){sessionStorage.removeItem("sfu");location.reload()}
+function load(){
+  $("title").value=settings.title||"Meet someone worth your time.";
+  $("tagline").value=settings.tagline||"Discover adult dating and companionship profiles in your area.";
+  $("background").value=settings.background||"";
+  const pos=settings.backgroundPosition||"center center";
+  $("heroPosLabel").textContent="Position: "+pos;
+  $("backgroundPreview").src=settings.background||"";
+  $("backgroundPreview").classList.toggle("hidden",!settings.background);
+  $("backgroundEmpty").classList.toggle("hidden",!!settings.background);
+}
+function saveSettings(){
+  settings={...settings,title:$("title").value.trim(),tagline:$("tagline").value.trim(),background:$("background").value.trim(),backgroundPosition:settings.backgroundPosition||"center center"};
+  save();alert("Website settings saved.");
+}
+function setHeroPos(pos){
+  settings.backgroundPosition=pos;
+  $("heroPosLabel").textContent="Position: "+pos;
+}
+function removeHeroPhoto(){
+  $("background").value="";
+  settings.background="";
+  $("backgroundPreview").src="";
+  $("backgroundPreview").classList.add("hidden");
+  $("backgroundEmpty").classList.remove("hidden");
+  save();
+}
+$("backgroundFile").addEventListener("change",function(){
+  const file=this.files&&this.files[0];
+  if(!file)return;
+  if(!file.type.startsWith("image/")){alert("Please select an image file.");return;}
+  if(file.size>8*1024*1024){alert("Please use an image up to 8 MB.");return;}
+  const reader=new FileReader();
+  reader.onload=()=>{
+    $("background").value=reader.result;
+    $("backgroundPreview").src=reader.result;
+    $("backgroundPreview").classList.remove("hidden");
+    $("backgroundEmpty").classList.add("hidden");
+  };
+  reader.readAsDataURL(file);
+});
+
+const SFU_CONTENT_KEY="sfu_site_content";
+const SFU_DEFAULT_CONTENT={
+ brand:"Satisfaction for U",eyebrow:"PRIVATE CONNECTIONS",
+ heroTitle:"Meet people.<br>Connect privately.<br>Date respectfully.",
+ heroDescription:"A local adult dating and companionship directory.",
+ heroPrimary:"Browse profiles",heroSecondary:"Our safety standards",
+ featuredTitle:"Discover profiles",featuredSubtitle:"Explore adult profiles by general area.",
+ safetyTitle:"Safety & respect",safetyText:"Adults only. Consent first. Keep conversations respectful and protect your privacy.",
+ howTitle:"How it works",howText:"Browse profiles, review general details, then start a private conversation.",
+ promptsTitle:"Women seeking men",promptsText:"Use clear, respectful profile prompts to describe interests, expectations and boundaries.",
+ footerNote:"Adults 18+ • Consent first • Respectful connections",
+ seoTitle:"Satisfaction for U — Adult Dating & Companionship in Visakhapatnam",
+ seoDescription:"Discover adult dating and companionship profiles in Visakhapatnam with privacy, consent and respectful communication."
+};
+function loadCompleteContent(){
+ const c={...SFU_DEFAULT_CONTENT,...SFU_CONTENT_CACHE};
+ const map={Brand:"brand",Eyebrow:"eyebrow",HeroTitle:"heroTitle",HeroDescription:"heroDescription",HeroPrimary:"heroPrimary",HeroSecondary:"heroSecondary",FeaturedTitle:"featuredTitle",FeaturedSubtitle:"featuredSubtitle",SafetyTitle:"safetyTitle",SafetyText:"safetyText",HowTitle:"howTitle",HowText:"howText",PromptsTitle:"promptsTitle",PromptsText:"promptsText",FooterNote:"footerNote",SeoTitle:"seoTitle",SeoDescription:"seoDescription",SiteUrl:"siteUrl",OgImage:"ogImage",Robots:"robots"};
+ Object.entries(map).forEach(([id,key])=>{const el=$("c"+id);if(el)el.value=c[key]||""});
+}
+function saveCompleteContent(){
+ const c={
+  brand:$("cBrand").value.trim(),eyebrow:$("cEyebrow").value.trim(),heroTitle:$("cHeroTitle").value.trim(),
+  heroDescription:$("cHeroDescription").value.trim(),heroPrimary:$("cHeroPrimary").value.trim(),heroSecondary:$("cHeroSecondary").value.trim(),
+  featuredTitle:$("cFeaturedTitle").value.trim(),featuredSubtitle:$("cFeaturedSubtitle").value.trim(),
+  safetyTitle:$("cSafetyTitle").value.trim(),safetyText:$("cSafetyText").value.trim(),
+  howTitle:$("cHowTitle").value.trim(),howText:$("cHowText").value.trim(),
+  promptsTitle:$("cPromptsTitle").value.trim(),promptsText:$("cPromptsText").value.trim(),
+  footerNote:$("cFooterNote").value.trim(),seoTitle:$("cSeoTitle").value.trim(),seoDescription:$("cSeoDescription").value.trim(),
+  siteUrl:$("cSiteUrl").value.trim(),ogImage:$("cOgImage").value.trim(),robots:$("cRobots").value
+ };
+ SFU_CONTENT_CACHE=c;
+ save().then(()=>alert("All website content saved permanently."));
+}
+function render(){ $("statProfiles").textContent=profiles.length;$("statReviews").textContent=reviews.length;$("statPending").textContent=reviews.filter(x=>!x.approved).length;$("profiles").innerHTML=profiles.map(p=>`<div class="bg-black/20 border border-white/8 rounded-2xl overflow-hidden"><img src="${esc(p.photo)}" class="w-full aspect-[4/3] object-cover"><div class="p-4"><b>${esc(p.name)}</b><p class="text-xs text-white/35 mt-1">${esc(p.location)}</p><div class="flex gap-2 mt-4"><button onclick="edit(${p.id})" class="flex-1 bg-white/8 rounded-lg py-2">Edit</button><button onclick="del(${p.id})" class="px-3 bg-red-500/80 rounded-lg">Delete</button></div></div></div>`).join("");let pending=reviews.filter(x=>!x.approved);$("reviews").innerHTML=pending.length?pending.map(r=>{let p=profiles.find(x=>x.id===r.profileId);return `<div class="bg-black/20 rounded-xl p-4 flex flex-col md:flex-row justify-between gap-3"><div><b>${esc(p?.name||"Deleted profile")}</b><p class="text-amber-300">{"★".repeat(r.rating)}{"☆".repeat(5-r.rating)}</p><p class="text-white/55">${esc(r.text)}</p></div><div class="flex gap-2"><button onclick="approve(${r.id})" class="px-4 py-2 rounded-lg bg-emerald-600">Approve</button><button onclick="removeReview(${r.id})" class="px-4 py-2 rounded-lg bg-red-600">Delete</button></div></div>`}).join(""):"<p class='text-white/35'>No pending reviews.</p>"}
+function edit(id){let p=profiles.find(x=>x.id===id);fill(p);$("et").textContent="Edit profile";$("editor").classList.remove("hidden")}
+function newProfile(){fill({id:"",name:"",location:"",photo:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=90",contact:"",whatsapp:"",showContact:false,showWhatsapp:false,description:""});$("et").textContent="Add profile";$("editor").classList.remove("hidden")}
+function fill(p){$("pid").value=p.id;$("name").value=p.name;$("location").value=p.location;$("photo").value=p.photo;$("contact").value=p.contact||"";$("whatsapp").value=p.whatsapp||"";$("showContact").checked=!!p.showContact;$("showWhatsapp").checked=!!p.showWhatsapp;$("desc").value=p.description||""}
+function closeEditor(){$("editor").classList.add("hidden")}
+$("form").addEventListener("submit",e=>{e.preventDefault();let id=$("pid").value,data={name:$("name").value.trim(),location:$("location").value.trim(),photo:$("photo").value.trim(),contact:$("contact").value.trim(),whatsapp:$("whatsapp").value.trim(),showContact:$("showContact").checked,showWhatsapp:$("showWhatsapp").checked,description:$("desc").value.trim()};if(id)Object.assign(profiles.find(p=>p.id==id),data);else{data.id=Date.now();data.rating=0;data.reviews=0;profiles.push(data)}save().then(()=>{closeEditor();render()})})
+function del(id){if(confirm("Delete this profile?")){profiles=profiles.filter(p=>p.id!==id);reviews=reviews.filter(r=>r.profileId!==id);save().then(()=>render())}}
+function approve(id){let r=reviews.find(x=>x.id===id);if(!r)return;r.approved=true;let p=profiles.find(x=>x.id===r.profileId);if(p){let rs=reviews.filter(x=>x.profileId===p.id&&x.approved);p.reviews=rs.length;p.rating=rs.length?rs.reduce((a,x)=>a+x.rating,0)/rs.length:0}save().then(()=>render())}
+function removeReview(id){reviews=reviews.filter(x=>x.id!==id);save().then(()=>render())}
+$("loginForm").addEventListener("submit",login);if(sessionStorage.sfu==="1")show();
+</script>
+<script>document.addEventListener('DOMContentLoaded',()=>{if(sessionStorage.sfu!=="1")loadCompleteContent()});</script></body></html>

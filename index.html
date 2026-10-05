@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b0710">
+<title>Satisfaction for U | Private Adult Dating & Companionship</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','ui-sans-serif','system-ui']},colors:{brand:'#e83e8c',ink:'#0b0710'}}}}
+</script>
+<style>
+*{scroll-behavior:smooth}body{font-family:Inter,ui-sans-serif,system-ui;background:#09070b;color:#fff}
+.glass{background:rgba(255,255,255,.065);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.09)}
+.hero{background-size:cover;background-position:center}
+.card{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.card:hover{transform:translateY(-5px);box-shadow:0 20px 55px rgba(0,0,0,.32);border-color:rgba(232,62,140,.35)}
+.line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:#09070b}::-webkit-scrollbar-thumb{background:#3b2635;border-radius:99px}
+
+.listing-card{display:grid;grid-template-columns:minmax(145px,34%) 1fr;min-height:245px}
+.listing-photo{height:100%;min-height:245px}
+.listing-body{padding:18px 20px}
+.listing-title{font-size:1.18rem;line-height:1.22;font-weight:800;color:#f472b6}
+.listing-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;color:rgba(255,255,255,.68);font-size:.86rem}
+.listing-action{display:flex;gap:10px;margin-top:18px}
+@media(max-width:560px){
+  .listing-card{grid-template-columns:43% 57%;min-height:210px}
+  .listing-photo{min-height:210px}
+  .listing-body{padding:14px 13px}
+  .listing-title{font-size:1rem}
+  .listing-action{flex-direction:column;gap:7px}
+  .listing-action a,.listing-action button{width:100%;font-size:.78rem;padding:9px 8px}
+  .listing-desc{font-size:.8rem;line-height:1.45}
+}
+</style>
+
+<script>
+/* Satisfaction for U — editable site content */
+const SFU_CONTENT_KEY = "sfu_site_content";
+const SFU_DEFAULT_CONTENT = {
+  brand:"Satisfaction for U",
+  eyebrow:"PRIVATE CONNECTIONS",
+  heroTitle:"<span id="heroTitle">Meet people.<br>Connect privately.<br>Date respectfully.</span>",
+  heroDescription:"<span id="heroDescription">A local adult dating and companionship directory.</span>",
+  heroPrimary:"<span id="heroPrimary">Browse profiles</span>",
+  heroSecondary:"<span id="heroSecondary">Our safety standards</span>",
+  featuredTitle:"<span id="featuredTitle">Discover profiles</span>",
+  featuredSubtitle:"<span id="featuredSubtitle">Explore adult profiles by general area.</span>",
+  safetyTitle:"<span id="safetyTitle">Safety &amp; respect</span>",
+  safetyText:"<span id="safetyText">Adults only. Consent first.</span> Keep conversations respectful and protect your privacy.",
+  howTitle:"How it works",
+  howText:"Browse profiles, review general details, then start a private conversation.",
+  promptsTitle:"Women seeking men",
+  promptsText:"Use clear, respectful profile prompts to describe interests, expectations and boundaries.",
+  footerNote:"Adults 18+ • Consent first • Respectful connections",
+  seoTitle:"Satisfaction for U — Adult Dating & Companionship in Visakhapatnam",
+  seoDescription:"Discover adult dating and companionship profiles in Visakhapatnam with privacy, consent and respectful communication.",
+  siteUrl:"",
+  ogImage:"",
+  robots:"index,follow"
+};
+let SFU_CONTENT = {...SFU_DEFAULT_CONTENT};
+function sfuApplyContent(){
+  const set=(id,html)=>{const el=document.getElementById(id);if(el)el.innerHTML=html};
+  set("brandName",SFU_CONTENT.brand);
+  set("heroEyebrow",SFU_CONTENT.eyebrow);
+  set("heroTitle",SFU_CONTENT.heroTitle);
+  set("heroDescription",SFU_CONTENT.heroDescription);
+  set("heroPrimary",SFU_CONTENT.heroPrimary);
+  set("heroSecondary",SFU_CONTENT.heroSecondary);
+  set("featuredTitle",SFU_CONTENT.featuredTitle);
+  set("featuredSubtitle",SFU_CONTENT.featuredSubtitle);
+  set("safetyTitle",SFU_CONTENT.safetyTitle);
+  set("safetyText",SFU_CONTENT.safetyText);
+  set("howTitle",SFU_CONTENT.howTitle);
+  set("howText",SFU_CONTENT.howText);
+  set("promptsTitle",SFU_CONTENT.promptsTitle);
+  set("promptsText",SFU_CONTENT.promptsText);
+  set("footerNote",SFU_CONTENT.footerNote);
+  document.title=SFU_CONTENT.seoTitle;
+  const siteUrl=SFU_CONTENT.siteUrl||"";
+  const setAttr=(id,attr,val)=>{const el=document.getElementById(id);if(el&&val)el.setAttribute(attr,val)};
+  setAttr("sfu-canonical","href",siteUrl);
+  setAttr("sfu-og-title","content",SFU_CONTENT.seoTitle);
+  setAttr("sfu-og-description","content",SFU_CONTENT.seoDescription);
+  setAttr("sfu-og-image","content",SFU_CONTENT.ogImage||"");
+  setAttr("sfu-twitter-title","content",SFU_CONTENT.seoTitle);
+  setAttr("sfu-twitter-description","content",SFU_CONTENT.seoDescription);
+  setAttr("sfu-twitter-image","content",SFU_CONTENT.ogImage||"");
+  setAttr("sfu-robots","content",SFU_CONTENT.robots||"index,follow");
+  const schema={
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":SFU_CONTENT.brand,
+    "url":siteUrl||location.href.split("#")[0],
+    "description":SFU_CONTENT.seoDescription
+  };
+  if(SFU_CONTENT.ogImage)schema.logo=SFU_CONTENT.ogImage;
+  const ld=document.getElementById("sfu-seo-jsonld"); if(ld)ld.textContent=JSON.stringify(schema);
+  let meta=document.querySelector('meta[name="description"]');
+  if(!meta){meta=document.createElement("meta");meta.name="description";document.head.appendChild(meta)}
+  meta.content=SFU_CONTENT.seoDescription;
+}
+</script>
+
+<!-- Satisfaction for U SEO -->
+<link id="sfu-canonical" rel="canonical" href="">
+<meta id="sfu-og-title" property="og:title" content="">
+<meta id="sfu-og-description" property="og:description" content="">
+<meta id="sfu-og-image" property="og:image" content="">
+<meta id="sfu-og-type" property="og:type" content="website">
+<meta id="sfu-og-site" property="og:site_name" content="Satisfaction for U">
+<meta id="sfu-twitter-card" name="twitter:card" content="summary_large_image">
+<meta id="sfu-twitter-title" name="twitter:title" content="">
+<meta id="sfu-twitter-description" name="twitter:description" content="">
+<meta id="sfu-twitter-image" name="twitter:image" content="">
+<meta id="sfu-robots" name="robots" content="index,follow">
+<script id="sfu-seo-jsonld" type="application/ld+json">{}</script>
+</head>
+<body>
+<header class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#09070b]/80 backdrop-blur-xl">
+ <div class="max-w-7xl mx-auto px-5 h-20 flex items-center justify-between">
+  <a href="#" class="flex items-center gap-3">
+   <span class="w-10 h-10 rounded-2xl bg-gradient-to-br from-pink-500 to-fuchsia-700 grid place-items-center shadow-lg shadow-pink-900/30">♡</span>
+   <span><b class="block text-lg tracking-tight">Satisfaction for U</b><small class="text-[10px] uppercase tracking-[.22em] text-white/45">Private connections</small></span>
+  </a>
+  <nav class="hidden md:flex items-center gap-7 text-sm text-white/65">
+   <a href="#profiles" class="hover:text-white">Profiles</a><a href="#how" class="hover:text-white">How it works</a><a href="#safety" class="hover:text-white">Safety</a>
+  </nav>
+  <a href="#profiles" class="rounded-full bg-white text-black px-5 py-2.5 text-sm font-bold hover:bg-pink-100">Explore profiles</a>
+ </div>
+</header>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+  <div class="rounded-2xl border border-pink-200/20 bg-white/5 px-5 py-4 text-sm text-slate-300">
+    <strong class="text-white">Direct WhatsApp:</strong> Use <span class="text-pink-300">Request to meet / WhatsApp</span> on a profile to start a private conversation with a ready-made meeting request.
+  </div>
+</div>
+<section id="hero" class="hero min-h-[720px] pt-20 flex items-end" style="background-image:linear-gradient(90deg,rgba(9,7,11,.96) 0%,rgba(9,7,11,.78) 42%,rgba(9,7,11,.2) 100%),linear-gradient(0deg,#09070b 0%,transparent 55%),url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=2400&q=95')">
+ <div class="max-w-7xl w-full mx-auto px-5 pb-24 md:pb-28">
+  <div class="max-w-3xl">
+   <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs font-semibold text-pink-200"><i class="w-1.5 h-1.5 rounded-full bg-emerald-400"></i> Adults 18+ • Private & respectful</span>
+   <h1 id="siteTitle" class="mt-7 text-5xl md:text-7xl font-black leading-[.96] tracking-[-.045em]">Meet someone worth<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-fuchsia-500">your time.</span></h1>
+   <p id="siteTagline" class="mt-7 max-w-xl text-lg md:text-xl leading-8 text-white/65">Discover adult dating and companionship profiles in your area, with privacy, consent and respectful communication at the center.</p>
+   <div class="mt-9 flex flex-wrap gap-3">
+    <a href="#profiles" class="px-6 py-3.5 rounded-full bg-pink-600 hover:bg-pink-500 font-bold shadow-xl shadow-pink-950/40">Browse profiles</a>
+    <a href="#safety" class="px-6 py-3.5 rounded-full glass font-semibold">Our safety standards</a>
+   </div>
+   <div class="mt-10 flex flex-wrap gap-7 text-sm text-white/45"><span>✓ Adults only</span><span>✓ Consent first</span><span>✓ Public meeting guidance</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="border-y border-white/8 bg-white/[.025]">
+ <div class="max-w-7xl mx-auto px-5 py-5 flex flex-wrap gap-7 justify-center md:justify-start text-sm text-white/45">
+  <span>Private conversations</span><span>•</span><span>Respectful connections</span><span>18+ only</span>
+ </div>
+</section>
+
+<main>
+<section id="profiles" class="max-w-7xl mx-auto px-5 py-20">
+ <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-9">
+  <div><p class="text-pink-400 text-xs font-bold uppercase tracking-[.22em]">Discover</p><h2 class="mt-2 text-4xl font-black tracking-tight">Featured profiles</h2><p class="mt-3 text-white/45">Explore profiles and start with a respectful conversation.</p></div>
+  <div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+   <input id="search" class="w-full sm:w-64 bg-white/5 border border-white/10 rounded-2xl px-4 py-3 outline-none focus:border-pink-500/60" placeholder="Search profiles…">
+   <select id="locationFilter" class="bg-[#110d14] border border-white/10 rounded-2xl px-4 py-3 outline-none"><option value="">All locations</option></select>
+   <select id="sort" class="bg-[#110d14] border border-white/10 rounded-2xl px-4 py-3 outline-none"><option value="rating">Top rated</option><option value="newest">Newest</option><option value="name">Name</option></select>
+  </div>
+ </div>
+ <div id="grid" class="grid grid-cols-1 gap-5 max-w-5xl mx-auto"></div>
+</section>
+
+<section id="how" class="max-w-7xl mx-auto px-5 pb-20">
+ <div class="glass rounded-[2rem] p-7 md:p-10">
+  <p class="text-pink-400 text-xs font-bold uppercase tracking-[.22em]">Simple by design</p><h2 class="mt-2 text-3xl md:text-4xl font-black">A better way to meet.</h2>
+  <div class="grid md:grid-cols-3 gap-5 mt-8">
+   <div class="rounded-2xl bg-black/20 p-6"><span class="text-2xl">01</span><h3 class="mt-5 font-bold text-lg">Explore</h3><p class="mt-2 text-sm text-white/45 leading-6">Browse adult profiles using location and rating filters.</p></div>
+   <div class="rounded-2xl bg-black/20 p-6"><span class="text-2xl">02</span><h3 class="mt-5 font-bold text-lg">Connect</h3><p class="mt-2 text-sm text-white/45 leading-6">Choose a profile and use the contact options provided by the profile owner.</p></div>
+   <div class="rounded-2xl bg-black/20 p-6"><span class="text-2xl">03</span><h3 class="mt-5 font-bold text-lg">Meet safely</h3><p class="mt-2 text-sm text-white/45 leading-6">Start in a public place, communicate clearly and respect boundaries.</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="safety" class="max-w-7xl mx-auto px-5 pb-20">
+ <div class="grid lg:grid-cols-[1fr_1.5fr] gap-6 items-stretch">
+  <div class="rounded-[2rem] bg-gradient-to-br from-pink-600/20 to-fuchsia-700/5 border border-pink-400/15 p-8">
+   <p class="text-pink-300 text-xs font-bold uppercase tracking-[.22em]">Safety & respect</p>
+   <h2 class="mt-3 text-3xl font-black">Your boundaries matter.</h2>
+   <p class="mt-4 text-white/55 leading-7">Only adults should use this website. Never share passwords, financial information or a private home address with someone you have just met.</p>
+  </div>
+  <div class="grid sm:grid-cols-2 gap-4">
+   <div class="glass rounded-2xl p-6"><b>Meet publicly first</b><p class="text-sm text-white/45 mt-2">Choose a busy public location for a first meeting.</p></div>
+   <div class="glass rounded-2xl p-6"><b>Respect consent</b><p class="text-sm text-white/45 mt-2">A connection never means automatic consent to anything.</p></div>
+   <div class="glass rounded-2xl p-6"><b>Protect privacy</b><p class="text-sm text-white/45 mt-2">Use general locations instead of publishing private addresses.</p></div>
+   <div class="glass rounded-2xl p-6"><b>Report concerns</b><p class="text-sm text-white/45 mt-2">Use the site's moderation process for inappropriate content.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="max-w-7xl mx-auto px-5 pb-24">
+ <div class="glass rounded-[2rem] p-7 md:p-10">
+  <p class="text-pink-400 text-xs font-bold uppercase tracking-[.22em]">Women seeking men</p>
+  <h2 class="mt-2 text-3xl font-black">Professional profile prompts</h2>
+  <p class="mt-2 text-white/45">Use these questions to create clearer, respectful profiles.</p>
+  <div class="grid md:grid-cols-2 gap-3 mt-7">
+   <div class="bg-black/20 rounded-xl p-4"><b>What are you looking for?</b><p class="text-sm text-white/40 mt-1">Dating, companionship, friendship or a relationship?</p></div>
+   <div class="bg-black/20 rounded-xl p-4"><b>What kind of person would you like to meet?</b><p class="text-sm text-white/40 mt-1">Personality, interests or lifestyle preferences.</p></div>
+   <div class="bg-black/20 rounded-xl p-4"><b>What are your interests?</b><p class="text-sm text-white/40 mt-1">Travel, food, movies, music, fitness and hobbies.</p></div>
+   <div class="bg-black/20 rounded-xl p-4"><b>What is your ideal first meeting?</b><p class="text-sm text-white/40 mt-1">Coffee, restaurant, public place or a walk.</p></div>
+   <div class="bg-black/20 rounded-xl p-4"><b>How do you prefer to communicate?</b><p class="text-sm text-white/40 mt-1">Chat, phone, video call or meeting after chatting.</p></div>
+   <div class="bg-black/20 rounded-xl p-4"><b>What boundaries should others respect?</b><p class="text-sm text-white/40 mt-1">Only share boundaries you are comfortable publishing.</p></div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer class="border-t border-white/10">
+ <div class="max-w-7xl mx-auto px-5 py-9 flex flex-col md:flex-row justify-between gap-4 text-sm text-white/35">
+  <span>© 2026 Satisfaction for U</span><span>Adults 18+ only • Dating & companionship directory • Consent first</span>
+ </div>
+</footer>
+
+<div id="modal" class="hidden fixed inset-0 z-[70] bg-black/80 backdrop-blur-sm overflow-y-auto p-4">
+ <div class="min-h-full flex items-center justify-center">
+  <div class="w-full max-w-4xl bg-[#110d14] border border-white/10 rounded-[2rem] overflow-hidden shadow-2xl">
+   <div class="flex justify-end p-4"><button onclick="closeModal()" class="w-10 h-10 rounded-full bg-white/5 text-xl">×</button></div>
+   <div id="modalContent" class="px-6 md:px-8 pb-8"></div>
+  </div>
+ </div>
+</div>
+
+<script>
+const DEMO=[
+{id:1,name:"Ananya",location:"MVP Colony",description:"Warm, social and interested in meaningful conversations, coffee dates and discovering new places.",photo:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=90",rating:4.9,reviews:18,contact:"",whatsapp:""},
+{id:2,name:"Meera",location:"Dwaraka Nagar",description:"Enjoys travel, music, good food and relaxed conversations with respectful people.",photo:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=90",rating:4.8,reviews:15,contact:"",whatsapp:""},
+{id:3,name:"Kavya",location:"Siripuram",description:"Friendly adult dating profile focused on conversation, shared interests and good company.",photo:"https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=90",rating:4.7,reviews:12,contact:"",whatsapp:""},
+{id:4,name:"Isha",location:"Maddilapalem",description:"Loves movies, cafes and weekend outings. Looking for respectful adult connections.",photo:"https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=90",rating:4.6,reviews:11,contact:"",whatsapp:""},
+{id:5,name:"Nisha",location:"Rushikonda",description:"Beach walks, travel and conversations over coffee. Privacy and mutual respect are important.",photo:"https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=900&q=90",rating:4.5,reviews:9,contact:"",whatsapp:""},
+{id:6,name:"Pooja",location:"Gajuwaka",description:"A polished demo profile for adult dating and companionship.",photo:"https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=90",rating:4.4,reviews:8,contact:"",whatsapp:""},
+{id:7,name:"Riya",location:"Akkayyapalem",description:"Enjoys fitness, food and city life. Open to meeting after getting to know someone.",photo:"https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=900&q=90",rating:4.3,reviews:7,contact:"",whatsapp:""},
+{id:8,name:"Sneha",location:"Waltair",description:"Creative, outgoing and interested in respectful adult companionship.",photo:"https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=900&q=90",rating:4.2,reviews:6,contact:"",whatsapp:""},
+{id:9,name:"Divya",location:"Beach Road",description:"Travel, restaurants and relaxed evenings. Clear communication and privacy come first.",photo:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=90",rating:4.1,reviews:5,contact:"",whatsapp:""},
+{id:10,name:"Asha",location:"MVP Colony",description:"Demo adult profile. Contact details are intentionally blank until an admin adds consented information.",photo:"https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=90",rating:4.0,reviews:4,contact:"",whatsapp:""},
+{id:11,name:"Priya",location:"Dwaraka Nagar",description:"Enjoys books, music and exploring new cafes. Looking for genuine adult connections.",photo:"https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=90",rating:3.9,reviews:4,contact:"",whatsapp:""},
+{id:12,name:"Lakshmi",location:"Siripuram",description:"Demo listing with a clean, professional profile presentation.",photo:"https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=900&q=90",rating:3.8,reviews:3,contact:"",whatsapp:""}];
+let profiles=[];
+let reviews=[];
+let settings={};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[c]));
+function stars(n){let r=Math.round(n||0);return "★".repeat(r)+"☆".repeat(5-r)}
+async function save(){await fetch("/api/data",{method:"PUT",headers:{"content-type":"application/json"},body:JSON.stringify({profiles,reviews,settings,content:SFU_CONTENT})})}
+function render(){
+ let q=$("search").value.toLowerCase().trim(),loc=$("locationFilter").value,sort=$("sort").value;
+ let list=profiles.filter(p=>(!loc||p.location===loc)&&(!q||`${p.name} ${p.location} ${p.description}`.toLowerCase().includes(q)));
+ if(sort==="rating")list.sort((a,b)=>(b.rating||0)-(a.rating||0)); if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name)); if(sort==="newest")list.sort((a,b)=>b.id-a.id);
+ $("grid").innerHTML=list.map(p=>`<article class="card glass rounded-[1.35rem] overflow-hidden listing-card">
+  <div class="relative listing-photo">
+    <img src="${esc(p.photo)}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/700x875/171018/ffffff?text=Profile'">
+    <div class="absolute top-3 left-3 px-2 py-1 rounded-lg bg-black/60 backdrop-blur text-[11px] font-bold">18+</div>
+    <div class="absolute bottom-3 left-3 px-2 py-1 rounded-lg bg-black/65 backdrop-blur text-xs">Photo</div>
+  </div>
+  <div class="listing-body">
+    <div class="flex items-start justify-between gap-3">
+      <div>
+        <div class="text-[10px] uppercase tracking-[.2em] text-pink-300/80 mb-1">Profile</div>
+        <h3 class="listing-title">${esc(p.name)}</h3>
+      </div>
+      <div class="text-amber-300 whitespace-nowrap text-sm font-semibold">${(p.rating||0).toFixed(1)} ★</div>
+    </div>
+    <div class="listing-meta">
+      <span>● ${esc(p.location)}</span>
+      <span>★ ${p.reviews||0} reviews</span>
+    </div>
+    <p class="listing-desc mt-3 text-sm text-white/55 line-clamp-2">${esc(p.description)}</p>
+    <div class="listing-action">
+      <button onclick="openProfile(p.id)" class="flex-1 rounded-xl bg-white text-black py-2.5 font-bold hover:bg-pink-100">View Profile</button>
+      <button onclick="openBooking(p.id)" class="flex-1 rounded-xl bg-[#25D366] text-black py-2.5 font-bold hover:brightness-110">WhatsApp</button>
+    </div>
+  </div>
+</article>`).join("")||`<div class="col-span-full py-20 text-center text-white/35">No matching profiles.</div>`;
+}
+
+function whatsappBooking(p){
+  const phone = String(p.whatsapp || p.phone || '').replace(/\D/g,'');
+  if(!phone){
+    alert('WhatsApp contact is not available for this profile.');
+    return;
+  }
+  const message = `Hi ${p.name}, I found your profile on Satisfaction for U. I would like to discuss meeting availability and details.`;
+  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
+}
+function openBooking(id){
+  const p = profiles.find(x => x.id === id);
+  if(!p) return;
+  const phone = String(p.whatsapp || p.phone || '').replace(/\D/g,'');
+  if(!phone){
+    openProfile(id);
+    return;
+  }
+  const message = `Hi ${p.name}, I found your profile on Satisfaction for U. I would like to connect and discuss meeting availability. Please share a suitable time and details. Thank you.`;
+  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
+}
+
+function openProfile(id){
+ let p=profiles.find(x=>x.id===id),rr=reviews.filter(r=>r.profileId===id&&r.approved);
+ $("modalContent").innerHTML=`<div class="grid md:grid-cols-[.85fr_1.15fr] gap-7"><img src="${esc(p.photo)}" class="w-full aspect-[4/5] object-cover rounded-2xl"><div><span class="text-xs uppercase tracking-[.2em] text-pink-400">Profile</span><h2 class="mt-2 text-4xl font-black">${esc(p.name)}</h2><p class="text-white/45 mt-1">${esc(p.location)}</p><div class="mt-4 text-amber-300 text-lg">${stars(p.rating)} <span class="text-white text-sm">${(p.rating||0).toFixed(1)} / 5</span></div><p class="mt-6 text-white/60 leading-7">${esc(p.description)}</p><div class="flex gap-3 mt-7">${p.contact?`<a href="tel:${esc(p.contact)}" class="flex-1 text-center py-3 rounded-xl bg-white/10">Call</a>`:""}${p.whatsapp?`<a target="_blank" href="https://wa.me/${String(p.whatsapp).replace(/\\D/g,'')}" class="flex-1 text-center py-3 rounded-xl bg-[#25D366] text-black font-bold">WhatsApp</a>`:""}</div></div></div><div class="mt-8 rounded-2xl border border-pink-500/20 bg-pink-500/5 p-5"><div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"><div><h3 class="text-lg font-bold">Interested in meeting?</h3><p class="mt-1 text-sm text-white/45">Send a private meeting request directly on WhatsApp.</p></div><button onclick="openBooking(${p.id})" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#25D366] text-black font-bold hover:brightness-110">Request to meet / WhatsApp</button></div></div><div class="mt-9 pt-7 border-t border-white/10"><h3 class="text-xl font-bold">Reviews</h3><div class="mt-4 space-y-3">${rr.length?rr.map(r=>`<div class="bg-white/5 rounded-xl p-4"><div class="text-amber-300">${stars(r.rating)}</div><p class="mt-2 text-white/60">${esc(r.text)}</p></div>`).join(""):'<p class="text-white/35">No approved reviews yet.</p>'}</div><div class="mt-7 bg-white/[.035] rounded-2xl p-5"><b>Leave a review</b><select id="reviewRating" class="mt-3 w-full bg-black/30 border border-white/10 rounded-xl p-3"><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option><option value="2">2 stars</option><option value="1">1 star</option></select><textarea id="reviewText" class="mt-3 w-full bg-black/30 border border-white/10 rounded-xl p-3" rows="3" placeholder="Write a respectful review"></textarea><button onclick="submitReview(${p.id})" class="mt-3 px-5 py-3 rounded-xl bg-pink-600 font-bold">Submit for approval</button></div></div>`;
+ $("modal").classList.remove("hidden")
+}
+function closeModal(){$("modal").classList.add("hidden")}
+function submitReview(id){let text=$("reviewText").value.trim(),rating=+$("reviewRating").value;if(!text)return alert("Please write a review.");reviews.push({id:Date.now(),profileId:id,rating,text,approved:false});save();alert("Review submitted for admin approval.");closeModal()}
+async function init(){try{const r=await fetch("/api/data",{cache:"no-store"});if(r.ok){const d=await r.json();profiles=d.profiles||DEMO;reviews=d.reviews||[];settings=d.settings||{};SFU_CONTENT={...SFU_DEFAULT_CONTENT,...(d.content||{})};sfuApplyContent();}}catch(e){profiles=DEMO;reviews=[];settings={}}let vizagLocations=["Allipuram","Akkayyapalem","Akkireddypalem","Aganampudi","Anakapalle","Anandapuram","Arilova","Asilmetta","Auto Nagar","Balaji Nagar","Balayya Sastri Layout","Bheemili","BHPV","CBM Compound","Chinna Waltair","China Mushidiwada","Daba Gardens","Daspalla Hills","Dondaparthy","Dwaraka Nagar","Duvvada","East Point Colony","Endada","Gajuwaka","Gambhiram","Gangavaram","Gopalapatnam","HB Colony","Isakathota","Jagadamba Junction","Jail Road","Kailasapuram","Kancharapalem","Kanithi Junction","Kirlampudi Layout","Kurmannapalem","Lawsons Bay Colony","Maddilapalem","Madhavadhara","Madhuranagar","Madhurawada","Maharanipeta","Malkapuram","Marripalem","Mindi","MVP Colony","Naidu Thota","NAD","Narasimha Nagar","Nathayyapalem","New Gajuwaka","Old Gajuwaka","Old Town","One Town","Pandurangapuram","Parawada","Peda Waltair","Pedagantyada","Pendurthi","Pithapuram Colony","Pothinamallayapalem","Prahaladapuram","Purna Market","Port Area","Railway New Colony","Ramnagar","Resapuvanipalem","RK Beach","Rushikonda","Sagar Nagar","Salagramapuram","Santhipuram","Seethammadhara","Seetammadhara Road","Seetamma Peta","Sheela Nagar","Simhachalam","Siripuram","Sriharipuram","Sujatha Nagar","Suryabagh","Thatichetlapalem","TPT Colony","Tunglam","Ukkunagaram","Vadlapudi","Vepagunta","Venkojipalem","Visalakshi Nagar","Vuda Colony","Waltair","Yendada"];let locs=[...new Set([...vizagLocations,...profiles.map(p=>p.location).filter(Boolean)])].sort();$("locationFilter").innerHTML='<option value="">All locations</option>'+locs.map(x=>`<option>${esc(x)}</option>`).join("");if(settings.title)$("siteTitle").innerHTML=esc(settings.title);if(settings.tagline)$("siteTagline").textContent=settings.tagline;if(settings.background)$("hero").style.backgroundImage=`linear-gradient(90deg,rgba(9,7,11,.96),rgba(9,7,11,.2)),linear-gradient(0deg,#09070b,transparent 55%),url('${settings.background}')`;if(settings.backgroundPosition)$('hero').style.backgroundPosition=settings.backgroundPosition;render()}
+["search","locationFilter","sort"].forEach(x=>$(x).addEventListener("input",render));init();
+</script>
+<script>document.addEventListener('DOMContentLoaded',sfuApplyContent);</script></body>
+</html>

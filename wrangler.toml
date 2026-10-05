@@ -1,0 +1,10 @@
+name = "satisfactionforu-permanent"
+main = "worker.js"
+compatibility_date = "2026-10-05"
+
+[assets]
+directory = "."
+
+[[kv_namespaces]]
+binding = "SFU_DATA"
+id = "PASTE_YOUR_KV_NAMESPACE_ID_HERE"
