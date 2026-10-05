@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0b0710">
 <title>Satisfaction for U | Private Adult Dating & Companionship</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://cdn.tailwindcss.com"><link rel="preconnect" href="https://images.unsplash.com"><script src="https://cdn.tailwindcss.com" defer></script>
 <script>
 tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','ui-sans-serif','system-ui']},colors:{brand:'#e83e8c',ink:'#0b0710'}}}}
 </script>
@@ -35,6 +35,126 @@ tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','ui-sans-serif','syste
 }
 
 :root{--sfu-primary:#ec4899;--sfu-secondary:#a855f7;--sfu-accent:#25D366;--sfu-bg:#09070b}
+
+/* Final responsive/mobile + theme polish */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+body{background:var(--sfu-bg);color:var(--sfu-text);transition:background .2s,color .2s}
+.site-header{background:var(--sfu-header);border-bottom:1px solid var(--sfu-border);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.brand-icon{width:40px;height:40px;border-radius:15px;background:linear-gradient(135deg,var(--sfu-primary),#a855f7);display:grid;place-items:center;color:#fff;font-size:22px;box-shadow:0 10px 28px rgba(236,72,153,.28);flex:none}
+.muted-text{color:var(--sfu-muted)}
+.header-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.theme-toggle{display:flex;align-items:center;padding:3px;border:1px solid var(--sfu-border);background:var(--sfu-control-bg);border-radius:999px;gap:2px}
+.theme-toggle button{border:0;background:transparent;color:var(--sfu-text);font-weight:700;padding:8px 12px;border-radius:999px;cursor:pointer;font-size:14px}
+.theme-toggle button.active{background:var(--sfu-primary);color:#fff}
+.explore-btn{background:var(--sfu-button-bg);color:var(--sfu-button-text);padding:10px 18px;border-radius:999px;font-size:14px;font-weight:800;white-space:nowrap}
+.hero{position:relative;background-size:cover!important;background-repeat:no-repeat;background-position:center center!important;min-height:clamp(650px,88vh,900px);isolation:isolate}
+.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--hero-overlay-left),var(--hero-overlay-mid) 45%,rgba(0,0,0,.05) 100%)}
+.hero-pink{color:#ff3ca8!important;text-shadow:0 3px 16px rgba(0,0,0,.28)}
+.hero-content-text{color:var(--sfu-text)}
+#hero .text-white\/65{color:var(--sfu-muted)!important}
+#hero .text-white\/45{color:var(--sfu-muted)!important}
+#hero .glass{background:var(--sfu-glass);border-color:var(--sfu-border);color:var(--sfu-text)}
+#hero .glass .bg-emerald-400{box-shadow:0 0 0 3px rgba(16,185,129,.12)}
+#profiles{background:var(--sfu-section-bg);color:var(--sfu-text)}
+#profiles h2,#profiles p{color:var(--sfu-text)}
+#profiles .text-white\/45{color:var(--sfu-muted)!important}
+#profiles input,#profiles select{background:var(--sfu-input-bg)!important;color:var(--sfu-text)!important;border-color:var(--sfu-border)!important}
+#profiles input::placeholder{color:var(--sfu-muted)}
+#profiles select option{background:var(--sfu-option-bg);color:var(--sfu-text)}
+.listing-card{background:var(--sfu-card-bg)!important;border-color:var(--sfu-border)!important;box-shadow:0 8px 28px rgba(0,0,0,.06)}
+.listing-meta{color:var(--sfu-muted)!important}
+.listing-desc{color:var(--sfu-muted)!important}
+.listing-body .bg-white{background:var(--sfu-button-bg)!important;color:var(--sfu-button-text)!important}
+
+:root{--sfu-primary:#ec4899;--sfu-secondary:#a855f7;--sfu-accent:#25D366;--sfu-bg:#09070b;--sfu-text:#fff;--sfu-muted:rgba(255,255,255,.68);--sfu-header:rgba(9,7,11,.86);--sfu-section-bg:#09070b;--sfu-card-bg:rgba(255,255,255,.065);--sfu-glass:rgba(255,255,255,.10);--sfu-border:rgba(255,255,255,.14);--sfu-control-bg:rgba(255,255,255,.06);--sfu-input-bg:rgba(255,255,255,.05);--sfu-option-bg:#151018;--sfu-button-bg:#fff;--sfu-button-text:#111;--hero-overlay-left:rgba(9,7,11,.54);--hero-overlay-mid:rgba(9,7,11,.28)}
+body.light{--sfu-bg:#fff;--sfu-text:#15131a;--sfu-muted:#5c6472;--sfu-header:rgba(255,255,255,.93);--sfu-section-bg:#fff;--sfu-card-bg:#fff;--sfu-glass:rgba(255,255,255,.82);--sfu-border:rgba(25,25,35,.12);--sfu-control-bg:#f2f4f7;--sfu-input-bg:#f7f8fa;--sfu-option-bg:#fff;--sfu-button-bg:#15131a;--sfu-button-text:#fff;--hero-overlay-left:rgba(255,255,255,.18);--hero-overlay-mid:rgba(255,255,255,.04)}
+body.dark{--sfu-bg:#09070b;--sfu-text:#fff;--sfu-muted:rgba(255,255,255,.68);--sfu-header:rgba(9,7,11,.86);--sfu-section-bg:#09070b;--sfu-card-bg:rgba(255,255,255,.065);--sfu-glass:rgba(255,255,255,.10);--sfu-border:rgba(255,255,255,.14);--sfu-control-bg:rgba(255,255,255,.06);--sfu-input-bg:rgba(255,255,255,.05);--sfu-option-bg:#151018;--sfu-button-bg:#fff;--sfu-button-text:#111;--hero-overlay-left:rgba(9,7,11,.54);--hero-overlay-mid:rgba(9,7,11,.28)}
+
+@media(max-width:767px){
+ .site-header{position:fixed}
+ .site-header>div{min-height:84px}
+ .brand-icon{width:38px;height:38px}
+ .header-actions{width:100%;justify-content:flex-start}
+ .theme-toggle button{padding:7px 10px;font-size:13px}
+ .explore-btn{padding:9px 14px;font-size:13px;margin-left:auto}
+ #hero{min-height:calc(100svh - 84px);padding-top:84px;background-position:center top!important}
+ #hero>div{padding:42px 20px 54px!important}
+ #hero h1{font-size:clamp(2.9rem,13vw,4.4rem)!important;line-height:.94!important;letter-spacing:-.045em!important;margin-top:24px!important}
+ #hero p{font-size:1.05rem!important;line-height:1.7!important;max-width:100%!important}
+ #hero .mt-9{margin-top:24px!important}
+ #hero .mt-10{margin-top:24px!important}
+ #hero .flex-wrap.gap-7{gap:12px!important;font-size:.9rem!important}
+ #hero .flex-wrap.gap-3>a{flex:1 1 100%;text-align:center;min-height:52px;display:grid;place-items:center}
+ #profiles{padding-top:58px!important;padding-bottom:70px!important}
+ #profiles>div:first-child{margin-bottom:24px!important}
+ #profiles h2{font-size:2.35rem!important;line-height:1.05!important}
+ #profiles .flex.flex-col.sm\:flex-row{display:grid!important;grid-template-columns:1fr 1fr!important}
+ #profiles input{grid-column:1/-1!important;width:100%!important}
+ #profiles select{width:100%!important}
+ .listing-card{grid-template-columns:42% 58%!important;min-height:230px!important}
+ .listing-photo{min-height:230px!important}
+ .listing-body{padding:14px 12px!important}
+ .listing-title{font-size:1.02rem!important}
+ .listing-meta{font-size:.75rem!important;gap:5px!important;margin-top:8px!important}
+ .listing-desc{font-size:.77rem!important;line-height:1.35!important;margin-top:8px!important}
+ .listing-action{flex-direction:column!important;gap:6px!important;margin-top:10px!important}
+ .listing-action button{font-size:.76rem!important;padding:9px 6px!important}
+}
+@media(min-width:768px){
+ #hero>div{padding-top:120px}
+}
+
+/* FINAL A-to-Z visual + responsive fixes */
+html{background:#09070b}
+body{min-width:320px;background-color:var(--sfu-bg);background-image:var(--page-photo);background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat}
+body:after{content:"";position:fixed;inset:0;z-index:-2;background:linear-gradient(rgba(9,7,11,.18),rgba(9,7,11,.18));pointer-events:none}
+.site-header{z-index:50}
+.hero{background-image:var(--hero-image)!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important;min-height:clamp(700px,88vh,940px);}
+.hero:before{z-index:0!important;background:linear-gradient(90deg,rgba(0,0,0,.34) 0%,rgba(0,0,0,.15) 46%,rgba(0,0,0,.03) 100%)!important;pointer-events:none}
+.hero>div{position:relative;z-index:1}
+.hero h1,.hero p,.hero .flex-wrap{ text-shadow:0 2px 12px rgba(0,0,0,.55)}
+.hero-pink{color:#ff3ca8!important;text-shadow:0 2px 14px rgba(0,0,0,.45)!important}
+#profiles{position:relative;z-index:2;min-height:700px;background:var(--sfu-section-bg)!important}
+#safety,main>section:not(#profiles){position:relative;z-index:1}
+#safety .glass,main>section:not(#profiles) .glass{background:rgba(8,6,10,.68);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+body.light #profiles{background:#fff!important}
+body.light #profiles h2,body.light #profiles p,body.light #profiles label,body.light #profiles .listing-desc,body.light #profiles .listing-meta{color:#1b1a20!important}
+body.light #profiles .text-pink-400{color:#ec4899!important}
+body.light #profiles input,body.light #profiles select{background:#f7f7fa!important;color:#17151c!important}
+body.light #profiles .listing-card{background:#fff!important;color:#17151c!important;box-shadow:0 8px 26px rgba(0,0,0,.10)}
+body.light #profiles .listing-body .bg-white{background:#17151c!important;color:#fff!important}
+body.light .site-header{background:rgba(255,255,255,.96)!important;color:#17151c}
+body.light .site-header .muted-text{color:#5d6470!important}
+body.light .theme-toggle{background:#f3f4f7!important}
+body.light .theme-toggle button{color:#364152!important}
+body.light .explore-btn{background:#17151c!important;color:#fff!important}
+body.light .hero .glass{background:rgba(255,255,255,.90)!important;color:#17151c!important;text-shadow:none!important}
+body.light .hero .glass *{color:#17151c!important}
+/* Only White/Dark theme controls; no extra colour palette */
+@media(max-width:767px){
+ .site-header{position:fixed!important}
+ .site-header>div{min-height:136px!important;padding-top:14px!important;padding-bottom:14px!important;align-content:center}
+ .site-header .header-actions{width:auto!important;flex:1 1 100%!important;justify-content:flex-start!important;gap:8px!important}
+ .site-header .explore-btn{margin-left:auto!important}
+ #hero{min-height:920px!important;padding-top:136px!important;background-position:center top!important}
+ #hero>div{padding:42px 28px 64px!important}
+ #hero h1{font-size:clamp(3rem,13vw,4.6rem)!important;line-height:.94!important;letter-spacing:-.045em!important;margin-top:26px!important}
+ #hero p{font-size:1.08rem!important;line-height:1.72!important;max-width:100%!important}
+ #hero .flex-wrap.gap-3{display:grid!important;grid-template-columns:1fr 1fr!important;gap:12px!important}
+ #hero .flex-wrap.gap-3>a{min-height:58px!important;display:grid!important;place-items:center!important;padding:12px 14px!important;text-align:center!important}
+ #hero .flex-wrap.gap-7{gap:14px 18px!important;font-size:.92rem!important}
+ #profiles{padding:72px 28px 90px!important}
+ #profiles h2{font-size:2.45rem!important;line-height:1.02!important}
+ #profiles>div:first-child{margin-bottom:28px!important}
+ #profiles .flex.flex-col.sm\\:flex-row{display:grid!important;grid-template-columns:1fr 1fr!important}
+ #profiles input{grid-column:1/-1!important}
+ .listing-card{grid-template-columns:40% 60%!important;min-height:300px!important}
+ .listing-photo{min-height:300px!important}
+ .listing-body{padding:16px 13px!important}
+ .listing-title{font-size:1.05rem!important}
+ .listing-action{flex-direction:column!important}
+}
+@media(min-width:768px){#hero>div{padding-top:120px}}
 </style>
 
 <script>
@@ -43,8 +163,8 @@ const SFU_CONTENT_KEY = "sfu_site_content";
 const SFU_DEFAULT_CONTENT = {
   brand:"Satisfaction for U",
   eyebrow:"PRIVATE CONNECTIONS",
-  heroTitle:"Meet people.<br>Connect privately.<br>Date respectfully.",
-  heroDescription:"A local adult dating and companionship directory.",
+  heroTitle:'Meet someone worth<br><span class="hero-pink">your time.</span>',
+  heroDescription:"Discover adult dating and companionship profiles in your area, with privacy, consent and respectful communication at the center.",
   heroPrimary:"Browse profiles",
   heroSecondary:"Our safety standards",
   featuredTitle:"Discover profiles",
@@ -121,24 +241,30 @@ function sfuApplyContent(){
 <script id="sfu-seo-jsonld" type="application/ld+json">{}</script>
 </head>
 <body id="sfuBody">
-<header class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#09070b]/80 backdrop-blur-xl">
- <div class="max-w-7xl mx-auto px-5 h-20 flex items-center justify-between">
-  <a href="#" class="flex items-center gap-3">
-   <span class="w-10 h-10 rounded-2xl bg-gradient-to-br from-[var(--sfu-primary)] to-[var(--sfu-secondary)] grid place-items-center shadow-lg shadow-pink-900/30">♡</span>
-   <span><b class="block text-lg tracking-tight">Satisfaction for U</b><small class="text-[10px] uppercase tracking-[.22em] text-white/45">Private connections</small></span>
+<header class="fixed top-0 left-0 right-0 z-50 site-header">
+ <div class="max-w-7xl mx-auto px-4 sm:px-5 min-h-20 py-3 flex flex-wrap items-center justify-between gap-3">
+  <a href="#" class="flex items-center gap-3 min-w-0">
+   <span class="brand-icon">♡</span>
+   <span class="min-w-0"><b id="brandName" class="block text-lg tracking-tight truncate">Satisfaction for U</b><small class="block text-[10px] uppercase tracking-[.22em] muted-text">Private connections</small></span>
   </a>
-  <nav class="hidden md:flex items-center gap-7 text-sm text-white/65">
-   <a href="#profiles" class="hover:text-white">Profiles</a><a href="#how" class="hover:text-white">How it works</a><a href="#safety" class="hover:text-white">Safety</a>
-  </nav>
-  <a href="#profiles" class="rounded-full bg-white text-black px-5 py-2.5 text-sm font-bold hover:bg-pink-100">Explore profiles</a>
+  <div class="header-actions">
+   <nav class="hidden lg:flex items-center gap-6 text-sm muted-text">
+    <a href="#profiles">Profiles</a><a href="#safety">Safety</a>
+   </nav>
+   <div class="theme-toggle" role="group" aria-label="Theme">
+    <button id="lightBtn" type="button" onclick="setTheme('light')">☀ White</button>
+    <button id="darkBtn" type="button" onclick="setTheme('dark')">☾ Dark</button>
+   </div>
+   <a href="#profiles" class="explore-btn">Explore profiles</a>
+  </div>
  </div>
 </header>
 
-<section id="hero" class="hero min-h-[720px] pt-20 flex items-end" style="background-image:linear-gradient(90deg,rgba(9,7,11,.96) 0%,rgba(9,7,11,.78) 42%,rgba(9,7,11,.2) 100%),linear-gradient(0deg,#09070b 0%,transparent 55%),url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=2400&q=95')">
+<section id="hero" class="hero min-h-[720px] pt-20 flex items-end" style="--hero-image:url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=2400&q=100');--page-photo:url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=2400&q=100')">
  <div class="max-w-7xl w-full mx-auto px-5 pb-24 md:pb-28">
   <div class="max-w-3xl">
    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs font-semibold text-pink-200"><i class="w-1.5 h-1.5 rounded-full bg-emerald-400"></i> Adults 18+ • Private & respectful</span>
-   <h1 id="siteTitle" class="mt-7 text-5xl md:text-7xl font-black leading-[.96] tracking-[-.045em]">Meet someone worth<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-fuchsia-500">your time.</span></h1>
+   <h1 id="siteTitle" class="mt-7 text-5xl md:text-7xl font-black leading-[.96] tracking-[-.045em]">Meet someone worth<br><span class="hero-pink">your time.</span></h1>
    <p id="siteTagline" class="mt-7 max-w-xl text-lg md:text-xl leading-8 text-white/65">Discover adult dating and companionship profiles in your area, with privacy, consent and respectful communication at the center.</p>
    <div class="mt-9 flex flex-wrap gap-3">
     <a href="#profiles" class="px-6 py-3.5 rounded-full bg-[var(--sfu-primary)] hover:brightness-110 font-bold shadow-xl shadow-pink-950/40">Browse profiles</a>
@@ -149,11 +275,7 @@ function sfuApplyContent(){
  </div>
 </section>
 
-<section class="border-y border-white/8 bg-white/[.025]">
- <div class="max-w-7xl mx-auto px-5 py-5 flex flex-wrap gap-7 justify-center md:justify-start text-sm text-white/45">
-  <span>Private conversations</span><span>•</span><span>Respectful connections</span><span>18+ only</span>
- </div>
-</section>
+
 
 <main>
 <section id="profiles" class="max-w-7xl mx-auto px-5 py-20">
@@ -168,16 +290,7 @@ function sfuApplyContent(){
  <div id="grid" class="grid grid-cols-1 gap-5 max-w-5xl mx-auto"></div>
 </section>
 
-<section id="how" class="max-w-7xl mx-auto px-5 pb-20">
- <div class="glass rounded-[2rem] p-7 md:p-10">
-  <p class="text-pink-400 text-xs font-bold uppercase tracking-[.22em]">Simple by design</p><h2 class="mt-2 text-3xl md:text-4xl font-black">A better way to meet.</h2>
-  <div class="grid md:grid-cols-3 gap-5 mt-8">
-   <div class="rounded-2xl bg-black/20 p-6"><span class="text-2xl">01</span><h3 class="mt-5 font-bold text-lg">Explore</h3><p class="mt-2 text-sm text-white/45 leading-6">Browse adult profiles using location and rating filters.</p></div>
-   <div class="rounded-2xl bg-black/20 p-6"><span class="text-2xl">02</span><h3 class="mt-5 font-bold text-lg">Connect</h3><p class="mt-2 text-sm text-white/45 leading-6">Choose a profile and use the contact options provided by the profile owner.</p></div>
-   <div class="rounded-2xl bg-black/20 p-6"><span class="text-2xl">03</span><h3 class="mt-5 font-bold text-lg">Meet safely</h3><p class="mt-2 text-sm text-white/45 leading-6">Start in a public place, communicate clearly and respect boundaries.</p></div>
-  </div>
- </div>
-</section>
+
 
 <section id="safety" class="max-w-7xl mx-auto px-5 pb-20">
  <div class="grid lg:grid-cols-[1fr_1.5fr] gap-6 items-stretch">
@@ -244,6 +357,7 @@ const DEMO=[
 let profiles=JSON.parse(localStorage.getItem("sfu_profiles")||"null")||DEMO;
 let reviews=JSON.parse(localStorage.getItem("sfu_reviews")||"[]");
 let settings=JSON.parse(localStorage.getItem("sfu_settings")||"{}");
+let sfuVersion=Number(localStorage.getItem("sfu_version")||0);
 let content={...SFU_DEFAULT_CONTENT,...JSON.parse(localStorage.getItem("sfu_site_content")||"{}")}
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[c]));
@@ -254,20 +368,24 @@ async function save(){
   localStorage.setItem("sfu_settings",JSON.stringify(settings));
   localStorage.setItem("sfu_site_content",JSON.stringify(content));
   try{
-    const r=await fetch("/api/data",{method:"PUT",headers:{"content-type":"application/json"},body:JSON.stringify({profiles,reviews,settings,content})});
+    const r=await fetch("/api/data",{method:"PUT",headers:{"content-type":"application/json"},body:JSON.stringify({profiles,reviews,settings,content,expectedVersion:sfuVersion})});
+    if(r.status===409){ alert("This website was changed on another tab/device. Please refresh before saving again."); return false; }
     if(!r.ok) throw new Error("Save failed");
+    const saved=await r.json().catch(()=>({}));
+    if(saved.version!=null){sfuVersion=Number(saved.version);localStorage.setItem("sfu_version",String(sfuVersion));}
     return true;
-  }catch(e){console.error(e);return false}
+  }catch(e){console.error("Permanent server save unavailable",e);return false}
 }
 async function loadRemote(){
   try{
     const r=await fetch("/api/data",{cache:"no-store"});
     if(!r.ok) throw new Error("API unavailable");
     const d=await r.json();
-    if(Array.isArray(d.profiles)&&d.profiles.length) profiles=d.profiles;
+    if(Array.isArray(d.profiles)) profiles=d.profiles;
     if(Array.isArray(d.reviews)) reviews=d.reviews;
     if(d.settings&&typeof d.settings==="object") settings=d.settings;
     if(d.content&&typeof d.content==="object") content={...SFU_DEFAULT_CONTENT,...d.content};
+    if(d.version!=null){sfuVersion=Number(d.version);localStorage.setItem("sfu_version",String(sfuVersion));}
     SFU_CONTENT={...SFU_DEFAULT_CONTENT,...content};
     localStorage.setItem("sfu_profiles",JSON.stringify(profiles));
     localStorage.setItem("sfu_reviews",JSON.stringify(reviews));
@@ -280,8 +398,7 @@ function applyDesign(){
   root.style.setProperty("--sfu-primary",settings.primaryColor||"#ec4899");
   root.style.setProperty("--sfu-secondary",settings.secondaryColor||"#a855f7");
   root.style.setProperty("--sfu-accent",settings.accentColor||"#25D366");
-  root.style.setProperty("--sfu-bg",settings.pageBg||"#09070b");
-  document.body.style.background=settings.pageBg||"#09070b";
+  root.style.setProperty("--sfu-bg", settings.pageBg || (document.body.classList.contains("light") ? "#fff" : "#09070b"));
 }
 function render(){
  let q=$("search").value.toLowerCase().trim(),loc=$("locationFilter").value,sort=$("sort").value;
@@ -289,7 +406,7 @@ function render(){
  if(sort==="rating")list.sort((a,b)=>(b.rating||0)-(a.rating||0)); if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name)); if(sort==="newest")list.sort((a,b)=>b.id-a.id);
  $("grid").innerHTML=list.map(p=>`<article class="card glass rounded-[1.35rem] overflow-hidden listing-card">
   <div class="relative listing-photo">
-    <img src="${esc(p.photo)}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/700x875/171018/ffffff?text=Profile'">
+    <img loading="lazy" decoding="async" src="${esc(p.photo)}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/700x875/171018/ffffff?text=Profile'">
     <div class="absolute top-3 left-3 px-2 py-1 rounded-lg bg-black/60 backdrop-blur text-[11px] font-bold">18+</div>
     <div class="absolute bottom-3 left-3 px-2 py-1 rounded-lg bg-black/65 backdrop-blur text-xs">Photo</div>
   </div>
@@ -308,12 +425,17 @@ function render(){
     <p class="listing-desc mt-3 text-sm text-white/55 line-clamp-2">${esc(p.description)}</p>
     <div class="listing-action">
       <button onclick="openProfile(${p.id})" class="flex-1 rounded-xl bg-white text-black py-2.5 font-bold hover:bg-pink-100">View Profile</button>
-      <button onclick="openBooking(${p.id})" class="flex-1 rounded-xl bg-[#25D366] text-black py-2.5 font-bold hover:brightness-110">WhatsApp</button>
+      ${p.showContact && p.contact ? `<a href="tel:${esc(phoneNumber(p.contact))}" class="flex-1 text-center rounded-xl bg-[var(--sfu-button-bg)] text-[var(--sfu-button-text)] py-2.5 font-bold">Call</a>` : ""}
+      ${p.showWhatsapp && (p.whatsapp||p.phone) ? `<button onclick="openBooking(${p.id})" class="flex-1 rounded-xl bg-[#25D366] text-black py-2.5 font-bold hover:brightness-110">WhatsApp</button>` : ""}
     </div>
   </div>
 </article>`).join("")||`<div class="col-span-full py-20 text-center text-white/35">No matching profiles.</div>`;
 }
 
+function phoneNumber(value){
+  const raw=String(value??"").trim();const digits=raw.replace(/\D/g,"");
+  if(!digits)return ""; if(digits.length===10)return "91"+digits; return digits;
+}
 function whatsappNumber(value){
   const raw = String(value ?? '').trim();
   const digits = raw.replace(/\D/g,'');
@@ -347,7 +469,7 @@ function openBooking(id){
 
 function openProfile(id){
  let p=profiles.find(x=>x.id===id),rr=reviews.filter(r=>r.profileId===id&&r.approved);
- $("modalContent").innerHTML=`<div class="grid md:grid-cols-[.85fr_1.15fr] gap-7"><img src="${esc(p.photo)}" class="w-full aspect-[4/5] object-cover rounded-2xl"><div><span class="text-xs uppercase tracking-[.2em] text-pink-400">Profile</span><h2 class="mt-2 text-4xl font-black">${esc(p.name)}</h2><p class="text-white/45 mt-1">${esc(p.location)}</p><div class="mt-4 text-amber-300 text-lg">${stars(p.rating)} <span class="text-white text-sm">${(p.rating||0).toFixed(1)} / 5</span></div><p class="mt-6 text-white/60 leading-7">${esc(p.description)}</p><div class="flex gap-3 mt-7">${p.contact?`<a href="tel:${esc(p.contact)}" class="flex-1 text-center py-3 rounded-xl bg-white/10">Call</a>`:""}${p.whatsapp?`<a target="_blank" href="https://wa.me/${whatsappNumber(p.whatsapp)}" class="flex-1 text-center py-3 rounded-xl bg-[#25D366] text-black font-bold">WhatsApp</a>`:""}</div></div></div><div class="mt-9 pt-7 border-t border-white/10"><h3 class="text-xl font-bold">Reviews</h3><div class="mt-4 space-y-3">${rr.length?rr.map(r=>`<div class="bg-white/5 rounded-xl p-4"><div class="text-amber-300">${stars(r.rating)}</div><p class="mt-2 text-white/60">${esc(r.text)}</p></div>`).join(""):'<p class="text-white/35">No approved reviews yet.</p>'}</div><div class="mt-7 bg-white/[.035] rounded-2xl p-5"><b>Leave a review</b><select id="reviewRating" class="mt-3 w-full bg-black/30 border border-white/10 rounded-xl p-3"><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option><option value="2">2 stars</option><option value="1">1 star</option></select><textarea id="reviewText" class="mt-3 w-full bg-black/30 border border-white/10 rounded-xl p-3" rows="3" placeholder="Write a respectful review"></textarea><button onclick="submitReview(${p.id})" class="mt-3 px-5 py-3 rounded-xl bg-[var(--sfu-primary)] font-bold">Submit for approval</button></div></div>`;
+ $("modalContent").innerHTML=`<div class="grid md:grid-cols-[.85fr_1.15fr] gap-7"><img loading="eager" decoding="async" src="${esc(p.photo)}" class="w-full aspect-[4/5] object-cover rounded-2xl"><div><span class="text-xs uppercase tracking-[.2em] text-pink-400">Profile</span><h2 class="mt-2 text-4xl font-black">${esc(p.name)}</h2><p class="text-white/45 mt-1">${esc(p.location)}</p><div class="mt-4 text-amber-300 text-lg">${stars(p.rating)} <span class="text-white text-sm">${(p.rating||0).toFixed(1)} / 5</span></div><p class="mt-6 text-white/60 leading-7">${esc(p.description)}</p><div class="flex gap-3 mt-7">${p.showContact&&p.contact?`<a href="tel:${esc(phoneNumber(p.contact))}" class="flex-1 text-center py-3 rounded-xl bg-white/10">Call</a>`:""}${p.showWhatsapp&&p.whatsapp?`<a target="_blank" rel="noopener" href="https://wa.me/${whatsappNumber(p.whatsapp)}" class="flex-1 text-center py-3 rounded-xl bg-[#25D366] text-black font-bold">WhatsApp</a>`:""}</div></div></div><div class="mt-9 pt-7 border-t border-white/10"><h3 class="text-xl font-bold">Reviews</h3><div class="mt-4 space-y-3">${rr.length?rr.map(r=>`<div class="bg-white/5 rounded-xl p-4"><div class="text-amber-300">${stars(r.rating)}</div><p class="mt-2 text-white/60">${esc(r.text)}</p></div>`).join(""):'<p class="text-white/35">No approved reviews yet.</p>'}</div><div class="mt-7 bg-white/[.035] rounded-2xl p-5"><b>Leave a review</b><select id="reviewRating" class="mt-3 w-full bg-black/30 border border-white/10 rounded-xl p-3"><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option><option value="2">2 stars</option><option value="1">1 star</option></select><textarea id="reviewText" class="mt-3 w-full bg-black/30 border border-white/10 rounded-xl p-3" rows="3" placeholder="Write a respectful review"></textarea><button onclick="submitReview(${p.id})" class="mt-3 px-5 py-3 rounded-xl bg-[var(--sfu-primary)] font-bold">Submit for approval</button></div></div>`;
  $("modal").classList.remove("hidden")
 }
 function closeModal(){$("modal").classList.add("hidden")}
@@ -361,7 +483,9 @@ async function init(){
   $("locationFilter").innerHTML='<option value="">All locations</option>'+locs.map(x=>`<option>${esc(x)}</option>`).join("");
   if(settings.title) $("siteTitle").innerHTML=esc(settings.title);
   if(settings.tagline) $("siteTagline").textContent=settings.tagline;
-  if(settings.background) $("hero").style.backgroundImage=`linear-gradient(90deg,rgba(9,7,11,.96),rgba(9,7,11,.2)),linear-gradient(0deg,#09070b,transparent 55%),url('${settings.background}')`;
+  const heroImage = settings.background || "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=2400&q=100";
+  document.documentElement.style.setProperty("--hero-image", `url(${JSON.stringify(heroImage)})`);
+  document.documentElement.style.setProperty("--page-photo", `url(${JSON.stringify(heroImage)})`);
   if(settings.backgroundPosition) $("hero").style.backgroundPosition=settings.backgroundPosition;
   sfuApplyContent();
   render();
@@ -369,5 +493,24 @@ async function init(){
 
 ["search","locationFilter","sort"].forEach(x=>$(x).addEventListener("input",render));init();
 </script>
-<script>document.addEventListener('DOMContentLoaded',sfuApplyContent);</script></body>
+<script>document.addEventListener('DOMContentLoaded',sfuApplyContent);</script>
+<script>
+async function setTheme(mode,persistServer=true){
+  document.body.classList.remove('light','dark');
+  document.body.classList.add(mode);
+  localStorage.setItem('sfu_theme',mode);
+  settings.theme=mode;
+  localStorage.setItem('sfu_settings',JSON.stringify(settings));
+  document.documentElement.style.setProperty('--sfu-bg', mode==='light' ? '#fff' : '#09070b');
+  const l=document.getElementById('lightBtn'),d=document.getElementById('darkBtn');
+  if(l)l.classList.toggle('active',mode==='light');
+  if(d)d.classList.toggle('active',mode==='dark');
+  if(persistServer && typeof save==='function') await save();
+}
+(function(){
+  const saved=settings.theme||localStorage.getItem('sfu_theme')||'dark';
+  setTheme(saved,false);
+})();
+</script>
+</body>
 </html>
