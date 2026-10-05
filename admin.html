@@ -72,7 +72,16 @@
     <div id="backgroundEmpty" class="h-28 grid place-items-center text-white/35 text-sm">Hero photo preview</div>
   </div>
 </div>
-<div class="md:col-span-2 flex flex-wrap gap-2 items-center">
+<div class="md:col-span-2 border-t border-white/10 pt-5 mt-2">
+  <div class="text-xs uppercase tracking-[.2em] text-white/35 mb-3">Multicolour design</div>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+    <label class="text-xs text-white/55">Primary <input id="primaryColor" type="color" class="mt-2 w-full h-11 rounded-lg bg-black/25 border border-white/10"></label>
+    <label class="text-xs text-white/55">Secondary <input id="secondaryColor" type="color" class="mt-2 w-full h-11 rounded-lg bg-black/25 border border-white/10"></label>
+    <label class="text-xs text-white/55">Accent <input id="accentColor" type="color" class="mt-2 w-full h-11 rounded-lg bg-black/25 border border-white/10"></label>
+    <label class="text-xs text-white/55">Website background <input id="pageBg" type="color" class="mt-2 w-full h-11 rounded-lg bg-black/25 border border-white/10"></label>
+  </div>
+</div>
+<div class="md:col-span-2 flex flex-wrap gap-2 items-center mt-3">
   <button type="button" onclick="setHeroPos('center center')" class="px-4 py-2 rounded-lg bg-white/10 text-sm">Center</button>
   <button type="button" onclick="setHeroPos('center top')" class="px-4 py-2 rounded-lg bg-white/10 text-sm">Top</button>
   <button type="button" onclick="setHeroPos('center bottom')" class="px-4 py-2 rounded-lg bg-white/10 text-sm">Bottom</button>
@@ -83,98 +92,57 @@
  <section class="glass rounded-3xl p-6 md:p-8 mt-6"><p class="text-pink-400 text-xs uppercase tracking-[.2em]">Moderation</p><h2 class="text-2xl font-black mt-1">Reviews</h2><div id="reviews" class="mt-6 space-y-3"></div></section>
 </main>
 </div>
-<div id="editor" class="hidden fixed inset-0 z-50 bg-black/80 overflow-y-auto p-4"><div class="min-h-full grid place-items-center"><form id="form" class="w-full max-w-2xl glass rounded-3xl p-7"><div class="flex justify-between"><h2 id="et" class="text-2xl font-black">Edit profile</h2><button type="button" onclick="closeEditor()" class="text-2xl">×</button></div><input id="pid" type="hidden"><div class="grid md:grid-cols-2 gap-3 mt-6"><input id="name" required class="bg-black/25 border border-white/10 rounded-xl p-3" placeholder="Name"><input id="location" list="vizagLocations" required class="bg-black/25 border border-white/10 rounded-xl p-3" placeholder="General location"><datalist id="vizagLocations"><option value="MVP Colony"><option value="Dwaraka Nagar"><option value="Siripuram"><option value="Maddilapalem"><option value="Rushikonda"><option value="Madhurawada"><option value="Pothinamallayapalem"><option value="Gajuwaka"><option value="Old Gajuwaka"><option value="Akkayyapalem"><option value="Seethammadhara"><option value="Kancharapalem"><option value="Daba Gardens"><option value="Asilmetta"><option value="Jagadamba Junction"><option value="Maharani Peta"><option value="Beach Road"><option value="RK Beach"><option value="Waltair"><option value="Chinna Waltair"><option value="Peda Waltair"><option value="Lawsons Bay Colony"><option value="Pendurthi"><option value="Gopalapatnam"><option value="Marripalem"><option value="Muralinagar"><option value="Sujatha Nagar"><option value="Vepagunta"><option value="Simhachalam"><option value="Duvvada"><option value="Kurmannapalem"><option value="Pedagantyada"><option value="Vadlapudi"><option value="Sheela Nagar"><option value="Aganampudi"><option value="Anakapalle"><option value="Bheemili"><option value="Yendada"><option value="Endada"><option value="Sagar Nagar"><option value="Visalakshi Nagar"><option value="Arilova"><option value="Auto Nagar"><option value="Malkapuram"><option value="Sriharipuram"><option value="One Town"><option value="Old Town"><option value="Port Area"></datalist><input id="photo" class="md:col-span-2 bg-black/25 border border-white/10 rounded-xl p-3" placeholder="Photo URL"><input id="contact" class="bg-black/25 border border-white/10 rounded-xl p-3" placeholder="Phone"><input id="whatsapp" class="bg-black/25 border border-white/10 rounded-xl p-3" placeholder="WhatsApp number"><label class="bg-black/25 rounded-xl p-3 flex gap-2"><input id="showContact" type="checkbox"> Show phone publicly</label><label class="bg-black/25 rounded-xl p-3 flex gap-2"><input id="showWhatsapp" type="checkbox"> Show WhatsApp publicly</label><textarea id="desc" rows="5" class="md:col-span-2 bg-black/25 border border-white/10 rounded-xl p-3" placeholder="Professional profile description"></textarea></div><div class="mt-5 p-4 rounded-xl bg-white/5 text-sm text-white/45"><b class="text-white">Women Seeking Men prompts:</b><br>What are you looking for? • What kind of person would you like to meet? • Interests? • Ideal first meeting? • Preferred communication? • Boundaries?</div><div class="flex gap-3 mt-5"><button class="flex-1 bg-pink-600 rounded-xl py-3 font-bold">Save profile</button><button type="button" onclick="closeEditor()" class="px-5 bg-white/10 rounded-xl">Cancel</button></div></form></div></div>
+<div id="editor" class="hidden fixed inset-0 z-50 bg-black/80 overflow-y-auto p-4"><div class="min-h-full grid place-items-center"><form id="form" class="w-full max-w-2xl glass rounded-3xl p-7"><div class="flex justify-between"><h2 id="et" class="text-2xl font-black">Edit profile</h2><button type="button" onclick="closeEditor()" class="text-2xl">×</button></div><input id="pid" type="hidden"><div class="grid md:grid-cols-2 gap-3 mt-6"><input id="name" required class="bg-black/25 border border-white/10 rounded-xl p-3" placeholder="Name"><input id="location" list="vizagLocations" required class="bg-black/25 border border-white/10 rounded-xl p-3" placeholder="General location"><datalist id="vizagLocations"><option value="MVP Colony"><option value="Dwaraka Nagar"><option value="Siripuram"><option value="Maddilapalem"><option value="Rushikonda"><option value="Madhurawada"><option value="Pothinamallayapalem"><option value="Gajuwaka"><option value="Old Gajuwaka"><option value="Akkayyapalem"><option value="Seethammadhara"><option value="Kancharapalem"><option value="Daba Gardens"><option value="Asilmetta"><option value="Jagadamba Junction"><option value="Maharani Peta"><option value="Beach Road"><option value="RK Beach"><option value="Waltair"><option value="Chinna Waltair"><option value="Peda Waltair"><option value="Lawsons Bay Colony"><option value="Pendurthi"><option value="Gopalapatnam"><option value="Marripalem"><option value="Muralinagar"><option value="Sujatha Nagar"><option value="Vepagunta"><option value="Simhachalam"><option value="Duvvada"><option value="Kurmannapalem"><option value="Pedagantyada"><option value="Vadlapudi"><option value="Sheela Nagar"><option value="Aganampudi"><option value="Anakapalle"><option value="Bheemili"><option value="Yendada"><option value="Endada"><option value="Sagar Nagar"><option value="Visalakshi Nagar"><option value="Arilova"><option value="Auto Nagar"><option value="Malkapuram"><option value="Sriharipuram"><option value="One Town"><option value="Old Town"><option value="Port Area"></datalist><input id="photo" class="md:col-span-2 bg-black/25 border border-white/10 rounded-xl p-3" placeholder="Photo URL (optional)">
+<div class="md:col-span-2 grid md:grid-cols-[1fr_auto] gap-3 items-center">
+  <label class="cursor-pointer px-5 py-3 rounded-xl bg-pink-600 hover:bg-pink-500 font-bold text-center">
+    Edit / Upload profile photo
+    <input id="photoFile" type="file" accept="image/*" class="hidden">
+  </label>
+  <div class="rounded-xl overflow-hidden border border-white/10 bg-black/30 w-28 h-28"><img id="photoPreview" src="" alt="Profile preview" class="w-full h-full object-cover hidden"></div>
+</div><input id="contact" class="bg-black/25 border border-white/10 rounded-xl p-3" placeholder="Phone"><input id="whatsapp" class="bg-black/25 border border-white/10 rounded-xl p-3" placeholder="WhatsApp number"><label class="bg-black/25 rounded-xl p-3 flex gap-2"><input id="showContact" type="checkbox"> Show phone publicly</label><label class="bg-black/25 rounded-xl p-3 flex gap-2"><input id="showWhatsapp" type="checkbox"> Show WhatsApp publicly</label><textarea id="desc" rows="5" class="md:col-span-2 bg-black/25 border border-white/10 rounded-xl p-3" placeholder="Professional profile description"></textarea></div><div class="mt-5 p-4 rounded-xl bg-white/5 text-sm text-white/45"><b class="text-white">Women Seeking Men prompts:</b><br>What are you looking for? • What kind of person would you like to meet? • Interests? • Ideal first meeting? • Preferred communication? • Boundaries?</div><div class="flex gap-3 mt-5"><button class="flex-1 bg-pink-600 rounded-xl py-3 font-bold">Save profile</button><button type="button" onclick="closeEditor()" class="px-5 bg-white/10 rounded-xl">Cancel</button></div></form></div></div>
 <script>
-const $=id=>document.getElementById(id),K="sfu_profiles",S="sfu_settings",R="sfu_reviews";let profiles=[],settings={},reviews=[],SFU_CONTENT_CACHE={};
+const $=id=>document.getElementById(id),K="sfu_profiles",S="sfu_settings",R="sfu_reviews",C="sfu_site_content";
+let profiles=JSON.parse(localStorage.getItem(K)||"null")||[],settings=JSON.parse(localStorage.getItem(S)||"{}"),reviews=JSON.parse(localStorage.getItem(R)||"[]"),content={};
+const DEFAULT_CONTENT={brand:"Satisfaction for U",eyebrow:"PRIVATE CONNECTIONS",heroTitle:"Meet people.<br>Connect privately.<br>Date respectfully.",heroDescription:"A local adult dating and companionship directory.",heroPrimary:"Browse profiles",heroSecondary:"Our safety standards",featuredTitle:"Discover profiles",featuredSubtitle:"Explore adult profiles by general area.",safetyTitle:"Safety & respect",safetyText:"Adults only. Consent first. Keep conversations respectful and protect your privacy.",howTitle:"How it works",howText:"Browse profiles, review general details, then start a private conversation.",promptsTitle:"Women seeking men",promptsText:"Use clear, respectful profile prompts to describe interests, expectations and boundaries.",footerNote:"Adults 18+ • Consent first • Respectful connections",seoTitle:"Satisfaction for U — Adult Dating & Companionship",seoDescription:"Discover adult dating and companionship profiles with privacy, consent and respectful communication.",siteUrl:"",ogImage:"",robots:"index,follow"};
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[c]));
-async function save(){const r=await fetch("/api/data",{method:"PUT",headers:{"content-type":"application/json"},body:JSON.stringify({profiles,settings,reviews,content:SFU_CONTENT_CACHE})});if(!r.ok)throw new Error("Save failed")}
+async function apiSave(){
+ localStorage.setItem(K,JSON.stringify(profiles));localStorage.setItem(S,JSON.stringify(settings));localStorage.setItem(R,JSON.stringify(reviews));localStorage.setItem(C,JSON.stringify(content));
+ try{const r=await fetch("/api/data",{method:"PUT",headers:{"content-type":"application/json"},body:JSON.stringify({profiles,reviews,settings,content})});if(!r.ok)throw new Error("Server save failed");return true}catch(e){console.error(e);return false}
+}
+async function loadRemote(){
+ try{const r=await fetch("/api/data",{cache:"no-store"});if(!r.ok)throw new Error("API unavailable");const d=await r.json();
+   if(Array.isArray(d.profiles))profiles=d.profiles; if(Array.isArray(d.reviews))reviews=d.reviews; if(d.settings)settings=d.settings; content={...DEFAULT_CONTENT,...(d.content||{})};
+   localStorage.setItem(K,JSON.stringify(profiles));localStorage.setItem(S,JSON.stringify(settings));localStorage.setItem(R,JSON.stringify(reviews));localStorage.setItem(C,JSON.stringify(content));
+ }catch(e){content={...DEFAULT_CONTENT,...JSON.parse(localStorage.getItem(C)||"{}")} ;console.warn(e)}
+}
 function login(e){e.preventDefault();if($("username").value.trim()==="admin"&&$("password").value==="Admin@12345"){sessionStorage.sfu="1";show()}else $("err").textContent="Invalid username or password."}
-async function show(){$("loginPage").classList.add("hidden");$("app").classList.remove("hidden");await loadFromServer();load();render();loadCompleteContent()}
-async function loadFromServer(){try{const r=await fetch("/api/data",{cache:"no-store"});if(!r.ok)throw new Error();const d=await r.json();profiles=d.profiles||[];settings=d.settings||{};reviews=d.reviews||[];SFU_CONTENT_CACHE=d.content||{};}catch(e){profiles=[];settings={};reviews=[];SFU_CONTENT_CACHE={};alert("Could not load saved website data.")}}
+async function show(){$("loginPage").classList.add("hidden");$("app").classList.remove("hidden");await loadRemote();load();loadCompleteContent();render()}
 function logout(){sessionStorage.removeItem("sfu");location.reload()}
 function load(){
-  $("title").value=settings.title||"Meet someone worth your time.";
-  $("tagline").value=settings.tagline||"Discover adult dating and companionship profiles in your area.";
-  $("background").value=settings.background||"";
-  const pos=settings.backgroundPosition||"center center";
-  $("heroPosLabel").textContent="Position: "+pos;
-  $("backgroundPreview").src=settings.background||"";
-  $("backgroundPreview").classList.toggle("hidden",!settings.background);
-  $("backgroundEmpty").classList.toggle("hidden",!!settings.background);
+ $("title").value=settings.title||"Meet someone worth your time.";$("tagline").value=settings.tagline||"Discover adult dating and companionship profiles in your area.";$("background").value=settings.background||"";
+ const pos=settings.backgroundPosition||"center center";$("heroPosLabel").textContent="Position: "+pos;$("backgroundPreview").src=settings.background||"";$("backgroundPreview").classList.toggle("hidden",!settings.background);$("backgroundEmpty").classList.toggle("hidden",!!settings.background);
+ $("primaryColor").value=settings.primaryColor||"#ec4899";$("secondaryColor").value=settings.secondaryColor||"#a855f7";$("accentColor").value=settings.accentColor||"#25D366";$("pageBg").value=settings.pageBg||"#09070b";
 }
-function saveSettings(){
-  settings={...settings,title:$("title").value.trim(),tagline:$("tagline").value.trim(),background:$("background").value.trim(),backgroundPosition:settings.backgroundPosition||"center center"};
-  save();alert("Website settings saved.");
+async function saveSettings(){
+ settings={...settings,title:$("title").value.trim(),tagline:$("tagline").value.trim(),background:$("background").value.trim(),backgroundPosition:settings.backgroundPosition||"center center",primaryColor:$("primaryColor").value,secondaryColor:$("secondaryColor").value,accentColor:$("accentColor").value,pageBg:$("pageBg").value};
+ const ok=await apiSave();alert(ok?"Website design and settings saved permanently.":"Saved on this device, but server save failed.");
 }
-function setHeroPos(pos){
-  settings.backgroundPosition=pos;
-  $("heroPosLabel").textContent="Position: "+pos;
-}
-function removeHeroPhoto(){
-  $("background").value="";
-  settings.background="";
-  $("backgroundPreview").src="";
-  $("backgroundPreview").classList.add("hidden");
-  $("backgroundEmpty").classList.remove("hidden");
-  save();
-}
-$("backgroundFile").addEventListener("change",function(){
-  const file=this.files&&this.files[0];
-  if(!file)return;
-  if(!file.type.startsWith("image/")){alert("Please select an image file.");return;}
-  if(file.size>8*1024*1024){alert("Please use an image up to 8 MB.");return;}
-  const reader=new FileReader();
-  reader.onload=()=>{
-    $("background").value=reader.result;
-    $("backgroundPreview").src=reader.result;
-    $("backgroundPreview").classList.remove("hidden");
-    $("backgroundEmpty").classList.add("hidden");
-  };
-  reader.readAsDataURL(file);
-});
-
-const SFU_CONTENT_KEY="sfu_site_content";
-const SFU_DEFAULT_CONTENT={
- brand:"Satisfaction for U",eyebrow:"PRIVATE CONNECTIONS",
- heroTitle:"Meet people.<br>Connect privately.<br>Date respectfully.",
- heroDescription:"A local adult dating and companionship directory.",
- heroPrimary:"Browse profiles",heroSecondary:"Our safety standards",
- featuredTitle:"Discover profiles",featuredSubtitle:"Explore adult profiles by general area.",
- safetyTitle:"Safety & respect",safetyText:"Adults only. Consent first. Keep conversations respectful and protect your privacy.",
- howTitle:"How it works",howText:"Browse profiles, review general details, then start a private conversation.",
- promptsTitle:"Women seeking men",promptsText:"Use clear, respectful profile prompts to describe interests, expectations and boundaries.",
- footerNote:"Adults 18+ • Consent first • Respectful connections",
- seoTitle:"Satisfaction for U — Adult Dating & Companionship in Visakhapatnam",
- seoDescription:"Discover adult dating and companionship profiles in Visakhapatnam with privacy, consent and respectful communication."
-};
-function loadCompleteContent(){
- const c={...SFU_DEFAULT_CONTENT,...SFU_CONTENT_CACHE};
- const map={Brand:"brand",Eyebrow:"eyebrow",HeroTitle:"heroTitle",HeroDescription:"heroDescription",HeroPrimary:"heroPrimary",HeroSecondary:"heroSecondary",FeaturedTitle:"featuredTitle",FeaturedSubtitle:"featuredSubtitle",SafetyTitle:"safetyTitle",SafetyText:"safetyText",HowTitle:"howTitle",HowText:"howText",PromptsTitle:"promptsTitle",PromptsText:"promptsText",FooterNote:"footerNote",SeoTitle:"seoTitle",SeoDescription:"seoDescription",SiteUrl:"siteUrl",OgImage:"ogImage",Robots:"robots"};
- Object.entries(map).forEach(([id,key])=>{const el=$("c"+id);if(el)el.value=c[key]||""});
-}
-function saveCompleteContent(){
- const c={
-  brand:$("cBrand").value.trim(),eyebrow:$("cEyebrow").value.trim(),heroTitle:$("cHeroTitle").value.trim(),
-  heroDescription:$("cHeroDescription").value.trim(),heroPrimary:$("cHeroPrimary").value.trim(),heroSecondary:$("cHeroSecondary").value.trim(),
-  featuredTitle:$("cFeaturedTitle").value.trim(),featuredSubtitle:$("cFeaturedSubtitle").value.trim(),
-  safetyTitle:$("cSafetyTitle").value.trim(),safetyText:$("cSafetyText").value.trim(),
-  howTitle:$("cHowTitle").value.trim(),howText:$("cHowText").value.trim(),
-  promptsTitle:$("cPromptsTitle").value.trim(),promptsText:$("cPromptsText").value.trim(),
-  footerNote:$("cFooterNote").value.trim(),seoTitle:$("cSeoTitle").value.trim(),seoDescription:$("cSeoDescription").value.trim(),
-  siteUrl:$("cSiteUrl").value.trim(),ogImage:$("cOgImage").value.trim(),robots:$("cRobots").value
- };
- SFU_CONTENT_CACHE=c;
- save().then(()=>alert("All website content saved permanently."));
-}
-function render(){ $("statProfiles").textContent=profiles.length;$("statReviews").textContent=reviews.length;$("statPending").textContent=reviews.filter(x=>!x.approved).length;$("profiles").innerHTML=profiles.map(p=>`<div class="bg-black/20 border border-white/8 rounded-2xl overflow-hidden"><img src="${esc(p.photo)}" class="w-full aspect-[4/3] object-cover"><div class="p-4"><b>${esc(p.name)}</b><p class="text-xs text-white/35 mt-1">${esc(p.location)}</p><div class="flex gap-2 mt-4"><button onclick="edit(${p.id})" class="flex-1 bg-white/8 rounded-lg py-2">Edit</button><button onclick="del(${p.id})" class="px-3 bg-red-500/80 rounded-lg">Delete</button></div></div></div>`).join("");let pending=reviews.filter(x=>!x.approved);$("reviews").innerHTML=pending.length?pending.map(r=>{let p=profiles.find(x=>x.id===r.profileId);return `<div class="bg-black/20 rounded-xl p-4 flex flex-col md:flex-row justify-between gap-3"><div><b>${esc(p?.name||"Deleted profile")}</b><p class="text-amber-300">{"★".repeat(r.rating)}{"☆".repeat(5-r.rating)}</p><p class="text-white/55">${esc(r.text)}</p></div><div class="flex gap-2"><button onclick="approve(${r.id})" class="px-4 py-2 rounded-lg bg-emerald-600">Approve</button><button onclick="removeReview(${r.id})" class="px-4 py-2 rounded-lg bg-red-600">Delete</button></div></div>`}).join(""):"<p class='text-white/35'>No pending reviews.</p>"}
+function setHeroPos(pos){settings.backgroundPosition=pos;$("heroPosLabel").textContent="Position: "+pos}
+async function removeHeroPhoto(){settings.background="";$("background").value="";$("backgroundPreview").src="";$("backgroundPreview").classList.add("hidden");$("backgroundEmpty").classList.remove("hidden");await apiSave()}
+$("backgroundFile").addEventListener("change",function(){const file=this.files&&this.files[0];if(!file)return;if(!file.type.startsWith("image/")){alert("Please select an image file.");return}if(file.size>8*1024*1024){alert("Please use an image up to 8 MB.");return}const reader=new FileReader();reader.onload=()=>{$("background").value=reader.result;$("backgroundPreview").src=reader.result;$("backgroundPreview").classList.remove("hidden");$("backgroundEmpty").classList.add("hidden")};reader.readAsDataURL(file)});
+const SFU_CONTENT_KEY=C;
+function loadCompleteContent(){const c={...DEFAULT_CONTENT,...content};const map={Brand:"brand",Eyebrow:"eyebrow",HeroTitle:"heroTitle",HeroDescription:"heroDescription",HeroPrimary:"heroPrimary",HeroSecondary:"heroSecondary",FeaturedTitle:"featuredTitle",FeaturedSubtitle:"featuredSubtitle",SafetyTitle:"safetyTitle",SafetyText:"safetyText",HowTitle:"howTitle",HowText:"howText",PromptsTitle:"promptsTitle",PromptsText:"promptsText",FooterNote:"footerNote",SeoTitle:"seoTitle",SeoDescription:"seoDescription",SiteUrl:"siteUrl",OgImage:"ogImage",Robots:"robots"};Object.entries(map).forEach(([id,key])=>{const el=$("c"+id);if(el)el.value=c[key]||""})}
+async function saveCompleteContent(){content={brand:$("cBrand").value.trim(),eyebrow:$("cEyebrow").value.trim(),heroTitle:$("cHeroTitle").value.trim(),heroDescription:$("cHeroDescription").value.trim(),heroPrimary:$("cHeroPrimary").value.trim(),heroSecondary:$("cHeroSecondary").value.trim(),featuredTitle:$("cFeaturedTitle").value.trim(),featuredSubtitle:$("cFeaturedSubtitle").value.trim(),safetyTitle:$("cSafetyTitle").value.trim(),safetyText:$("cSafetyText").value.trim(),howTitle:$("cHowTitle").value.trim(),howText:$("cHowText").value.trim(),promptsTitle:$("cPromptsTitle").value.trim(),promptsText:$("cPromptsText").value.trim(),footerNote:$("cFooterNote").value.trim(),seoTitle:$("cSeoTitle").value.trim(),seoDescription:$("cSeoDescription").value.trim(),siteUrl:$("cSiteUrl").value.trim(),ogImage:$("cOgImage").value.trim(),robots:$("cRobots").value};const ok=await apiSave();alert(ok?"All website content saved permanently.":"Saved on this device, but server save failed.")}
+function render(){$("statProfiles").textContent=profiles.length;$("statReviews").textContent=reviews.length;$("statPending").textContent=reviews.filter(x=>!x.approved).length;$('profiles').innerHTML=profiles.map(p=>`<div class="bg-black/20 border border-white/8 rounded-2xl overflow-hidden"><img src="${esc(p.photo)}" class="w-full aspect-[4/3] object-cover"><div class="p-4"><b>${esc(p.name)}</b><p class="text-xs text-white/35 mt-1">${esc(p.location)}</p><div class="flex gap-2 mt-4"><button onclick="edit(${p.id})" class="flex-1 bg-white/8 rounded-lg py-2">Edit</button><button onclick="del(${p.id})" class="px-3 bg-red-500/80 rounded-lg">Delete</button></div></div></div>`).join("");let pending=reviews.filter(x=>!x.approved);$("reviews").innerHTML=pending.length?pending.map(r=>{let p=profiles.find(x=>x.id===r.profileId);return `<div class="bg-black/20 rounded-xl p-4 flex flex-col md:flex-row justify-between gap-3"><div><b>${esc(p?.name||"Deleted profile")}</b><p class="text-amber-300">{"★".repeat(r.rating)}{"☆".repeat(5-r.rating)}</p><p class="text-white/55">${esc(r.text)}</p></div><div class="flex gap-2"><button onclick="approve(${r.id})" class="px-4 py-2 rounded-lg bg-emerald-600">Approve</button><button onclick="removeReview(${r.id})" class="px-4 py-2 rounded-lg bg-red-600">Delete</button></div></div>`}).join(""):"<p class='text-white/35'>No pending reviews.</p>"}
 function edit(id){let p=profiles.find(x=>x.id===id);fill(p);$("et").textContent="Edit profile";$("editor").classList.remove("hidden")}
-function newProfile(){fill({id:"",name:"",location:"",photo:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=90",contact:"",whatsapp:"",showContact:false,showWhatsapp:false,description:""});$("et").textContent="Add profile";$("editor").classList.remove("hidden")}
-function fill(p){$("pid").value=p.id;$("name").value=p.name;$("location").value=p.location;$("photo").value=p.photo;$("contact").value=p.contact||"";$("whatsapp").value=p.whatsapp||"";$("showContact").checked=!!p.showContact;$("showWhatsapp").checked=!!p.showWhatsapp;$("desc").value=p.description||""}
+function newProfile(){fill({id:"",name:"",location:"",photo:"",contact:"",whatsapp:"",showContact:false,showWhatsapp:false,description:""});$("et").textContent="Add profile";$("editor").classList.remove("hidden")}
+function fill(p){$("pid").value=p.id||"";$("name").value=p.name||"";$("location").value=p.location||"";$("photo").value=p.photo||"";$("contact").value=p.contact||"";$("whatsapp").value=p.whatsapp||"";$("showContact").checked=!!p.showContact;$("showWhatsapp").checked=!!p.showWhatsapp;$("desc").value=p.description||"";$("photoPreview").src=p.photo||"";$("photoPreview").classList.toggle("hidden",!p.photo)}
 function closeEditor(){$("editor").classList.add("hidden")}
-$("form").addEventListener("submit",e=>{e.preventDefault();let id=$("pid").value,data={name:$("name").value.trim(),location:$("location").value.trim(),photo:$("photo").value.trim(),contact:$("contact").value.trim(),whatsapp:$("whatsapp").value.trim(),showContact:$("showContact").checked,showWhatsapp:$("showWhatsapp").checked,description:$("desc").value.trim()};if(id)Object.assign(profiles.find(p=>p.id==id),data);else{data.id=Date.now();data.rating=0;data.reviews=0;profiles.push(data)}save().then(()=>{closeEditor();render()})})
-function del(id){if(confirm("Delete this profile?")){profiles=profiles.filter(p=>p.id!==id);reviews=reviews.filter(r=>r.profileId!==id);save().then(()=>render())}}
-function approve(id){let r=reviews.find(x=>x.id===id);if(!r)return;r.approved=true;let p=profiles.find(x=>x.id===r.profileId);if(p){let rs=reviews.filter(x=>x.profileId===p.id&&x.approved);p.reviews=rs.length;p.rating=rs.length?rs.reduce((a,x)=>a+x.rating,0)/rs.length:0}save().then(()=>render())}
-function removeReview(id){reviews=reviews.filter(x=>x.id!==id);save().then(()=>render())}
+$("photoFile").addEventListener("change",function(){const file=this.files&&this.files[0];if(!file)return;if(!file.type.startsWith("image/")){alert("Please select an image file.");return}if(file.size>3*1024*1024){alert("Please use a profile photo up to 3 MB.");return}const reader=new FileReader();reader.onload=()=>{$("photo").value=reader.result;$("photoPreview").src=reader.result;$("photoPreview").classList.remove("hidden")};reader.readAsDataURL(file)});
+$("form").addEventListener("submit",async e=>{e.preventDefault();let id=$("pid").value,data={name:$("name").value.trim(),location:$("location").value.trim(),photo:$("photo").value.trim(),contact:$("contact").value.trim(),whatsapp:$("whatsapp").value.trim(),showContact:$("showContact").checked,showWhatsapp:$("showWhatsapp").checked,description:$("desc").value.trim()};if(!data.photo){alert("Please upload a profile photo or enter a photo URL.");return}if(id)Object.assign(profiles.find(p=>p.id==id),data);else{data.id=Date.now();data.rating=0;data.reviews=0;profiles.push(data)}const ok=await apiSave();closeEditor();render();alert(ok?"Profile saved permanently and updated on the website.":"Profile saved locally, but server save failed.")});
+async function del(id){if(confirm("Delete this profile?")){profiles=profiles.filter(p=>p.id!==id);reviews=reviews.filter(r=>r.profileId!==id);await apiSave();render()}}
+async function approve(id){let r=reviews.find(x=>x.id===id);if(!r)return;r.approved=true;let p=profiles.find(x=>x.id===r.profileId);if(p){let rs=reviews.filter(x=>x.profileId===p.id&&x.approved);p.reviews=rs.length;p.rating=rs.length?rs.reduce((a,x)=>a+x.rating,0)/rs.length:0}await apiSave();render()}
+async function removeReview(id){reviews=reviews.filter(x=>x.id!==id);await apiSave();render()}
 $("loginForm").addEventListener("submit",login);if(sessionStorage.sfu==="1")show();
 </script>
-<script>document.addEventListener('DOMContentLoaded',()=>{if(sessionStorage.sfu!=="1")loadCompleteContent()});</script></body></html>
+</body></html>
