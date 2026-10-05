@@ -314,10 +314,20 @@ function render(){
 </article>`).join("")||`<div class="col-span-full py-20 text-center text-white/35">No matching profiles.</div>`;
 }
 
+function whatsappNumber(value){
+  const raw = String(value ?? '').trim();
+  const digits = raw.replace(/\D/g,'');
+  if(!digits) return '';
+  // Keep every entered digit. For Indian mobile numbers entered as 10 digits,
+  // add the country code 91; never remove a digit from the saved number.
+  if(digits.length === 10) return '91' + digits;
+  if(digits.length === 12 && digits.startsWith('91')) return digits;
+  return digits;
+}
 function whatsappBooking(p){
-  const phone = String(p.whatsapp || p.phone || '').replace(/\D/g,'');
-  if(!phone){
-    alert('WhatsApp contact is not available for this profile.');
+  const phone = whatsappNumber(p.whatsapp || p.phone);
+  if(!phone || phone.length < 10){
+    alert('Please enter the complete WhatsApp number in Admin.');
     return;
   }
   const message = `Hi ${p.name}, I found your profile on Satisfaction for U. I would like to discuss meeting availability and details.`;
@@ -326,8 +336,8 @@ function whatsappBooking(p){
 function openBooking(id){
   const p = profiles.find(x => x.id === id);
   if(!p) return;
-  const phone = String(p.whatsapp || p.phone || '').replace(/\D/g,'');
-  if(!phone){
+  const phone = whatsappNumber(p.whatsapp || p.phone);
+  if(!phone || phone.length < 10){
     openProfile(id);
     return;
   }
@@ -337,7 +347,7 @@ function openBooking(id){
 
 function openProfile(id){
  let p=profiles.find(x=>x.id===id),rr=reviews.filter(r=>r.profileId===id&&r.approved);
- $("modalContent").innerHTML=`<div class="grid md:grid-cols-[.85fr_1.15fr] gap-7"><img src="${esc(p.photo)}" class="w-full aspect-[4/5] object-cover rounded-2xl"><div><span class="text-xs uppercase tracking-[.2em] text-pink-400">Profile</span><h2 class="mt-2 text-4xl font-black">${esc(p.name)}</h2><p class="text-white/45 mt-1">${esc(p.location)}</p><div class="mt-4 text-amber-300 text-lg">${stars(p.rating)} <span class="text-white text-sm">${(p.rating||0).toFixed(1)} / 5</span></div><p class="mt-6 text-white/60 leading-7">${esc(p.description)}</p><div class="flex gap-3 mt-7">${p.contact?`<a href="tel:${esc(p.contact)}" class="flex-1 text-center py-3 rounded-xl bg-white/10">Call</a>`:""}${p.whatsapp?`<a target="_blank" href="https://wa.me/${String(p.whatsapp).replace(/\\D/g,'')}" class="flex-1 text-center py-3 rounded-xl bg-[#25D366] text-black font-bold">WhatsApp</a>`:""}</div></div></div><div class="mt-9 pt-7 border-t border-white/10"><h3 class="text-xl font-bold">Reviews</h3><div class="mt-4 space-y-3">${rr.length?rr.map(r=>`<div class="bg-white/5 rounded-xl p-4"><div class="text-amber-300">${stars(r.rating)}</div><p class="mt-2 text-white/60">${esc(r.text)}</p></div>`).join(""):'<p class="text-white/35">No approved reviews yet.</p>'}</div><div class="mt-7 bg-white/[.035] rounded-2xl p-5"><b>Leave a review</b><select id="reviewRating" class="mt-3 w-full bg-black/30 border border-white/10 rounded-xl p-3"><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option><option value="2">2 stars</option><option value="1">1 star</option></select><textarea id="reviewText" class="mt-3 w-full bg-black/30 border border-white/10 rounded-xl p-3" rows="3" placeholder="Write a respectful review"></textarea><button onclick="submitReview(${p.id})" class="mt-3 px-5 py-3 rounded-xl bg-[var(--sfu-primary)] font-bold">Submit for approval</button></div></div>`;
+ $("modalContent").innerHTML=`<div class="grid md:grid-cols-[.85fr_1.15fr] gap-7"><img src="${esc(p.photo)}" class="w-full aspect-[4/5] object-cover rounded-2xl"><div><span class="text-xs uppercase tracking-[.2em] text-pink-400">Profile</span><h2 class="mt-2 text-4xl font-black">${esc(p.name)}</h2><p class="text-white/45 mt-1">${esc(p.location)}</p><div class="mt-4 text-amber-300 text-lg">${stars(p.rating)} <span class="text-white text-sm">${(p.rating||0).toFixed(1)} / 5</span></div><p class="mt-6 text-white/60 leading-7">${esc(p.description)}</p><div class="flex gap-3 mt-7">${p.contact?`<a href="tel:${esc(p.contact)}" class="flex-1 text-center py-3 rounded-xl bg-white/10">Call</a>`:""}${p.whatsapp?`<a target="_blank" href="https://wa.me/${whatsappNumber(p.whatsapp)}" class="flex-1 text-center py-3 rounded-xl bg-[#25D366] text-black font-bold">WhatsApp</a>`:""}</div></div></div><div class="mt-9 pt-7 border-t border-white/10"><h3 class="text-xl font-bold">Reviews</h3><div class="mt-4 space-y-3">${rr.length?rr.map(r=>`<div class="bg-white/5 rounded-xl p-4"><div class="text-amber-300">${stars(r.rating)}</div><p class="mt-2 text-white/60">${esc(r.text)}</p></div>`).join(""):'<p class="text-white/35">No approved reviews yet.</p>'}</div><div class="mt-7 bg-white/[.035] rounded-2xl p-5"><b>Leave a review</b><select id="reviewRating" class="mt-3 w-full bg-black/30 border border-white/10 rounded-xl p-3"><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option><option value="2">2 stars</option><option value="1">1 star</option></select><textarea id="reviewText" class="mt-3 w-full bg-black/30 border border-white/10 rounded-xl p-3" rows="3" placeholder="Write a respectful review"></textarea><button onclick="submitReview(${p.id})" class="mt-3 px-5 py-3 rounded-xl bg-[var(--sfu-primary)] font-bold">Submit for approval</button></div></div>`;
  $("modal").classList.remove("hidden")
 }
 function closeModal(){$("modal").classList.add("hidden")}
