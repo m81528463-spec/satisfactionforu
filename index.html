@@ -35,7 +35,7 @@ tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','ui-sans-serif','syste
 }
 
 :root{--sfu-primary:#ec4899;--sfu-secondary:#a855f7;--sfu-accent:#25D366;--sfu-bg:#09070b}
-
+</style>
 
 <script>
 /* Satisfaction for U — editable site content */
@@ -62,7 +62,7 @@ const SFU_DEFAULT_CONTENT = {
   ogImage:"",
   robots:"index,follow"
 };
-let SFU_CONTENT = {...SFU_DEFAULT_CONTENT, ...JSON.parse(localStorage.getItem(SFU_CONTENT_KEY)||"{}")};;
+let SFU_CONTENT = {...SFU_DEFAULT_CONTENT, ...JSON.parse(localStorage.getItem(SFU_CONTENT_KEY)||"{}")};
 function sfuApplyContent(){
   const set=(id,html)=>{const el=document.getElementById(id);if(el)el.innerHTML=html};
   set("brandName",SFU_CONTENT.brand);
@@ -268,6 +268,7 @@ async function loadRemote(){
     if(Array.isArray(d.reviews)) reviews=d.reviews;
     if(d.settings&&typeof d.settings==="object") settings=d.settings;
     if(d.content&&typeof d.content==="object") content={...SFU_DEFAULT_CONTENT,...d.content};
+    SFU_CONTENT={...SFU_DEFAULT_CONTENT,...content};
     localStorage.setItem("sfu_profiles",JSON.stringify(profiles));
     localStorage.setItem("sfu_reviews",JSON.stringify(reviews));
     localStorage.setItem("sfu_settings",JSON.stringify(settings));
@@ -306,8 +307,8 @@ function render(){
     </div>
     <p class="listing-desc mt-3 text-sm text-white/55 line-clamp-2">${esc(p.description)}</p>
     <div class="listing-action">
-      <button onclick="openProfile(p.id)" class="flex-1 rounded-xl bg-white text-black py-2.5 font-bold hover:bg-pink-100">View Profile</button>
-      <button onclick="openBooking(p.id)" class="flex-1 rounded-xl bg-[#25D366] text-black py-2.5 font-bold hover:brightness-110">WhatsApp</button>
+      <button onclick="openProfile(${p.id})" class="flex-1 rounded-xl bg-white text-black py-2.5 font-bold hover:bg-pink-100">View Profile</button>
+      <button onclick="openBooking(${p.id})" class="flex-1 rounded-xl bg-[#25D366] text-black py-2.5 font-bold hover:brightness-110">WhatsApp</button>
     </div>
   </div>
 </article>`).join("")||`<div class="col-span-full py-20 text-center text-white/35">No matching profiles.</div>`;
