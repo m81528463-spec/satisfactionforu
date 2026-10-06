@@ -1,0 +1,22 @@
+SATISFACTION FOR U - ADMIN LOGIN / PASSWORD RECOVERY
+
+Initial admin login (first time only):
+Username: Manoj
+Password: Manoj@2027
+
+Admin panel now includes:
+- Change username
+- Change password (8+ characters)
+- Set recovery Gmail
+- Forgot password -> 6 digit code -> code expires in 10 minutes -> reset password
+- Top/hero background image remains editable and is saved through Cloudflare KV
+
+IMPORTANT FOR GMAIL RESET EMAIL:
+Cloudflare Worker Settings -> Variables and Secrets:
+1. Add secret: RESEND_API_KEY = your Resend API key
+2. Optional secret: RESEND_FROM = a verified sender such as noreply@yourdomain.com
+
+Without RESEND_API_KEY, the reset code cannot be delivered by email.
+The recovery address can be any Gmail address you control.
+
+Existing website design, profiles, WhatsApp/Call, admin content editor, SEO files and other settings are preserved.

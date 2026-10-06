@@ -1,18 +1,23 @@
-SATISFACTION FOR U — PERMANENT SAVE VERSION
+Satisfaction for U — corrected permanent Cloudflare package
 
-This version moves profiles, profile photos (when uploaded as data), website settings and reviews from browser-only localStorage to Cloudflare Workers KV.
+Files:
+- index.html — public website
+- admin.html — admin editor
+- worker.js — Cloudflare Worker + KV API
+- wrangler.toml — SFU_DATA KV binding
 
-IMPORTANT: The existing static Worker cannot provide server-side storage by itself. This package includes worker.js + wrangler.toml and requires one Cloudflare KV namespace binding before deploying.
+Features:
+- Server-side permanent save through Cloudflare KV
+- Original dark/glass visual design retained
+- White/light and dark theme controls
+- Profile photo upload/edit (compressed in browser)
+- Website hero/background photo upload already supported
+- Contact/background photo setting
+- Editable website text/content
+- Ready-made meeting-request banner removed
 
-Deployment steps:
-1. In Cloudflare Dashboard open Workers & Pages.
-2. Create/edit the Worker using worker.js as the Worker code and the website files as static assets.
-3. Create a KV namespace, for example: SFU_DATA.
-4. Bind that KV namespace to the Worker with variable name: SFU_DATA.
-5. Deploy the Worker with the assets in this folder.
-6. Keep the existing custom domains satisfactionforu.cyou and www.satisfactionforu.cyou on this Worker.
+Important:
+Deploy this as the existing satisfactionforu-permanent Worker through the GitHub deployment already configured.
+Do NOT delete the current divine-queen-6f86 Worker or change the custom-domain DNS until this version is tested.
 
-Do NOT delete the existing custom domains.
-Do NOT delete the KV namespace after deployment.
-
-After deployment, add/edit a profile in /admin.html, save it, then open the public website in a different browser/device. The saved data should load from the server.
+Image uploads are compressed client-side and stored inside the KV data record. Keep individual uploads reasonably sized and avoid uploading dozens of very large images.

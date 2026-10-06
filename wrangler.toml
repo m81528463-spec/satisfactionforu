@@ -1,13 +1,10 @@
-name = "satisfactionforu-permanent"
+name = "satisfactionforu"
 main = "worker.js"
 compatibility_date = "2026-10-05"
 
 [assets]
 directory = "."
 
-# Existing KV namespace used by the previous Cloudflare-ready package.
-# If your Cloudflare account does not have this namespace, create a KV
-# namespace and replace the id below with your namespace ID.
 [[kv_namespaces]]
 binding = "SFU_DATA"
 id = "36532c16779143c49c83a10679eb5514"

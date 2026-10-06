@@ -1,75 +1,75 @@
-const DATA_KEY = "site-data";
+const DATA_KEY = "site";
+const AUTH_KEY = "admin_auth";
+const RESET_KEY = "admin_reset";
 
-const seedProfiles = [
-  {id:1,name:"Ananya",location:"MVP Colony",description:"Warm, social and interested in meaningful conversations, coffee dates and discovering new places.",photo:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=90",rating:4.9,reviews:18,contact:"",whatsapp:"",showContact:false,showWhatsapp:false},
-  {id:2,name:"Meera",location:"Dwaraka Nagar",description:"Enjoys travel, music, good food and relaxed conversations with respectful people.",photo:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=90",rating:4.8,reviews:15,contact:"",whatsapp:"",showContact:false,showWhatsapp:false},
-  {id:3,name:"Kavya",location:"Siripuram",description:"Friendly adult dating profile focused on conversation, shared interests and good company.",photo:"https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=90",rating:4.7,reviews:12,contact:"",whatsapp:"",showContact:false,showWhatsapp:false},
-  {id:4,name:"Isha",location:"Maddilapalem",description:"Loves movies, cafes and weekend outings. Looking for respectful adult connections.",photo:"https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=90",rating:4.6,reviews:11,contact:"",whatsapp:"",showContact:false,showWhatsapp:false},
-  {id:5,name:"Nisha",location:"Rushikonda",description:"Beach walks, travel and conversations over coffee. Privacy and mutual respect are important.",photo:"https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=900&q=90",rating:4.5,reviews:9,contact:"",whatsapp:"",showContact:false,showWhatsapp:false},
-  {id:6,name:"Pooja",location:"Gajuwaka",description:"A polished demo profile for adult dating and companionship.",photo:"https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=90",rating:4.4,reviews:8,contact:"",whatsapp:"",showContact:false,showWhatsapp:false},
-  {id:7,name:"Riya",location:"Akkayyapalem",description:"Enjoys fitness, food and city life. Open to meeting after getting to know someone.",photo:"https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=900&q=90",rating:4.3,reviews:7,contact:"",whatsapp:"",showContact:false,showWhatsapp:false},
-  {id:8,name:"Sneha",location:"Waltair",description:"Creative, outgoing and interested in respectful adult companionship.",photo:"https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=900&q=90",rating:4.2,reviews:6,contact:"",whatsapp:"",showContact:false,showWhatsapp:false},
-  {id:9,name:"Divya",location:"Beach Road",description:"Travel, restaurants and relaxed evenings. Clear communication and privacy come first.",photo:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=90",rating:4.1,reviews:5,contact:"",whatsapp:"",showContact:false,showWhatsapp:false},
-  {id:10,name:"Asha",location:"MVP Colony",description:"Demo adult profile. Contact details are intentionally blank until an admin adds consented information.",photo:"https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=90",rating:4.0,reviews:4,contact:"",whatsapp:"",showContact:false,showWhatsapp:false},
-  {id:11,name:"Priya",location:"Dwaraka Nagar",description:"Enjoys books, music and exploring new cafes. Looking for genuine adult connections.",photo:"https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=90",rating:3.9,reviews:4,contact:"",whatsapp:"",showContact:false,showWhatsapp:false},
-  {id:12,name:"Lakshmi",location:"Siripuram",description:"Demo listing with a clean, professional profile presentation.",photo:"https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=900&q=90",rating:3.8,reviews:3,contact:"",whatsapp:"",showContact:false,showWhatsapp:false}
-];
-
-const defaultContent = {
-  brand:"Satisfaction for U", eyebrow:"PRIVATE CONNECTIONS",
-  heroTitle:'Meet someone worth<br><span class="hero-pink">your time.</span>',
-  heroDescription:"Discover adult dating and companionship profiles in your area, with privacy, consent and respectful communication at the center.",
-  heroPrimary:"Browse profiles", heroSecondary:"Our safety standards",
-  featuredTitle:"Featured profiles", featuredSubtitle:"Explore profiles and start with a respectful conversation.",
-  safetyTitle:"Safety & respect", safetyText:"Adults only. Consent first. Keep conversations respectful and protect your privacy.",
-  howTitle:"How it works", howText:"Browse profiles, review general details, then start a private conversation.",
-  promptsTitle:"Women seeking men", promptsText:"Use clear, respectful profile prompts to describe interests, expectations and boundaries.",
-  footerNote:"Adults 18+ • Consent first • Respectful connections",
-  seoTitle:"Satisfaction for U — Adult Dating & Companionship", seoDescription:"Discover adult dating and companionship profiles with privacy, consent and respectful communication.",
-  siteUrl:"", ogImage:"", robots:"index,follow"
-};
-
-const initialData = () => ({version:0,profiles:seedProfiles,reviews:[],settings:{theme:"dark"},content:defaultContent});
-
-function json(body,status=200){
-  return new Response(JSON.stringify(body),{status,headers:{"content-type":"application/json; charset=utf-8","cache-control":"no-store"}});
+function json(data,status=200){return new Response(JSON.stringify(data),{status,headers:{"content-type":"application/json","cache-control":"no-store"}})}
+async function hashPassword(password){
+  const b=new TextEncoder().encode(String(password));
+  const h=await crypto.subtle.digest("SHA-256",b);
+  return [...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,"0")).join("");
 }
-
-async function readData(env){
-  const raw = await env.SFU_DATA.get(DATA_KEY);
-  if(raw){
-    try { return JSON.parse(raw); } catch {}
-  }
-  const data=initialData();
-  await env.SFU_DATA.put(DATA_KEY,JSON.stringify(data));
-  return data;
+async function getAuth(env){
+  const raw=await env.SFU_DATA.get(AUTH_KEY);
+  if(raw) return JSON.parse(raw);
+  const auth={username:"Manoj",passwordHash:await hashPassword("Manoj@2027"),recoveryEmail:"",createdAt:Date.now()};
+  await env.SFU_DATA.put(AUTH_KEY,JSON.stringify(auth));
+  return auth;
 }
-
+async function sendResetEmail(env,to,code){
+  const key=env.RESEND_API_KEY;
+  if(!key) return {ok:false,error:"RESEND_API_KEY is not configured"};
+  const from=env.RESEND_FROM || "onboarding@resend.dev";
+  const r=await fetch("https://api.resend.com/emails",{method:"POST",headers:{"Authorization":`Bearer ${key}`,"Content-Type":"application/json"},body:JSON.stringify({from,to:[to],subject:"Satisfaction for U - Password reset code",html:`<div style="font-family:Arial,sans-serif"><h2>Password reset</h2><p>Your verification code is:</p><div style="font-size:32px;font-weight:700;letter-spacing:8px">${code}</div><p>This code expires in 10 minutes.</p><p>If you did not request this, ignore this email.</p></div>`})});
+  if(!r.ok) return {ok:false,error:await r.text()};
+  return {ok:true};
+}
 export default {
-  async fetch(request,env){
-    const url=new URL(request.url);
-    if(url.pathname==="/api/health") return new Response("ok",{headers:{"cache-control":"no-store"}});
-    if(url.pathname==="/api/data"){
-      const data=await readData(env);
-      if(request.method==="GET") return json(data);
-      if(request.method!=="PUT") return json({error:"Method not allowed"},405);
-      if(!request.headers.get("content-type")?.includes("application/json")) return json({error:"JSON required"},415);
-      let incoming;
-      try { incoming=await request.json(); } catch { return json({error:"Invalid JSON"},400); }
-      const expected=Number(incoming.expectedVersion ?? -1);
-      if(expected!==Number(data.version)) return json({error:"Version conflict",version:data.version},409);
-      const next={
-        version:Number(data.version)+1,
-        profiles:Array.isArray(incoming.profiles)?incoming.profiles:data.profiles,
-        reviews:Array.isArray(incoming.reviews)?incoming.reviews:data.reviews,
-        settings:incoming.settings&&typeof incoming.settings==="object"?incoming.settings:data.settings,
-        content:incoming.content&&typeof incoming.content==="object"?incoming.content:data.content
-      };
-      const body=JSON.stringify(next);
-      if(body.length>24*1024*1024) return json({error:"Data too large. Please use smaller/compressed images."},413);
-      await env.SFU_DATA.put(DATA_KEY,body);
-      return json({ok:true,version:next.version});
-    }
-    return env.ASSETS.fetch(request);
+ async fetch(request,env,ctx){
+  const url=new URL(request.url);
+  if(url.pathname==="/api/data"){
+   if(request.method==="GET"){
+    const raw=await env.SFU_DATA.get(DATA_KEY);
+    return new Response(raw||JSON.stringify({profiles:[],reviews:[],settings:{},content:{}}),{headers:{"content-type":"application/json","cache-control":"no-store"}});
+   }
+   if(request.method==="PUT"){
+    if(!request.headers.get("content-type")?.includes("application/json"))return new Response("JSON required",{status:415});
+    const data=await request.json();
+    const clean={profiles:Array.isArray(data.profiles)?data.profiles:[],reviews:Array.isArray(data.reviews)?data.reviews:[],settings:data.settings&&typeof data.settings==="object"?data.settings:{},content:data.content&&typeof data.content==="object"?data.content:{}};
+    const body=JSON.stringify(clean); if(body.length>24*1024*1024)return new Response("Data too large",{status:413});
+    await env.SFU_DATA.put(DATA_KEY,body); return json({ok:true});
+   }
+   return new Response("Method not allowed",{status:405});
   }
+  if(url.pathname==="/api/auth/status"&&request.method==="GET"){
+   const a=await getAuth(env); return json({ok:true,username:a.username,recoveryEmail:a.recoveryEmail||""});
+  }
+  if(url.pathname==="/api/auth/login"&&request.method==="POST"){
+   const {username,password}=await request.json(); const a=await getAuth(env);
+   const ok=String(username||"").trim()===a.username && (await hashPassword(password||""))===a.passwordHash;
+   return ok?json({ok:true}):json({ok:false,error:"Invalid username or password."},401);
+  }
+  if(url.pathname==="/api/auth/change"&&request.method==="POST"){
+   const {currentUsername,currentPassword,newUsername,newPassword,recoveryEmail}=await request.json(); const a=await getAuth(env);
+   if(String(currentUsername||"").trim()!==a.username || (await hashPassword(currentPassword||""))!==a.passwordHash)return json({ok:false,error:"Current username or password is incorrect."},401);
+   if(String(newUsername||"").trim().length<3)return json({ok:false,error:"Username must be at least 3 characters."},400);
+   if(String(newPassword||"").length<8)return json({ok:false,error:"Password must be at least 8 characters."},400);
+   a.username=String(newUsername).trim(); a.passwordHash=await hashPassword(newPassword); if(recoveryEmail!==undefined)a.recoveryEmail=String(recoveryEmail).trim();
+   await env.SFU_DATA.put(AUTH_KEY,JSON.stringify(a)); return json({ok:true,username:a.username,recoveryEmail:a.recoveryEmail||""});
+  }
+  if(url.pathname==="/api/auth/forgot"&&request.method==="POST"){
+   const {username,email}=await request.json(); const a=await getAuth(env);
+   if(String(username||"").trim()!==a.username || !a.recoveryEmail || String(email||"").trim().toLowerCase()!==a.recoveryEmail.toLowerCase())return json({ok:false,error:"Recovery details do not match."},400);
+   const code=String(Math.floor(100000+Math.random()*900000)); await env.SFU_DATA.put(RESET_KEY,JSON.stringify({username:a.username,email:a.recoveryEmail,code,expires:Date.now()+10*60*1000}),{expirationTtl:600});
+   const sent=await sendResetEmail(env,a.recoveryEmail,code); if(!sent.ok)return json({ok:false,error:"Email could not be sent. Configure RESEND_API_KEY in Cloudflare Worker Secrets."},503);
+   return json({ok:true,message:"Verification code sent to your recovery Gmail."});
+  }
+  if(url.pathname==="/api/auth/reset"&&request.method==="POST"){
+   const {username,email,code,newPassword}=await request.json(); const a=await getAuth(env); const raw=await env.SFU_DATA.get(RESET_KEY); const rec=raw?JSON.parse(raw):null;
+   if(!rec || Date.now()>rec.expires || rec.username!==a.username || String(email||"").trim().toLowerCase()!==rec.email.toLowerCase() || String(code||"").trim()!==rec.code)return json({ok:false,error:"Invalid or expired verification code."},400);
+   if(String(newPassword||"").length<8)return json({ok:false,error:"Password must be at least 8 characters."},400);
+   a.passwordHash=await hashPassword(newPassword); await env.SFU_DATA.put(AUTH_KEY,JSON.stringify(a)); await env.SFU_DATA.delete(RESET_KEY); return json({ok:true});
+  }
+  if(url.pathname==="/api/health")return new Response("ok");
+  return env.ASSETS.fetch(request);
+ }
 };
