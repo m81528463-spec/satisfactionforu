@@ -383,6 +383,8 @@ function closeModal(){$("modal").classList.add("hidden")}
 function submitReview(id){let text=$("reviewText").value.trim(),rating=+$("reviewRating").value;if(!text)return alert("Please write a review.");reviews.push({id:Date.now(),profileId:id,rating,text,approved:false});save();alert("Review submitted for admin approval.");closeModal()}
 async function init(){
  await sfuServerLoad();
+ profiles=JSON.parse(localStorage.getItem("sfu_profiles")||"null")||DEMO;
+ reviews=JSON.parse(localStorage.getItem("sfu_reviews")||"[]");
  settings=JSON.parse(localStorage.getItem("sfu_settings")||"{}");
  if(settings.theme==="light") document.body.classList.add("sfu-light");
  if(settings.accentColor) document.documentElement.style.setProperty("--sfu-accent",settings.accentColor);
