@@ -4,90 +4,64 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0b0710">
-<meta name="description" content="Discover adult dating and companionship profiles in Visakhapatnam with privacy, consent and respectful communication.">
-<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-<meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-<link rel="canonical" href="https://satisfactionforu.cyou/">
-<meta property="og:url" content="https://satisfactionforu.cyou/">
-<meta property="og:title" content="Satisfaction for U | Private Adult Dating & Companionship">
-<meta property="og:description" content="Discover adult dating and companionship profiles in Visakhapatnam with privacy, consent and respectful communication.">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Satisfaction for U">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Satisfaction for U | Private Adult Dating & Companionship">
-<meta name="twitter:description" content="Discover adult dating and companionship profiles in Visakhapatnam with privacy, consent and respectful communication.">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <title>Satisfaction for U | Private Adult Dating & Companionship</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','ui-sans-serif','system-ui']},colors:{brand:'#e83e8c',ink:'#0b0710'}}}}
 </script>
 <style>
-*{scroll-behavior:smooth}body{font-family:Inter,ui-sans-serif,system-ui;background:#09070b;color:#fff}
-.glass{background:rgba(255,255,255,.065);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.09)}
-.hero{background-size:cover;background-position:center}
+*{scroll-behavior:smooth}
+:root{
+  --sfu-primary:#e83e8c;--sfu-secondary:#8b5cf6;--sfu-accent:#25D366;
+  --sfu-bg:#fff8fc;--sfu-text:#241522;--sfu-muted:#6f6170;--sfu-card:#ffffff;
+  --sfu-border:rgba(36,21,34,.10);--sfu-header:rgba(255,255,255,.88);
+}
+html.dark{
+  --sfu-bg:#0c0910;--sfu-text:#fff;--sfu-muted:rgba(255,255,255,.62);
+  --sfu-card:#17111b;--sfu-border:rgba(255,255,255,.10);--sfu-header:rgba(12,9,16,.88);
+}
+body{font-family:Inter,ui-sans-serif,system-ui;background:var(--sfu-bg);color:var(--sfu-text);transition:background .25s,color .25s}
+.glass{background:color-mix(in srgb,var(--sfu-card) 82%,transparent);backdrop-filter:blur(18px);border:1px solid var(--sfu-border)}
+.hero{background-size:cover;background-position:center;position:relative}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,248,252,.97) 0%,rgba(255,248,252,.86) 42%,rgba(255,248,252,.25) 100%);z-index:0}
+html.dark .hero:before{background:linear-gradient(90deg,rgba(12,9,16,.96) 0%,rgba(12,9,16,.78) 42%,rgba(12,9,16,.18) 100%)}
+.hero>*{position:relative;z-index:1}
 .card{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
-.card:hover{transform:translateY(-5px);box-shadow:0 20px 55px rgba(0,0,0,.32);border-color:rgba(232,62,140,.35)}
+.card:hover{transform:translateY(-5px);box-shadow:0 20px 55px rgba(50,20,50,.16);border-color:rgba(232,62,140,.35)}
 .line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:#09070b}::-webkit-scrollbar-thumb{background:#3b2635;border-radius:99px}
-
 .listing-card{display:grid;grid-template-columns:minmax(145px,34%) 1fr;min-height:245px}
-.listing-photo{height:100%;min-height:245px}
-.listing-body{padding:18px 20px}
-.listing-title{font-size:1.18rem;line-height:1.22;font-weight:800;color:#f472b6}
-.listing-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;color:rgba(255,255,255,.68);font-size:.86rem}
+.listing-photo{height:100%;min-height:245px}.listing-body{padding:18px 20px}
+.listing-title{font-size:1.18rem;line-height:1.22;font-weight:800;color:var(--sfu-primary)}
+.listing-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;color:var(--sfu-muted);font-size:.86rem}
 .listing-action{display:flex;gap:10px;margin-top:18px}
+.sfu-muted{color:var(--sfu-muted)} .sfu-border{border-color:var(--sfu-border)}
+.sfu-card{background:var(--sfu-card);border:1px solid var(--sfu-border)}
+.sfu-header{background:var(--sfu-header);border-color:var(--sfu-border)}
+.sfu-input{background:var(--sfu-card);border:1px solid var(--sfu-border);color:var(--sfu-text)}
+.sfu-section-soft{background:color-mix(in srgb,var(--sfu-card) 65%,transparent)}
 @media(max-width:560px){
-  .listing-card{display:block;min-height:0}
-  .listing-photo{height:310px;min-height:310px;width:100%}
-  .listing-body{padding:16px 14px 18px}
-  .listing-title{font-size:1.08rem}
-  .listing-action{flex-direction:column;gap:8px}
-  .listing-action a,.listing-action button{width:100%;font-size:.84rem;padding:10px 9px}
-  .listing-desc{font-size:.84rem;line-height:1.5}
+ .listing-card{grid-template-columns:43% 57%;min-height:210px}.listing-photo{min-height:210px}
+ .listing-body{padding:14px 13px}.listing-title{font-size:1rem}
+ .listing-action{flex-direction:column;gap:7px}
+ .listing-action a,.listing-action button{width:100%;font-size:.78rem;padding:9px 8px}
+ .listing-desc{font-size:.8rem;line-height:1.45}
 }
 </style>
 
-<script>
-/* Permanent Cloudflare KV sync */
-async function sfuServerLoad(){
-  try{
-    const r=await fetch('/api/data',{cache:'no-store'});
-    if(!r.ok) return;
-    const d=await r.json();
-    if(d.profiles) localStorage.setItem('sfu_profiles',JSON.stringify(d.profiles));
-    if(d.reviews) localStorage.setItem('sfu_reviews',JSON.stringify(d.reviews));
-    if(d.settings) localStorage.setItem('sfu_settings',JSON.stringify(d.settings));
-    if(d.content) localStorage.setItem('sfu_site_content',JSON.stringify(d.content));
-  }catch(e){ console.warn('Server data unavailable; using local cached data.',e); }
-}
-async function sfuServerSave(){
-  try{
-    const payload={
-      profiles:JSON.parse(localStorage.getItem('sfu_profiles')||'[]'),
-      reviews:JSON.parse(localStorage.getItem('sfu_reviews')||'[]'),
-      settings:JSON.parse(localStorage.getItem('sfu_settings')||'{}'),
-      content:JSON.parse(localStorage.getItem('sfu_site_content')||'{}')
-    };
-    await fetch('/api/data',{method:'PUT',headers:{'content-type':'application/json'},body:JSON.stringify(payload)});
-  }catch(e){ console.warn('Server save failed',e); }
-}
-</script>
 <script>
 /* Satisfaction for U — editable site content */
 const SFU_CONTENT_KEY = "sfu_site_content";
 const SFU_DEFAULT_CONTENT = {
   brand:"Satisfaction for U",
   eyebrow:"PRIVATE CONNECTIONS",
-  heroTitle:'<span id="heroTitle">Meet people.<br>Connect privately.<br>Date respectfully.</span>',
-  heroDescription:'<span id="heroDescription">A local adult dating and companionship directory.</span>',
-  heroPrimary:'<span id="heroPrimary">Browse profiles</span>',
-  heroSecondary:'<span id="heroSecondary">Our safety standards</span>',
-  featuredTitle:'<span id="featuredTitle">Discover profiles</span>',
-  featuredSubtitle:'<span id="featuredSubtitle">Explore adult profiles by general area.</span>',
-  safetyTitle:'<span id="safetyTitle">Safety &amp; respect</span>',
-  safetyText:'<span id="safetyText">Adults only. Consent first.</span> Keep conversations respectful and protect your privacy.',
+  heroTitle:"Meet people.<br>Connect privately.<br>Date respectfully.",
+  heroDescription:"A local adult dating and companionship directory.",
+  heroPrimary:"Browse profiles",
+  heroSecondary:"Our safety standards",
+  featuredTitle:"Discover profiles",
+  featuredSubtitle:"Explore adult profiles by general area.",
+  safetyTitle:"Safety & respect",
+  safetyText:"Adults only. Consent first. Keep conversations respectful and protect your privacy.",
   howTitle:"How it works",
   howText:"Browse profiles, review general details, then start a private conversation.",
   promptsTitle:"Women seeking men",
@@ -156,69 +130,49 @@ function sfuApplyContent(){
 <meta id="sfu-twitter-image" name="twitter:image" content="">
 <meta id="sfu-robots" name="robots" content="index,follow">
 <script id="sfu-seo-jsonld" type="application/ld+json">{}</script>
-<style id="sfu-design-css">
-:root{--sfu-accent:#e83e8c;--sfu-accent2:#a855f7;--sfu-bg:#09070b}
-body.sfu-light{background:#f7f7fb!important;color:#17131a!important}
-body.sfu-light .glass{background:rgba(255,255,255,.78)!important;border-color:rgba(0,0,0,.08)!important;color:#17131a}
-body.sfu-light .text-white\/45,body.sfu-light .text-white\/55,body.sfu-light .text-white\/65{color:rgba(23,19,26,.72)!important}
-body.sfu-light header{background:rgba(255,255,255,.92)!important;border-color:rgba(0,0,0,.08)!important;color:#17131a!important}
-body.sfu-light header a,body.sfu-light header b{color:#17131a!important}
-body.sfu-light #hero{color:#17131a!important}
-body.sfu-light #hero h1{color:#17131a!important;text-shadow:0 1px 2px rgba(255,255,255,.5)}
-body.sfu-light #hero #heroDescription,body.sfu-light #hero #siteTagline{color:rgba(23,19,26,.78)!important}
-body.sfu-light #hero .glass{background:rgba(255,255,255,.78)!important;color:#17131a!important;border-color:rgba(0,0,0,.10)!important}
-body.sfu-light .listing-meta{color:rgba(23,19,26,.72)!important}
-body.sfu-light .listing-desc{color:rgba(23,19,26,.68)!important}
-.sfu-accent{color:var(--sfu-accent)!important}
-
-/* Admin theme studio */
-:root{--sfu-bg:#09070b;--sfu-text:#fff;--sfu-surface:rgba(255,255,255,.065);--sfu-radius:2rem;--sfu-gap:1.25rem}
-body.sfu-custom{background:var(--sfu-bg)!important;color:var(--sfu-text)!important}
-body.sfu-custom .bg-pink-600,body.sfu-custom .bg-pink-500,body.sfu-custom .bg-pink-400{background:var(--sfu-accent)!important}
-body.sfu-custom .text-pink-400,body.sfu-custom .text-pink-300,body.sfu-custom .text-pink-200{color:var(--sfu-accent)!important}
-body.sfu-custom .border-pink-400\/15,body.sfu-custom .border-pink-500\/60{border-color:color-mix(in srgb,var(--sfu-accent) 35%,transparent)!important}
-body.sfu-custom .bg-fuchsia-700{background:var(--sfu-accent2)!important}
-body.sfu-custom .glass{background:var(--sfu-surface)!important}
-body.sfu-custom .rounded-\[2rem\]{border-radius:var(--sfu-radius)!important}
-body.sfu-custom.sfu-compact section{padding-top:3.5rem;padding-bottom:3.5rem}
-body.sfu-custom.sfu-spacious section{padding-top:5.5rem;padding-bottom:5.5rem}
-body.sfu-no-motion *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-body.sfu-flat-cards #grid>div{border-radius:1rem!important;box-shadow:none!important}
-body.sfu-soft-cards #grid>div{border-radius:2rem!important;box-shadow:0 18px 50px rgba(0,0,0,.16)!important}
-body.sfu-pill-buttons a.rounded-full,body.sfu-pill-buttons button.rounded-xl{border-radius:999px!important}
-body.sfu-square-buttons a.rounded-full,body.sfu-square-buttons button.rounded-xl{border-radius:.75rem!important}
-</style></head>
-<body>
-<header class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#09070b]/80 backdrop-blur-xl">
- <div class="max-w-7xl mx-auto px-5 h-20 flex items-center justify-between">
-  <a href="#" class="flex items-center gap-3">
-   <span class="w-10 h-10 rounded-2xl bg-gradient-to-br from-pink-500 to-fuchsia-700 grid place-items-center shadow-lg shadow-pink-900/30">♡</span>
-   <span><b class="block text-lg tracking-tight">Satisfaction for U</b><small class="text-[10px] uppercase tracking-[.22em] text-white/45">Private connections</small></span>
+</head>
+<body id="sfuBody">
+<header class="fixed top-0 left-0 right-0 z-50 border-b sfu-border sfu-header backdrop-blur-xl">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 h-[72px] flex items-center justify-between gap-3">
+  <a href="#" class="flex items-center gap-3 min-w-0">
+   <span class="w-10 h-10 shrink-0 rounded-2xl bg-gradient-to-br from-[var(--sfu-primary)] to-[var(--sfu-secondary)] grid place-items-center text-white shadow-lg">♡</span>
+   <span class="min-w-0"><b class="block text-base sm:text-lg tracking-tight truncate">Satisfaction for U</b><small class="block text-[9px] sm:text-[10px] uppercase tracking-[.18em] sfu-muted">Private connections</small></span>
   </a>
-  <nav class="hidden md:flex items-center gap-7 text-sm text-white/65">
-   <a href="#profiles" class="hover:text-white">Profiles</a><a href="#how" class="hover:text-white">How it works</a><a href="#safety" class="hover:text-white">Safety</a>
+  <nav class="hidden md:flex items-center gap-6 text-sm sfu-muted">
+   <a href="#profiles" class="hover:text-[var(--sfu-primary)]">Profiles</a>
+   <a href="#safety" class="hover:text-[var(--sfu-primary)]">Safety</a>
   </nav>
-  <a href="#profiles" class="rounded-full bg-white text-black px-5 py-2.5 text-sm font-bold hover:bg-pink-100">Explore profiles</a>
+  <div class="flex items-center gap-2">
+   <a href="#profiles" class="hidden sm:inline-flex rounded-full bg-[var(--sfu-primary)] text-white px-5 py-2.5 text-sm font-bold hover:brightness-110">Explore profiles</a>
+   <button id="themeToggle" type="button" aria-label="Toggle light and dark mode" class="w-11 h-11 rounded-full sfu-card grid place-items-center text-lg">☾</button>
+  </div>
  </div>
 </header>
 
-
-<section id="hero" class="hero min-h-[720px] pt-20 flex items-end" style="background-image:linear-gradient(90deg,rgba(9,7,11,.96) 0%,rgba(9,7,11,.78) 42%,rgba(9,7,11,.2) 100%),linear-gradient(0deg,#09070b 0%,transparent 55%),url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=2400&q=95')">
- <div class="max-w-7xl w-full mx-auto px-5 pb-24 md:pb-28">
+<section id="hero" class="hero min-h-[650px] sm:min-h-[700px] pt-20 flex items-center" style="background-image:url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=2400&q=95')">
+ <div class="max-w-7xl w-full mx-auto px-5 py-20 sm:py-24">
   <div class="max-w-3xl">
-   <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs font-semibold text-pink-200"><i class="w-1.5 h-1.5 rounded-full bg-emerald-400"></i> Adults 18+ • Private & respectful</span>
-   <h1 id="siteTitle" class="mt-7 text-5xl md:text-7xl font-black leading-[.96] tracking-[-.045em]">Meet someone worth<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-fuchsia-500">your time.</span></h1>
-   <p id="siteTagline" class="mt-7 max-w-xl text-lg md:text-xl leading-8 text-white/65">Discover adult dating and companionship profiles in your area, with privacy, consent and respectful communication at the center.</p>
-   <div class="mt-9 flex flex-wrap gap-3">
-    <a href="#profiles" class="px-6 py-3.5 rounded-full bg-pink-600 hover:bg-pink-500 font-bold shadow-xl shadow-pink-950/40">Browse profiles</a>
-    <a href="#safety" class="px-6 py-3.5 rounded-full glass font-semibold">Our safety standards</a>
+   <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs font-semibold text-[var(--sfu-primary)]">
+    <i class="w-1.5 h-1.5 rounded-full bg-emerald-500"></i> Adults 18+ • Private & respectful
+   </span>
+   <h1 id="siteTitle" class="mt-6 text-4xl sm:text-5xl md:text-7xl font-black leading-[.98] tracking-[-.045em]">
+    Meet someone worth<br><span class="text-[var(--sfu-primary)]">your time.</span>
+   </h1>
+   <p id="siteTagline" class="mt-6 max-w-xl text-base sm:text-lg md:text-xl leading-8 sfu-muted">
+    Discover adult dating and companionship profiles in your area, with privacy, consent and respectful communication at the center.
+   </p>
+   <div class="mt-8 flex flex-wrap gap-3">
+    <a href="#profiles" class="px-6 py-3.5 rounded-full bg-[var(--sfu-primary)] text-white hover:brightness-110 font-bold shadow-xl">Browse profiles</a>
+    <a href="#safety" class="px-6 py-3.5 rounded-full glass font-semibold">Safety standards</a>
    </div>
-   <div class="mt-10 flex flex-wrap gap-7 text-sm text-white/45"><span>✓ Adults only</span><span>✓ Consent first</span><span>✓ Public meeting guidance</span></div>
+   <div class="mt-8 flex flex-wrap gap-5 text-sm sfu-muted">
+    <span>✓ Adults only</span><span>✓ Consent first</span><span>✓ Public meeting guidance</span>
+   </div>
   </div>
  </div>
 </section>
 
-<section id="ticker" class="border-y border-white/8 bg-white/[.025]">
+<section class="border-y border-white/8 bg-white/[.025]">
  <div class="max-w-7xl mx-auto px-5 py-5 flex flex-wrap gap-7 justify-center md:justify-start text-sm text-white/45">
   <span>Private conversations</span><span>•</span><span>Respectful connections</span><span>18+ only</span>
  </div>
@@ -229,28 +183,17 @@ body.sfu-square-buttons a.rounded-full,body.sfu-square-buttons button.rounded-xl
  <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-9">
   <div><p class="text-pink-400 text-xs font-bold uppercase tracking-[.22em]">Discover</p><h2 class="mt-2 text-4xl font-black tracking-tight">Featured profiles</h2><p class="mt-3 text-white/45">Explore profiles and start with a respectful conversation.</p></div>
   <div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
-   <input id="search" class="w-full sm:w-64 bg-white/5 border border-white/10 rounded-2xl px-4 py-3 outline-none focus:border-pink-500/60" placeholder="Search profiles…">
-   <select id="locationFilter" class="bg-[#110d14] border border-white/10 rounded-2xl px-4 py-3 outline-none"><option value="">All locations</option></select>
-   <select id="sort" class="bg-[#110d14] border border-white/10 rounded-2xl px-4 py-3 outline-none"><option value="rating">Top rated</option><option value="newest">Newest</option><option value="name">Name</option></select>
+   <input id="search" class="sfu-input w-full sm:w-64 rounded-2xl px-4 py-3 outline-none focus:border-pink-500/60" placeholder="Search profiles…">
+   <select id="locationFilter" class="sfu-input rounded-2xl px-4 py-3 outline-none"><option value="">All locations</option></select>
+   <select id="sort" class="sfu-input rounded-2xl px-4 py-3 outline-none"><option value="rating">Top rated</option><option value="newest">Newest</option><option value="name">Name</option></select>
   </div>
  </div>
  <div id="grid" class="grid grid-cols-1 gap-5 max-w-5xl mx-auto"></div>
 </section>
 
-<section id="how" class="max-w-7xl mx-auto px-5 pb-20">
- <div class="glass rounded-[2rem] p-7 md:p-10">
-  <p class="text-pink-400 text-xs font-bold uppercase tracking-[.22em]">Simple by design</p><h2 class="mt-2 text-3xl md:text-4xl font-black">A better way to meet.</h2>
-  <div class="grid md:grid-cols-3 gap-5 mt-8">
-   <div class="rounded-2xl bg-black/20 p-6"><span class="text-2xl">01</span><h3 class="mt-5 font-bold text-lg">Explore</h3><p class="mt-2 text-sm text-white/45 leading-6">Browse adult profiles using location and rating filters.</p></div>
-   <div class="rounded-2xl bg-black/20 p-6"><span class="text-2xl">02</span><h3 class="mt-5 font-bold text-lg">Connect</h3><p class="mt-2 text-sm text-white/45 leading-6">Choose a profile and use the contact options provided by the profile owner.</p></div>
-   <div class="rounded-2xl bg-black/20 p-6"><span class="text-2xl">03</span><h3 class="mt-5 font-bold text-lg">Meet safely</h3><p class="mt-2 text-sm text-white/45 leading-6">Start in a public place, communicate clearly and respect boundaries.</p></div>
-  </div>
- </div>
-</section>
-
 <section id="safety" class="max-w-7xl mx-auto px-5 pb-20">
  <div class="grid lg:grid-cols-[1fr_1.5fr] gap-6 items-stretch">
-  <div class="rounded-[2rem] bg-gradient-to-br from-pink-600/20 to-fuchsia-700/5 border border-pink-400/15 p-8">
+  <div class="rounded-[2rem] bg-gradient-to-br from-pink-100/70 to-fuchsia-100/30 dark:from-pink-600/20 dark:to-fuchsia-700/5 border border-pink-200 dark:border-pink-400/15 p-8">
    <p class="text-pink-300 text-xs font-bold uppercase tracking-[.22em]">Safety & respect</p>
    <h2 class="mt-3 text-3xl font-black">Your boundaries matter.</h2>
    <p class="mt-4 text-white/55 leading-7">Only adults should use this website. Never share passwords, financial information or a private home address with someone you have just met.</p>
@@ -264,21 +207,6 @@ body.sfu-square-buttons a.rounded-full,body.sfu-square-buttons button.rounded-xl
  </div>
 </section>
 
-<section id="prompts" class="max-w-7xl mx-auto px-5 pb-24">
- <div class="glass rounded-[2rem] p-7 md:p-10">
-  <p class="text-pink-400 text-xs font-bold uppercase tracking-[.22em]">Women seeking men</p>
-  <h2 class="mt-2 text-3xl font-black">Professional profile prompts</h2>
-  <p class="mt-2 text-white/45">Use these questions to create clearer, respectful profiles.</p>
-  <div class="grid md:grid-cols-2 gap-3 mt-7">
-   <div class="bg-black/20 rounded-xl p-4"><b>What are you looking for?</b><p class="text-sm text-white/40 mt-1">Dating, companionship, friendship or a relationship?</p></div>
-   <div class="bg-black/20 rounded-xl p-4"><b>What kind of person would you like to meet?</b><p class="text-sm text-white/40 mt-1">Personality, interests or lifestyle preferences.</p></div>
-   <div class="bg-black/20 rounded-xl p-4"><b>What are your interests?</b><p class="text-sm text-white/40 mt-1">Travel, food, movies, music, fitness and hobbies.</p></div>
-   <div class="bg-black/20 rounded-xl p-4"><b>What is your ideal first meeting?</b><p class="text-sm text-white/40 mt-1">Coffee, restaurant, public place or a walk.</p></div>
-   <div class="bg-black/20 rounded-xl p-4"><b>How do you prefer to communicate?</b><p class="text-sm text-white/40 mt-1">Chat, phone, video call or meeting after chatting.</p></div>
-   <div class="bg-black/20 rounded-xl p-4"><b>What boundaries should others respect?</b><p class="text-sm text-white/40 mt-1">Only share boundaries you are comfortable publishing.</p></div>
-  </div>
- </div>
-</section>
 </main>
 
 <footer class="border-t border-white/10">
@@ -313,14 +241,45 @@ const DEMO=[
 let profiles=JSON.parse(localStorage.getItem("sfu_profiles")||"null")||DEMO;
 let reviews=JSON.parse(localStorage.getItem("sfu_reviews")||"[]");
 let settings=JSON.parse(localStorage.getItem("sfu_settings")||"{}");
+let content={...SFU_DEFAULT_CONTENT,...JSON.parse(localStorage.getItem("sfu_site_content")||"{}")}
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[c]));
 function stars(n){let r=Math.round(n||0);return "★".repeat(r)+"☆".repeat(5-r)}
-function save(){
- localStorage.setItem("sfu_profiles",JSON.stringify(profiles));
- localStorage.setItem("sfu_reviews",JSON.stringify(reviews));
- localStorage.setItem("sfu_settings",JSON.stringify(settings));
- sfuServerSave();
+async function save(){
+  localStorage.setItem("sfu_profiles",JSON.stringify(profiles));
+  localStorage.setItem("sfu_reviews",JSON.stringify(reviews));
+  localStorage.setItem("sfu_settings",JSON.stringify(settings));
+  localStorage.setItem("sfu_site_content",JSON.stringify(content));
+  try{
+    const r=await fetch("/api/data",{method:"PUT",headers:{"content-type":"application/json"},body:JSON.stringify({profiles,reviews,settings,content})});
+    if(!r.ok) throw new Error("Save failed");
+    return true;
+  }catch(e){console.error(e);return false}
+}
+async function loadRemote(){
+  try{
+    const r=await fetch("/api/data",{cache:"no-store"});
+    if(!r.ok) throw new Error("API unavailable");
+    const d=await r.json();
+    if(Array.isArray(d.profiles)&&d.profiles.length) profiles=d.profiles;
+    if(Array.isArray(d.reviews)) reviews=d.reviews;
+    if(d.settings&&typeof d.settings==="object") settings=d.settings;
+    if(d.content&&typeof d.content==="object") content={...SFU_DEFAULT_CONTENT,...d.content};
+    SFU_CONTENT={...SFU_DEFAULT_CONTENT,...content};
+    localStorage.setItem("sfu_profiles",JSON.stringify(profiles));
+    localStorage.setItem("sfu_reviews",JSON.stringify(reviews));
+    localStorage.setItem("sfu_settings",JSON.stringify(settings));
+    localStorage.setItem("sfu_site_content",JSON.stringify(content));
+  }catch(e){console.warn("Using local cached data",e)}
+}
+function applyDesign(){
+  const root=document.documentElement;
+  root.style.setProperty("--sfu-primary",settings.primaryColor||"#ec4899");
+  root.style.setProperty("--sfu-secondary",settings.secondaryColor||"#a855f7");
+  root.style.setProperty("--sfu-accent",settings.accentColor||"#25D366");
+  root.style.setProperty("--sfu-light-bg",settings.pageBg||"#fff8fc");
+  root.style.setProperty("--sfu-dark-bg",settings.darkBg||"#0c0910");
+  applyThemeMode(document.documentElement.classList.contains("dark")?"dark":"light");
 }
 function render(){
  let q=$("search").value.toLowerCase().trim(),loc=$("locationFilter").value,sort=$("sort").value;
@@ -346,17 +305,27 @@ function render(){
     </div>
     <p class="listing-desc mt-3 text-sm text-white/55 line-clamp-2">${esc(p.description)}</p>
     <div class="listing-action">
-      <button onclick="openProfile(p.id)" class="flex-1 rounded-xl bg-white text-black py-2.5 font-bold hover:bg-pink-100">View Profile</button>
-      <button onclick="openBooking(p.id)" class="flex-1 rounded-xl bg-[#25D366] text-black py-2.5 font-bold hover:brightness-110">WhatsApp</button>
+      <button onclick="openProfile(${p.id})" class="flex-1 rounded-xl bg-white text-black py-2.5 font-bold hover:bg-pink-100">View Profile</button>
+      <button onclick="openBooking(${p.id})" class="flex-1 rounded-xl bg-[#25D366] text-black py-2.5 font-bold hover:brightness-110">WhatsApp</button>
     </div>
   </div>
 </article>`).join("")||`<div class="col-span-full py-20 text-center text-white/35">No matching profiles.</div>`;
 }
 
+function whatsappNumber(value){
+  const raw = String(value ?? '').trim();
+  const digits = raw.replace(/\D/g,'');
+  if(!digits) return '';
+  // Keep every entered digit. For Indian mobile numbers entered as 10 digits,
+  // add the country code 91; never remove a digit from the saved number.
+  if(digits.length === 10) return '91' + digits;
+  if(digits.length === 12 && digits.startsWith('91')) return digits;
+  return digits;
+}
 function whatsappBooking(p){
-  const phone = String(p.whatsapp || p.phone || '').replace(/\D/g,'');
-  if(!phone){
-    alert('WhatsApp contact is not available for this profile.');
+  const phone = whatsappNumber(p.whatsapp || p.phone);
+  if(!phone || phone.length < 10){
+    alert('Please enter the complete WhatsApp number in Admin.');
     return;
   }
   const message = `Hi ${p.name}, I found your profile on Satisfaction for U. I would like to discuss meeting availability and details.`;
@@ -365,8 +334,8 @@ function whatsappBooking(p){
 function openBooking(id){
   const p = profiles.find(x => x.id === id);
   if(!p) return;
-  const phone = String(p.whatsapp || p.phone || '').replace(/\D/g,'');
-  if(!phone){
+  const phone = whatsappNumber(p.whatsapp || p.phone);
+  if(!phone || phone.length < 10){
     openProfile(id);
     return;
   }
@@ -376,30 +345,43 @@ function openBooking(id){
 
 function openProfile(id){
  let p=profiles.find(x=>x.id===id),rr=reviews.filter(r=>r.profileId===id&&r.approved);
- $("modalContent").innerHTML=`<div class="grid md:grid-cols-[.85fr_1.15fr] gap-7"><img src="${esc(p.photo)}" class="w-full aspect-[4/5] object-cover rounded-2xl"><div><span class="text-xs uppercase tracking-[.2em] text-pink-400">Profile</span><h2 class="mt-2 text-4xl font-black">${esc(p.name)}</h2><p class="text-white/45 mt-1">${esc(p.location)}</p><div class="mt-4 text-amber-300 text-lg">${stars(p.rating)} <span class="text-white text-sm">${(p.rating||0).toFixed(1)} / 5</span></div><p class="mt-6 text-white/60 leading-7">${esc(p.description)}</p><div class="flex gap-3 mt-7">${p.contact?`<a href="tel:${esc(p.contact)}" class="flex-1 text-center py-3 rounded-xl bg-white/10">Call</a>`:""}${p.whatsapp?`<a target="_blank" href="https://wa.me/${String(p.whatsapp).replace(/\\D/g,'')}" class="flex-1 text-center py-3 rounded-xl bg-[#25D366] text-black font-bold">WhatsApp</a>`:""}</div></div></div><div class="mt-8 rounded-2xl border border-pink-500/20 bg-pink-500/5 p-5"><div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"><div><h3 class="text-lg font-bold">Interested in meeting?</h3><p class="mt-1 text-sm text-white/45">Send a private meeting request directly on WhatsApp.</p></div><button onclick="openBooking(${p.id})" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#25D366] text-black font-bold hover:brightness-110">Request to meet / WhatsApp</button></div></div><div class="mt-9 pt-7 border-t border-white/10"><h3 class="text-xl font-bold">Reviews</h3><div class="mt-4 space-y-3">${rr.length?rr.map(r=>`<div class="bg-white/5 rounded-xl p-4"><div class="text-amber-300">${stars(r.rating)}</div><p class="mt-2 text-white/60">${esc(r.text)}</p></div>`).join(""):'<p class="text-white/35">No approved reviews yet.</p>'}</div><div class="mt-7 bg-white/[.035] rounded-2xl p-5"><b>Leave a review</b><select id="reviewRating" class="mt-3 w-full bg-black/30 border border-white/10 rounded-xl p-3"><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option><option value="2">2 stars</option><option value="1">1 star</option></select><textarea id="reviewText" class="mt-3 w-full bg-black/30 border border-white/10 rounded-xl p-3" rows="3" placeholder="Write a respectful review"></textarea><button onclick="submitReview(${p.id})" class="mt-3 px-5 py-3 rounded-xl bg-pink-600 font-bold">Submit for approval</button></div></div>`;
+ $("modalContent").innerHTML=`<div class="grid md:grid-cols-[.85fr_1.15fr] gap-7"><img src="${esc(p.photo)}" class="w-full aspect-[4/5] object-cover rounded-2xl"><div><span class="text-xs uppercase tracking-[.2em] text-pink-400">Profile</span><h2 class="mt-2 text-4xl font-black">${esc(p.name)}</h2><p class="text-white/45 mt-1">${esc(p.location)}</p><div class="mt-4 text-amber-300 text-lg">${stars(p.rating)} <span class="text-white text-sm">${(p.rating||0).toFixed(1)} / 5</span></div><p class="mt-6 text-white/60 leading-7">${esc(p.description)}</p><div class="flex gap-3 mt-7">${p.contact?`<a href="tel:${esc(p.contact)}" class="flex-1 text-center py-3 rounded-xl bg-white/10">Call</a>`:""}${p.whatsapp?`<a target="_blank" href="https://wa.me/${whatsappNumber(p.whatsapp)}" class="flex-1 text-center py-3 rounded-xl bg-[#25D366] text-black font-bold">WhatsApp</a>`:""}</div></div></div><div class="mt-9 pt-7 border-t border-white/10"><h3 class="text-xl font-bold">Reviews</h3><div class="mt-4 space-y-3">${rr.length?rr.map(r=>`<div class="bg-white/5 rounded-xl p-4"><div class="text-amber-300">${stars(r.rating)}</div><p class="mt-2 text-white/60">${esc(r.text)}</p></div>`).join(""):'<p class="text-white/35">No approved reviews yet.</p>'}</div><div class="mt-7 bg-white/[.035] rounded-2xl p-5"><b>Leave a review</b><select id="reviewRating" class="mt-3 w-full bg-black/30 border border-white/10 rounded-xl p-3"><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option><option value="2">2 stars</option><option value="1">1 star</option></select><textarea id="reviewText" class="mt-3 w-full bg-black/30 border border-white/10 rounded-xl p-3" rows="3" placeholder="Write a respectful review"></textarea><button onclick="submitReview(${p.id})" class="mt-3 px-5 py-3 rounded-xl bg-[var(--sfu-primary)] font-bold">Submit for approval</button></div></div>`;
  $("modal").classList.remove("hidden")
 }
 function closeModal(){$("modal").classList.add("hidden")}
-function submitReview(id){let text=$("reviewText").value.trim(),rating=+$("reviewRating").value;if(!text)return alert("Please write a review.");reviews.push({id:Date.now(),profileId:id,rating,text,approved:false});save();alert("Review submitted for admin approval.");closeModal()}
+async function submitReview(id){let text=$("reviewText").value.trim(),rating=+$("reviewRating").value;if(!text)return alert("Please write a review.");reviews.push({id:Date.now(),profileId:id,rating,text,approved:false});const ok=await save();alert(ok?"Review submitted for admin approval.":"Review saved on this device, but server save failed.");closeModal()}
 async function init(){
- await sfuServerLoad();
- profiles=JSON.parse(localStorage.getItem("sfu_profiles")||"null")||DEMO;
- reviews=JSON.parse(localStorage.getItem("sfu_reviews")||"[]");
- settings=JSON.parse(localStorage.getItem("sfu_settings")||"{}");
- if(settings.theme==="light") document.body.classList.add("sfu-light");
- if(settings.accentColor) document.documentElement.style.setProperty("--sfu-accent",settings.accentColor);
- if(settings.accent2Color) document.documentElement.style.setProperty("--sfu-accent2",settings.accent2Color);
- let vizagLocations=["Allipuram","Akkayyapalem","Akkireddypalem","Aganampudi","Anakapalle","Anandapuram","Arilova","Asilmetta","Auto Nagar","Balaji Nagar","Balayya Sastri Layout","Bheemili","BHPV","CBM Compound","Chinna Waltair","China Mushidiwada","Daba Gardens","Daspalla Hills","Dondaparthy","Dwaraka Nagar","Duvvada","East Point Colony","Endada","Gajuwaka","Gambhiram","Gangavaram","Gopalapatnam","HB Colony","Isakathota","Jagadamba Junction","Jail Road","Kailasapuram","Kancharapalem","Kanithi Junction","Kirlampudi Layout","Kurmannapalem","Lawsons Bay Colony","Maddilapalem","Madhavadhara","Madhuranagar","Madhurawada","Maharanipeta","Malkapuram","Marripalem","Mindi","MVP Colony","Naidu Thota","NAD","Narasimha Nagar","Nathayyapalem","New Gajuwaka","Old Gajuwaka","Old Town","One Town","Pandurangapuram","Parawada","Peda Waltair","Pedagantyada","Pendurthi","Pithapuram Colony","Pothinamallayapalem","Prahaladapuram","Purna Market","Port Area","Railway New Colony","Ramnagar","Resapuvanipalem","RK Beach","Rushikonda","Sagar Nagar","Salagramapuram","Santhipuram","Seethammadhara","Seetammadhara Road","Seetamma Peta","Sheela Nagar","Simhachalam","Siripuram","Sriharipuram","Sujatha Nagar","Suryabagh","Thatichetlapalem","TPT Colony","Tunglam","Ukkunagaram","Vadlapudi","Vepagunta","Venkojipalem","Visalakshi Nagar","Vuda Colony","Waltair","Yendada"];let locs=[...new Set([...vizagLocations,...profiles.map(p=>p.location).filter(Boolean)])].sort();$("locationFilter").innerHTML='<option value="">All locations</option>'+locs.map(x=>`<option>${esc(x)}</option>`).join("");if(settings.title)$("siteTitle").innerHTML=esc(settings.title);if(settings.tagline)$("siteTagline").textContent=settings.tagline;applyHeroBackground();applyAdminDesign();render()}
-function applyHeroBackground(){
- const hero=$("hero"); if(!hero)return; const bg=settings.background||"";
- if(bg){
-  const light=document.body.classList.contains("sfu-light");
-  hero.style.backgroundImage=light
-   ? `linear-gradient(90deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.76) 48%,rgba(255,255,255,.18) 100%),linear-gradient(0deg,#f7f7fb 0%,transparent 55%),url('${bg}')`
-   : `linear-gradient(90deg,rgba(9,7,11,.96),rgba(9,7,11,.2)),linear-gradient(0deg,#09070b,transparent 55%),url('${bg}')`;
- }
- if(settings.backgroundPosition)hero.style.backgroundPosition=settings.backgroundPosition;
+  let vizagLocations=["Allipuram","Akkayyapalem","Akkireddypalem","Aganampudi","Anakapalle","Anandapuram","Arilova","Asilmetta","Auto Nagar","Balaji Nagar","Balayya Sastri Layout","Bheemili","BHPV","CBM Compound","Chinna Waltair","Daba Gardens","Daspalla Hills","Dondaparthy","Dwaraka Nagar","Duvvada","East Point Colony","Endada","Gajuwaka","Gambhiram","Gangavaram","Gopalapatnam","HB Colony","Isakathota","Jagadamba Junction","Jail Road","Kailasapuram","Kancharapalem","Kanithi Junction","Kirlampudi Layout","Kurmannapalem","Lawsons Bay Colony","Maddilapalem","Madhavadhara","Madhuranagar","Madhurawada","Maharanipeta","Malkapuram","Marripalem","Mindi","MVP Colony","Naidu Thota","NAD","Narasimha Nagar","Nathayyapalem","New Gajuwaka","Old Gajuwaka","Old Town","One Town","Pandurangapuram","Parawada","Peda Waltair","Pedagantyada","Pendurthi","Pithapuram Colony","Pothinamallayapalem","Prahaladapuram","Purna Market","Port Area","Railway New Colony","Ramnagar","Resapuvanipalem","RK Beach","Rushikonda","Sagar Nagar","Salagramapuram","Santhipuram","Seethammadhara","Seetammadhara Road","Seetamma Peta","Sheela Nagar","Simhachalam","Siripuram","Sriharipuram","Sujatha Nagar","Suryabagh","Thatichetlapalem","TPT Colony","Tunglam","Ukkunagaram","Vadlapudi","Vepagunta","Venkojipalem","Visalakshi Nagar","Vuda Colony","Waltair","Yendada"];
+  await loadRemote();
+  if(!profiles.length) profiles=DEMO;
+  applyDesign();
+  let locs=[...new Set([...vizagLocations,...profiles.map(p=>p.location).filter(Boolean)])].sort();
+  $("locationFilter").innerHTML='<option value="">All locations</option>'+locs.map(x=>`<option>${esc(x)}</option>`).join("");
+  if(settings.title) $("siteTitle").innerHTML=esc(settings.title);
+  if(settings.tagline) $("siteTagline").textContent=settings.tagline;
+  if(settings.background) $("hero").style.backgroundImage=`url('${settings.background}')`;
+  if(settings.backgroundPosition) $("hero").style.backgroundPosition=settings.backgroundPosition;
+  sfuApplyContent();
+  render();
 }
+
+
+function applyThemeMode(mode){
+  const dark = mode === "dark";
+  document.documentElement.classList.toggle("dark", dark);
+  document.documentElement.style.setProperty("--sfu-bg", dark ? (settings.darkBg||"#0c0910") : (settings.pageBg||"#fff8fc"));
+  localStorage.setItem("sfu_theme_mode", mode);
+  const b=document.getElementById("themeToggle");
+  if(b){b.textContent=dark?"☀":"☾";b.title=dark?"Switch to light mode":"Switch to dark mode";}
+}
+function initThemeMode(){
+  const saved=localStorage.getItem("sfu_theme_mode");
+  const mode=saved || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  applyThemeMode(mode);
+  const b=document.getElementById("themeToggle");
+  if(b)b.addEventListener("click",()=>applyThemeMode(document.documentElement.classList.contains("dark")?"light":"dark"));
+}
+initThemeMode();
 ["search","locationFilter","sort"].forEach(x=>$(x).addEventListener("input",render));init();
 </script>
 <script>document.addEventListener('DOMContentLoaded',sfuApplyContent);</script></body>
