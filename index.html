@@ -49,7 +49,7 @@ h1 span{color:#ff38bd}
 .card{border-radius:12px;background:#fff;overflow:hidden;box-shadow:var(--shadow);border:1px solid #e7e7ed}
 .card img{display:block;width:100%;height:190px;object-fit:cover}
 .cardbody{padding:14px 15px;background:#fff}.name{font-weight:900;font-size:18px;line-height:1.25;display:flex;justify-content:space-between;align-items:center;color:#111}.distance{font-weight:700;color:#222;font-size:13px;white-space:nowrap}.distance:before{content:"";display:inline-block;width:9px;height:9px;background:#19d58d;border-radius:50%;margin-right:5px}
-.cardactions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:12px}.viewBtn,.callBtn,.waBtn{border:0;padding:8px 12px;border-radius:20px;cursor:pointer;font-weight:700;font-size:13px}.viewBtn{background:#ff4db8;color:#fff}.callBtn{background:#4a90ff;color:#fff}.waBtn{background:#25D366;color:#fff}
+.cardactions{display:flex;justify-content:center;align-items:center;gap:10px;padding:12px;flex-wrap:wrap}.round{height:36px;border:0;border-radius:22px;cursor:pointer;font-size:14px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;padding:0 13px}.view{background:#f21aa4;color:#fff}.wa{background:#16d39b;color:#fff}.call{background:#ef3025;color:#fff}.gallery-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:9999;padding:20px;overflow:auto}.gallery-box{max-width:900px;margin:20px auto;background:#fff;color:#17171b;border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)}.gallery-head{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;font-weight:900}.gallery-close{border:0;background:#222;color:#fff;border-radius:50%;width:36px;height:36px;font-size:22px;cursor:pointer}.gallery-main{width:100%;height:min(60vh,520px);object-fit:cover;display:block;background:#eee}.thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:10px}.thumbs img{width:100%;height:90px;object-fit:cover;border-radius:10px;cursor:pointer;border:2px solid transparent}.thumbs img.active{border-color:#f21aa4}.gallery-note{padding:0 18px 18px;color:#666;font-size:13px}@media(max-width:480px){.round{padding:0 10px;font-size:13px}.gallery-modal{padding:10px}.gallery-box{margin:10px auto}.gallery-main{height:52vh}.thumbs img{height:62px}}
 .why{color:#fff;max-width:none;padding:50px 5.5%;background:
 linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.34)),
 url("https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=2400&q=100") center/cover no-repeat}
@@ -89,25 +89,20 @@ body.light .hero-inner{color:#17171b}.light .lead{color:#222}.light .checks{colo
 </section>
 
 <section class="section" id="profiles">
-  <h2 id="featuredTitle">Featured profiles</h2>
-  <div class="profiles" id="profilesGrid"></div>
-</section>
-
-<div id="profileModal" class="gallery-modal" style="display:none;position:fixed;inset:0;background:#000c;z-index:9999;overflow:auto;padding:20px">
-  <div style="max-width:900px;margin:30px auto;background:#fff;color:#17171b;border-radius:18px;overflow:hidden;box-shadow:0 20px 60px #0008">
-    <div style="display:flex;justify-content:flex-end;padding:10px 14px;background:#fafafa">
-      <button onclick="closeProfile()" style="border:0;background:#222;color:#fff;border-radius:50%;width:36px;height:36px;font-size:20px;cursor:pointer">×</button>
-    </div>
-    <div style="padding:0 20px 24px">
-      <img id="profileMainImage" src="" alt="" style="width:100%;max-height:520px;object-fit:cover;border-radius:14px">
-      <div id="profileThumbs" style="display:flex;gap:8px;overflow:auto;margin:12px 0"></div>
-      <h2 id="profileModalName" style="margin:10px 0 4px"></h2>
-      <div id="profileModalLocation" style="font-weight:700;color:#777"></div>
-      <p id="profileModalDescription" style="line-height:1.6"></p>
-      <div id="profileModalActions" style="display:flex;gap:10px;flex-wrap:wrap"></div>
-    </div>
+  <h2>Featured profiles</h2>
+  <div class="profiles">
+    <article class="card"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1600&q=90" loading="lazy" alt="Priya profile photo"><div class="cardbody"><div class="name">Priya <span class="distance">2.5 km</span></div></div><div class="cardactions"><button class="round view" onclick="openProfile(0)">View Profile</button><button class="round call" aria-label="Call Priya" title="Call" onclick="location.href='tel:+919000000000'">☎ Call</button><button class="round wa" aria-label="WhatsApp Priya" title="WhatsApp" onclick="openWhatsApp('919000000000')">◉ WhatsApp</button></div></article>
+    <article class="card"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1600&q=90" loading="lazy" alt="Anjali profile photo"><div class="cardbody"><div class="name">Anjali <span class="distance">4.2 km</span></div></div><div class="cardactions"><button class="round view" onclick="openProfile(1)">View Profile</button><button class="round call" aria-label="Call Anjali" title="Call" onclick="location.href='tel:+919000000000'">☎ Call</button><button class="round wa" aria-label="WhatsApp Anjali" title="WhatsApp" onclick="openWhatsApp('919000000000')">◉ WhatsApp</button></div></article>
+    <article class="card"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=90" loading="lazy" alt="Sneha profile photo"><div class="cardbody"><div class="name">Sneha <span class="distance">6.8 km</span></div></div><div class="cardactions"><button class="round view" onclick="openProfile(2)">View Profile</button><button class="round call" aria-label="Call Sneha" title="Call" onclick="location.href='tel:+919000000000'">☎ Call</button><button class="round wa" aria-label="WhatsApp Sneha" title="WhatsApp" onclick="openWhatsApp('919000000000')">◉ WhatsApp</button></div></article>
+    <article class="card"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1600&q=90" loading="lazy" alt="Divya profile photo"><div class="cardbody"><div class="name">Divya <span class="distance">3.7 km</span></div></div><div class="cardactions"><button class="round view" onclick="openProfile(3)">View Profile</button><button class="round call" aria-label="Call Divya" title="Call" onclick="location.href='tel:+919000000000'">☎ Call</button><button class="round wa" aria-label="WhatsApp Divya" title="WhatsApp" onclick="openWhatsApp('919000000000')">◉ WhatsApp</button></div></article>
+    <article class="card"><img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=1600&q=90" loading="lazy" alt="Kavya profile photo"><div class="cardbody"><div class="name">Kavya <span class="distance">5.1 km</span></div></div><div class="cardactions"><button class="round view" onclick="openProfile(4)">View Profile</button><button class="round call" aria-label="Call Kavya" title="Call" onclick="location.href='tel:+919000000000'">☎ Call</button><button class="round wa" aria-label="WhatsApp Kavya" title="WhatsApp" onclick="openWhatsApp('919000000000')">◉ WhatsApp</button></div></article>
+    <article class="card"><img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=1600&q=90" loading="lazy" alt="Pooja profile photo"><div class="cardbody"><div class="name">Pooja <span class="distance">7.4 km</span></div></div><div class="cardactions"><button class="round view" onclick="openProfile(5)">View Profile</button><button class="round call" aria-label="Call Pooja" title="Call" onclick="location.href='tel:+919000000000'">☎ Call</button><button class="round wa" aria-label="WhatsApp Pooja" title="WhatsApp" onclick="openWhatsApp('919000000000')">◉ WhatsApp</button></div></article>
+    <article class="card"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1600&q=90" loading="lazy" alt="Meena profile photo"><div class="cardbody"><div class="name">Meena <span class="distance">4.9 km</span></div></div><div class="cardactions"><button class="round view" onclick="openProfile(6)">View Profile</button><button class="round call" aria-label="Call Meena" title="Call" onclick="location.href='tel:+919000000000'">☎ Call</button><button class="round wa" aria-label="WhatsApp Meena" title="WhatsApp" onclick="openWhatsApp('919000000000')">◉ WhatsApp</button></div></article>
+    <article class="card"><img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1600&q=90" loading="lazy" alt="Neha profile photo"><div class="cardbody"><div class="name">Neha <span class="distance">8.2 km</span></div></div><div class="cardactions"><button class="round view" onclick="openProfile(7)">View Profile</button><button class="round call" aria-label="Call Neha" title="Call" onclick="location.href='tel:+919000000000'">☎ Call</button><button class="round wa" aria-label="WhatsApp Neha" title="WhatsApp" onclick="openWhatsApp('919000000000')">◉ WhatsApp</button></div></article>
+    <article class="card"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1600&q=90" loading="lazy" alt="Riya profile photo"><div class="cardbody"><div class="name">Riya <span class="distance">6.1 km</span></div></div><div class="cardactions"><button class="round view" onclick="openProfile(8)">View Profile</button><button class="round call" aria-label="Call Riya" title="Call" onclick="location.href='tel:+919000000000'">☎ Call</button><button class="round wa" aria-label="WhatsApp Riya" title="WhatsApp" onclick="openWhatsApp('919000000000')">◉ WhatsApp</button></div></article>
+    <article class="card"><img src="https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?auto=format&fit=crop&w=1600&q=90" loading="lazy" alt="Keerthi profile photo"><div class="cardbody"><div class="name">Keerthi <span class="distance">9.0 km</span></div></div><div class="cardactions"><button class="round view" onclick="openProfile(9)">View Profile</button><button class="round call" aria-label="Call Keerthi" title="Call" onclick="location.href='tel:+919000000000'">☎ Call</button><button class="round wa" aria-label="WhatsApp Keerthi" title="WhatsApp" onclick="openWhatsApp('919000000000')">◉ WhatsApp</button></div></article>
   </div>
-</div>
+</section>
 
 <section class="why">
   <div style="max-width:1250px;margin:auto"><h2>Why choose us?</h2><div class="whygrid">
@@ -118,6 +113,8 @@ body.light .hero-inner{color:#17171b}.light .lead{color:#222}.light .checks{colo
   </div></div>
 </section>
 
+<div class="gallery-modal" id="profileModal" onclick="closeProfile(event)"><div class="gallery-box" onclick="event.stopPropagation()"><div class="gallery-head"><span id="profileTitle">Profile</span><button class="gallery-close" onclick="closeProfile()">×</button></div><img id="galleryMain" class="gallery-main" alt="Profile photo"><div id="galleryThumbs" class="thumbs"></div><div class="gallery-note">Each profile supports a minimum of 5 photos. Tap a thumbnail to view another photo.</div></div></div>
+
 <footer>
  <div class="footerin">
   <div class="brand"><div class="logo">♡</div><div><b>Satisfaction for U</b><small>PRIVATE CONNECTIONS</small></div></div>
@@ -126,118 +123,52 @@ body.light .hero-inner{color:#17171b}.light .lead{color:#222}.light .checks{colo
  </div>
 </footer>
 <script>
-const whiteBtn=document.getElementById('whiteBtn');
-const darkBtn=document.getElementById('darkBtn');
-
-whiteBtn.onclick=()=>{
-  document.body.classList.add('light');
-  whiteBtn.classList.add('active');
-  darkBtn.classList.remove('active');
-  try{localStorage.setItem('sfu_public_mode','light')}catch(e){}
-};
-darkBtn.onclick=()=>{
-  document.body.classList.remove('light');
-  darkBtn.classList.add('active');
-  whiteBtn.classList.remove('active');
-  try{localStorage.setItem('sfu_public_mode','dark')}catch(e){}
-};
-try{if(localStorage.getItem('sfu_public_mode')==='light')whiteBtn.click()}catch(e){}
-
-function openWhatsApp(number){
-  number=String(number||'').replace(/\D/g,'');
-  if(number.startsWith('0'))number='91'+number.slice(1);
-  if(number)location.href='https://wa.me/'+number;
-}
-
-const defaultProfiles=[
-["Priya","2.5 km","https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1600&q=100"],
-["Anjali","4.2 km","https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1600&q=100"],
-["Sneha","6.8 km","https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=100"],
-["Divya","3.7 km","https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1600&q=100"],
-["Kavya","5.1 km","https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=1600&q=100"],
-["Pooja","7.4 km","https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=1600&q=100"],
-["Meena","4.9 km","https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1600&q=100"],
-["Neha","8.2 km","https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1600&q=100"],
-["Riya","6.1 km","https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1600&q=100"],
-["Keerthi","9.0 km","https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?auto=format&fit=crop&w=1600&q=100"]
-];
-
-function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-function photosOf(p,fallback){
-  let a=Array.isArray(p?.photos)?p.photos.filter(Boolean):[];
-  if(!a.length&&p?.photo)a=[p.photo];
-  if(!a.length&&fallback)a=[fallback];
-  return a.slice(0,20);
-}
-function renderProfiles(profiles){
-  const grid=document.getElementById('profilesGrid');
-  const list=Array.isArray(profiles)&&profiles.length?profiles:defaultProfiles.map(x=>({name:x[0],location:x[1],photo:x[2]}));
-  window.sfuProfiles=list;
-  grid.innerHTML=list.map((p,i)=>{
-    const ps=photosOf(p,defaultProfiles[i]?.[2]);
-    const wa=String(p.whatsapp||'').trim(), contact=String(p.contact||'').trim();
-    const showWa=p.showWhatsapp!==false&&!!wa, showCall=p.showContact!==false&&!!contact;
-    return `<article class="card">
-      <img src="${esc(ps[0]||'')}" alt="${esc(p.name||'Profile')}" loading="lazy">
-      <div class="cardbody"><div class="name">${esc(p.name||'Profile')} ${p.location?`<span class="distance">${esc(p.location)}</span>`:''}</div></div>
-      <div class="cardactions">
-        <button class="viewBtn" title="View Profile" onclick="openProfile(${i})">👁 View Profile</button>
-        ${showCall?`<button class="callBtn" title="Call" onclick="location.href='tel:${esc(contact)}'">📞 Call</button>`:''}
-        ${showWa?`<button class="waBtn" title="WhatsApp" onclick="openWhatsApp('${esc(wa)}')">🟢 WhatsApp</button>`:''}
-      </div>
-    </article>`;
-  }).join('');
-}
-function openProfile(i){
-  const p=window.sfuProfiles?.[i]; if(!p)return;
-  const ps=photosOf(p);
-  document.getElementById('profileMainImage').src=ps[0]||'';
-  document.getElementById('profileModalName').textContent=p.name||'Profile';
-  document.getElementById('profileModalLocation').textContent=p.location||'';
-  document.getElementById('profileModalDescription').textContent=p.description||'';
-  document.getElementById('profileThumbs').innerHTML=ps.map(u=>`<img src="${esc(u)}" loading="lazy" onclick="document.getElementById('profileMainImage').src=this.src" style="width:82px;height:64px;object-fit:cover;border-radius:8px;cursor:pointer">`).join('');
-  const a=document.getElementById('profileModalActions'); a.innerHTML='';
-  if(p.showWhatsapp!==false&&p.whatsapp){const b=document.createElement('button');b.className='waBtn';b.textContent='🟢 WhatsApp';b.onclick=()=>openWhatsApp(p.whatsapp);a.appendChild(b)}
-  if(p.showContact!==false&&p.contact){const b=document.createElement('button');b.className='callBtn';b.textContent='📞 Call';b.onclick=()=>location.href='tel:'+String(p.contact).replace(/[^0-9+]/g,'');a.appendChild(b)}
-  document.getElementById('profileModal').style.display='block'; document.body.style.overflow='hidden';
-}
-function closeProfile(){document.getElementById('profileModal').style.display='none';document.body.style.overflow=''}
-document.getElementById('profileModal').addEventListener('click',e=>{if(e.target.id==='profileModal')closeProfile()});
-
-function applySettings(s){
-  s=s||{};
-  if(s.background){
-    document.querySelector('.hero').style.backgroundImage=`linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.38),rgba(0,0,0,.18)),url("${s.background}")`;
-    document.querySelector('.hero').style.backgroundPosition=s.backgroundPosition||'center 35%';
-  }
-  if(s.middleBackground){
-    document.querySelector('.why').style.backgroundImage=`linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.34)),url("${s.middleBackground}")`;
-    document.querySelector('.why').style.backgroundPosition=s.middleBackgroundPosition||'center';
-  }
-  if(s.bottomBackground){
-    document.querySelector('footer').style.backgroundImage=`linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.42)),url("${s.bottomBackground}")`;
-    document.querySelector('footer').style.backgroundPosition=s.bottomBackgroundPosition||'center 70%';
-  }
-  if(s.title)document.title=s.title;
-  if(s.brand)document.querySelectorAll('.brand b').forEach(x=>x.textContent=s.brand);
-}
-function applyContent(c){
-  c=c||{};
-  if(c.featuredTitle)document.getElementById('featuredTitle').textContent=c.featuredTitle;
-  if(c.brand)document.querySelectorAll('.brand b').forEach(x=>x.textContent=c.brand);
-  if(c.heroDescription){const p=document.querySelector('.hero .lead');if(p)p.textContent=c.heroDescription}
-}
-async function loadPublicData(){
+const root=document.documentElement;
+async function loadSavedWhyBackground(){
   try{
     const r=await fetch('/api/data',{cache:'no-store'});
-    if(!r.ok)throw new Error();
+    if(!r.ok)return;
     const d=await r.json();
-    applySettings(d.settings||{});
-    applyContent(d.content||{});
-    renderProfiles(d.profiles||[]);
-  }catch(e){renderProfiles([])}
+    const bg=d&&d.settings&&d.settings.whyBackground;
+    if(bg){
+      const why=document.querySelector('.why');
+      if(why){
+        const safe=String(bg).replace(/"/g,'%22');
+        why.style.backgroundImage='linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.34)),url("'+safe+'")';
+      }
+    }
+  }catch(e){console.warn('Why background load failed',e)}
 }
-loadPublicData();
+loadSavedWhyBackground();
+document.getElementById('whiteBtn').onclick=()=>{document.body.classList.add('light');whiteBtn.classList.add('active');darkBtn.classList.remove('active')};
+document.getElementById('darkBtn').onclick=()=>{document.body.classList.remove('light');darkBtn.classList.add('active');whiteBtn.classList.remove('active')};
+const profileGalleries = [
+  ['https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=1600&q=90'],
+  ['https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1600&q=90'],
+  ['https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1600&q=90'],
+  ['https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1600&q=90'],
+  ['https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=90'],
+  ['https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1600&q=90'],
+  ['https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1600&q=90'],
+  ['https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=1600&q=90'],
+  ['https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=90'],
+  ['https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=1600&q=90', 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1600&q=90']
+];
+const profileNames = ['Priya','Anjali','Sneha','Divya','Kavya','Pooja','Meena','Neha','Riya','Keerthi'];
+function openProfile(index){
+  const modal=document.getElementById('profileModal'), main=document.getElementById('galleryMain'), thumbs=document.getElementById('galleryThumbs');
+  document.getElementById('profileTitle').textContent=profileNames[index]+' — Profile Photos';
+  thumbs.innerHTML='';
+  profileGalleries[index].forEach((src,i)=>{const im=document.createElement('img');im.src=src;im.loading='lazy';im.alt=profileNames[index]+' photo '+(i+1);im.className=i===0?'active':'';im.onclick=()=>{main.src=src;thumbs.querySelectorAll('img').forEach(x=>x.classList.remove('active'));im.classList.add('active')};thumbs.appendChild(im)});
+  main.src=profileGalleries[index][0]; modal.style.display='block'; document.body.style.overflow='hidden';
+}
+function closeProfile(){document.getElementById('profileModal').style.display='none';document.body.style.overflow='';}
+
+function openWhatsApp(number){
+  number=String(number).replace(/\D/g,'');
+  if(number.startsWith('0')) number='91'+number.slice(1);
+  location.href='https://wa.me/'+number;
+}
 </script>
 </body>
 </html>

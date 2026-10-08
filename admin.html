@@ -88,7 +88,20 @@
   <button type="button" onclick="setHeroPos('center bottom')" class="px-4 py-2 rounded-lg bg-white/10 text-sm">Bottom</button>
   <button type="button" onclick="removeHeroPhoto()" class="px-4 py-2 rounded-lg bg-red-500/20 text-red-200 text-sm">Remove photo</button>
   <span id="heroPosLabel" class="px-2 text-sm text-white/40">Position: center center</span>
-</div></div><button onclick="saveSettings()" class="mt-4 px-5 py-3 rounded-xl bg-pink-600 font-bold">Save settings</button></section>
+</div></div>
+<div class="md:col-span-2 mt-5 pt-5 border-t border-white/10">
+  <div class="text-xs uppercase tracking-[.2em] text-pink-400 mb-3">Why choose us background</div>
+  <div class="grid md:grid-cols-[1fr_auto] gap-3">
+    <input id="whyBackground" class="bg-black/25 border border-white/10 rounded-xl p-3" placeholder="Why choose us background image URL">
+    <label class="cursor-pointer px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 font-semibold text-center">Upload HD photo<input id="whyBackgroundFile" type="file" accept="image/*" class="hidden"></label>
+  </div>
+  <div class="mt-3 rounded-2xl overflow-hidden border border-white/10 bg-black/30">
+    <img id="whyBackgroundPreview" src="" alt="Why choose us preview" class="w-full h-40 object-cover hidden">
+    <div id="whyBackgroundEmpty" class="h-24 grid place-items-center text-white/35 text-sm">Why choose us photo preview</div>
+  </div>
+  <button type="button" onclick="removeWhyBackground()" class="mt-3 px-4 py-2 rounded-lg bg-red-500/20 text-red-200 text-sm">Remove photo</button>
+</div>
+<button onclick="saveSettings()" class="mt-4 px-5 py-3 rounded-xl bg-pink-600 font-bold">Save settings</button></section>
  <section class="glass rounded-3xl p-6 md:p-8 mt-6">
  <p class="text-pink-400 text-xs uppercase tracking-[.2em]">Design</p>
  <h2 class="text-2xl font-black mt-1">Colours & display</h2>
@@ -203,6 +216,10 @@ function load(){
   $("title").value=settings.title||"Meet someone worth your time.";
   $("tagline").value=settings.tagline||"Discover adult dating and companionship profiles in your area.";
   $("background").value=settings.background||"";
+  $("whyBackground").value=settings.whyBackground||"";
+  $("whyBackgroundPreview").src=settings.whyBackground||"";
+  $("whyBackgroundPreview").classList.toggle("hidden",!settings.whyBackground);
+  $("whyBackgroundEmpty").classList.toggle("hidden",!!settings.whyBackground);
   const pos=settings.backgroundPosition||"center center";
   $("heroPosLabel").textContent="Position: "+pos;
   $("backgroundPreview").src=settings.background||"";
@@ -210,7 +227,7 @@ function load(){
   $("backgroundEmpty").classList.toggle("hidden",!!settings.background);
 }
 function saveSettings(){
-  settings={...settings,title:$("title").value.trim(),tagline:$("tagline").value.trim(),background:$("background").value.trim(),backgroundPosition:settings.backgroundPosition||"center center"};
+  settings={...settings,title:$("title").value.trim(),tagline:$("tagline").value.trim(),background:$("background").value.trim(),whyBackground:$("whyBackground").value.trim(),backgroundPosition:settings.backgroundPosition||"center center"};
   save();alert("Website settings saved.");
 }
 function setHeroPos(pos){
@@ -236,6 +253,29 @@ $("backgroundFile").addEventListener("change",function(){
     $("backgroundPreview").src=reader.result;
     $("backgroundPreview").classList.remove("hidden");
     $("backgroundEmpty").classList.add("hidden");
+  };
+  reader.readAsDataURL(file);
+});
+
+function removeWhyBackground(){
+  $("whyBackground").value="";
+  settings.whyBackground="";
+  $("whyBackgroundPreview").src="";
+  $("whyBackgroundPreview").classList.add("hidden");
+  $("whyBackgroundEmpty").classList.remove("hidden");
+  save();
+}
+$("whyBackgroundFile").addEventListener("change",function(){
+  const file=this.files&&this.files[0];
+  if(!file)return;
+  if(!file.type.startsWith("image/")){alert("Please select an image file.");return;}
+  if(file.size>8*1024*1024){alert("Please use an image up to 8 MB.");return;}
+  const reader=new FileReader();
+  reader.onload=()=>{
+    $("whyBackground").value=reader.result;
+    $("whyBackgroundPreview").src=reader.result;
+    $("whyBackgroundPreview").classList.remove("hidden");
+    $("whyBackgroundEmpty").classList.add("hidden");
   };
   reader.readAsDataURL(file);
 });
