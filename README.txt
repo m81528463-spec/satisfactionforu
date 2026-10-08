@@ -1,14 +1,16 @@
-Satisfaction for U — Why Choose Us Background Fix
-
-Changed ONLY:
-1. Admin -> Website settings now has "Why choose us background" upload/URL/preview/remove.
-2. The saved Why choose us background is stored in the existing sfu_settings data and sent through /api/data.
-3. Public index.html reads the saved setting from /api/data and applies it to the Why choose us section.
-4. Existing fallback background remains if no custom image is saved.
-5. Existing profile design, WhatsApp, login, theme and other settings are not intentionally changed.
+Satisfaction for U - FINAL SYNC FIX
 
 Files:
-- index.html
-- admin.html
+- index.html: public site; loads profiles/settings from /api/data
+- admin.html: admin panel; saves profiles/settings/content to /api/data
+- worker.js: Cloudflare Worker + SFU_DATA KV API
+- wrangler.toml: Worker/KV configuration
 
-Deploy/replace these two files in the same project that already contains your existing worker.js and wrangler.toml. Do not delete the existing worker.js or wrangler.toml.
+Important fixes:
+1. Admin-added/edited profiles are loaded on the public site from Cloudflare KV.
+2. Hero/top background loads from saved settings.background.
+3. Why Choose Us background loads from saved settings.whyBackground.
+4. Existing white/dark controls and visual design are preserved.
+5. Admin data remains stored in Cloudflare KV.
+
+Deploy the four files together with: npx wrangler deploy
