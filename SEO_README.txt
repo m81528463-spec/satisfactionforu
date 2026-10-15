@@ -1,22 +1,10 @@
-SATISFACTION FOR U - SEO ONLY UPDATE
+Satisfaction for U — SEO + Clear Background package
 
-This package intentionally preserves the existing website design, profiles,
-WhatsApp/Call behavior, Admin panel, background settings, login behavior,
-and Cloudflare Worker/KV setup.
+Title: Visakhapatnam VIP Escorts Premium Female Escort Services | Satisfaction for U
+Meta description: Visakhapatnam VIP Escorts Premium Female Escort Services. 100% Genuine Profiles Cash Payment Only No Advance Payment.
+Canonical: https://satisfactionforu.cyou/
+Sitemap: https://satisfactionforu.cyou/sitemap.xml
 
-SEO-only additions:
-- robots.txt
-- sitemap.xml
-- additional search/social metadata in index.html
-- canonical URL for satisfactionforu.cyou
-- Googlebot/indexing directives
-- sitemap discovery hint
+Background: Hero image overlay reduced for clearer display on mobile and desktop. Use a high-resolution image (ideally 1920x1080 or larger). Text contrast can vary depending on the photo.
 
-Important:
-1. Deploy this package to the same Cloudflare Worker/project.
-2. In Google Search Console, add https://satisfactionforu.cyou/ as a property.
-3. Submit: https://satisfactionforu.cyou/sitemap.xml
-4. Use URL Inspection -> Request Indexing for the homepage.
-
-No admin/profile/background/database settings were intentionally changed by this
-SEO-only update.
+Google may rewrite titles/descriptions and indexing timing is not guaranteed.
