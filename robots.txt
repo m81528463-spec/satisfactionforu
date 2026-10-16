@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /admin.html
-Disallow: /api/
-Sitemap: https://satisfactionforu.cyou/sitemap.xml
