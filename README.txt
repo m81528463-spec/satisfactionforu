@@ -14,3 +14,4 @@ Important fixes:
 5. Admin data remains stored in Cloudflare KV.
 
 Deploy the four files together with: npx wrangler deploy
+
