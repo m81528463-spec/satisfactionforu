@@ -1,0 +1,1 @@
+Satisfaction for U website package. Read README_TELUGU_DEPLOY.txt and AUDIT_REPORT_TELUGU.txt before deployment. Keep admin credentials in Cloudflare Worker Secrets, never in public repository. Gmail OTP recovery requires a configured email provider and is not included.

@@ -1,0 +1,11 @@
+ADMIN LOGIN SETUP — తెలుగు
+
+Cloudflare Dashboard → Workers & Pages → satisfactionforu-test (లేదా మీరు నిజంగా deploy చేస్తున్న Worker) → Settings → Variables and Secrets.
+
+Secrets గా: ADMIN_USERNAME = Manoj; ADMIN_PASSWORD = Cloudflare లో మీరు తాజాగా సెట్ చేసే password; ADMIN_SECRET = ప్రత్యేకమైన, పొడవైన random secret. Save/Deploy చేయండి.
+
+మీరు chat లో password పంచుకున్నందున దాన్ని మార్చండి. Password ZIP/GitHub లో hardcode చేయకండి.
+
+Admin page: https://satisfactionforu.cyou/admin.html (custom domain route சரியாக bind అయి ఉంటే)
+
+Gmail OTP recovery: email address ఒక్కటే సరిపోదు; mail sending provider API key/domain configuration అవసరం. ఈ ZIPలో OTP recovery పూర్తి కాదు.

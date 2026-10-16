@@ -1,0 +1,17 @@
+Satisfaction for U - Combined Package
+
+Ee ZIP lo mundu adigina website/deployment/SEO files mariyu Call & WhatsApp options kalipi unnayi.
+
+SEO Title:
+Visakhapatnam VIP Escorts — Premium Female Escort Services | Satisfaction for U
+
+SEO Description:
+Visakhapatnam VIP Escorts — Premium Female Escort Services. 100% Genuine Profiles • Cash Payment Only • No Advance Payment.
+
+Profile card lo phone number unte Call button, WhatsApp number (country code tho digits) unte WhatsApp button chupistayi. Admin panel lo Phone number mariyu WhatsApp number fields unnayi.
+
+Important:
+- ZIP upload chesinanta matrame live site maradu; GitHub/Cloudflare deployment avvali.
+- Cloudflare KV binding SFU_DATA mariyu secrets ni mee dashboard lo verify cheyyandi.
+- Gmail OTP recovery email provider setup avasaram; ee package lo fully implemented ani guarantee ledu.
+- Live site lo final test deployment taruvata cheyyali.
